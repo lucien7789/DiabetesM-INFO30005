@@ -1,0 +1,124 @@
+:root {
+    box-sizing: border-box;
+    --BACKGROUND: #FFF9EC;
+    --ACCENT1_LIGHT: #326FA4;
+    --ACCENT1_STANDARD: #7790B5;
+    --ACCENT1_DARK: #568AD6;
+    --TEXT_BODY: #000000;
+    --TEXT_SUB: #818181;
+    --TEXT_TITLE: #FFFFFF;
+    --ACCENT_POSITIVE: #019D49;
+    --ACCENT_NEGATIVE: #EF4751;
+    --BUTTON: #131313;
+    --INPUT: #3f2323; /*opactiy 0.6*/
+    --FONT-QUICKSAND: 'Quicksand', sans-serif;
+
+    --FONT-XSMALL: 0.8rem;
+    --FONT-SMALL: 1rem;
+    --FONT-SMEDIUM: 1.5rem;
+    --FONT-SSMEDIUM: 1.25rem;
+    --FONT-MEDIUM: 2rem;
+    --FONT-LARGE: 3rem;
+}
+
+/*Comments 23/03/22 4:15pm
+-- LIGHT & DARK THEME. Should there be 2 css files? (One for light... then same variable
+names for different colours")
+-- Responsive design working for phone screen size (flexbox), not working in resetting the
+grid for tablet size
+-- Not sure what the goal is with the naviagtion menu on the left, that wouldn't be a static
+webpage anymore right?
+-- Needs lots of little jobs, e.g. borders, video size, etc.
+
+
+
+
+*/
+
+/**
+  * Changed this to a more generic selector for reuse
+ **/
+body, html{
+    height: 100%;
+    margin: 0;
+}
+#main-app {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 3.5rem 1fr;
+
+    grid-template-areas:
+        "header"
+        "main";
+
+}
+.font-white {
+    color: #FFFFFF;
+}
+.font-quicksand {
+    font-family: var(--FONT-QUICKSAND);
+}
+
+.quote {
+    font-style: italic;
+}
+.quote::before {
+    content: "\"";
+    display: inline;
+}
+.quote::after {
+    content: "\"";
+    display: inline;
+}
+#app-header {
+    grid-area: header;
+    background-color: var(--ACCENT1_LIGHT);
+    font-family: 'Roboto', sans-serif; font-weight: 1,100;
+    /*can't change the Roboto weight size for some reason??*/
+    color: var(--TEXT_TITLE);
+    text-align: center;
+
+    font-size: var(--FONT-MEDIUM);
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+
+    padding: 5px;
+    align-items: center;
+}
+#app-header h1 {
+    font-family: 'Roboto', sans-serif; font-weight: 300;
+    color: var(--TEXT_TITLE);
+    margin: 0;
+    padding: 0.2em 0;
+    font-size: var(--FONT-SMEDIUM);
+    
+}
+#app-header > *:first-child {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+#app-header > *:first-child > img {
+    max-width: 100%;
+    max-height: 100%;
+
+    border-radius: 15px;
+
+    margin: 0 5px;
+
+    box-shadow: 1px 1px 2px 1px darkslategrey;
+}
+#app-header > *:nth-child(2) {
+    font-weight: 500;
+    font-size: var(--FONT-MEDIUM);
+}
+#app-main {
+    padding: 10px;
+}
+
+
+main {
+    background-color: var(--BACKGROUND);
+}

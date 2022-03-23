@@ -2,7 +2,9 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="info30005-CSS.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.png">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="about-pages.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap" rel="stylesheet">
@@ -17,46 +19,77 @@
 
 <body>
 
-    <main>
-
-        <section id="about-diabetes">
+    <main id="main-app">
+        <section id="app-header">
+            <div><img class="logo" src="assets/logo.png"><h1>DiabetesM</h1></div>
             
-            <section id="about-diabetes-head">
-                <!--<p>Section 1</p>-->
-                <h1>About Us</h1>
-            </section>
-
-            <section id="about-diabetes-nav">
-                <p>Section 2</p>
+            
+            <h1>About Us</h1>
+            
+        </section>
+        <section id="app-main">
+            <section id="about-diabetes">
+                <section id="about-diabetes-nav">
+                    <img id="about-diabetes-logo" src="assets/logo.png">
+                    <p class="font-white font-quicksand quote">Diabetes is like a roller coaster, but we can make it less scarier.</p>
                 </section>
 
-            <section id="about-diabetes-main-1">
-                <p>Section 3</p>
-                <h2>What is Diabetes?</h2>
-                <p>“Website title” is a diabetes management platform developed by a team of students from the University of Melbourne. Features include:
-                    <br>- Easy to use blood glucose tracking
-                    <br>- Customisable health tracing
-                    <br>- Useful presentation of data for pattern finding and effective management
-                    <br>- Correspondence between clinicians and patients
-                    <br>- Secure data storage
-                    <br>- Various tools for clinicians, including: a user friendly dashboard with access to patient data and comments
-                    <br>To use the diabetes management features: sign up, or if you already have an account: log in.
-                    Alternatively, see our “About Diabetes” page.
-                    </p>
-            </section>
+                <section id="about-diabetes-main-1" class="font-quicksand">
+                    <!-- Randomly chose DiabetesM as placeholder name perhaps change bit later-->
+                    <h2>What is <i>DiabetesM?</i></h2>
+                    <p>“DiabetesM” is a diabetes management and monitoring platform developed by a team of students from the University of Melbourne. 
+                        
+                        <br>
+                        Through this app, we offer various features and services that will assist you through diabetes.
+                        
+                        <br>
+                        What we offer:
 
-            <section id="about-diabetes-main-2">
-                <p>Section 4</p>
-                <p>Picutre of us?</p>
-            </section>
+                        <h3>For patients</h3>
+                        <ul>
+                            <li>Easy to use tracking and recording service for a range of different measures</li>
+                            <li>Customisable health tracing</li>
+                            <li>Correspondence between you and your clinician</li>
+                        </ul>
+                        <h3>For clinicians</h3>
+                        <ul>
+                            <li>A user experience and speed focused UI designed for optimizing your efficiency in fulfilling tasks</li>
+                            <li>A private communication channel between you and your patient</li>
+                            <li>A colour-effective UI designed to highlight patient data needing immediate attention</li>
+                        </ul>
+                        <h3>For all</h3>
+                        <ul>
+                            <li>Powerful presentation of data for pattern finding and effective management</li>
+                            <li>The ability to switch between light and dark mode</li>
+                            <li>Secure and encrypted data storage</li>
+                        </ul>
+                        <br>To start using our services, you can <a href="#top">Create an Account</a>, or if you already have one, you can <a href="#top">Log in</a> here.
+                        <br>Alternatively, to read more about diabetes, see our <a href="about-diabetes.html">About Diabetes</a> page.
+                        </p>
+                </section>
 
-            <section id="about-diabetes-contact-us">
-                <p>Section 5</p>
-                <h2>Contact Us:</h2>
-                <p>Contact info<br>Geordan's phone number: *top secret ;)*</p>
+                <section id="about-diabetes-main-2" class="font-quicksand">
+                    <h2>Meet the Team</h2>
+                    <div id="about-diabetes-team-section">
+                        <div class="profile-image">
+                            <img src="./assets/lucien.jpg" alt="Image not found.">
+                            <div class="profile-image-overlay font-white"><h3 class="font-white">Lucien Lu</h3></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about-diabetes-contact-us" class="font-white font-quicksand">
+                    <h2>Contact Us</h2>
+                    <ul>
+                        <li>Lucien Lu: <br>lucienl@student.unimelb.edu.au</li>
+                        <li>Ted Barrett: <br>tlbarrett@student.unimelb.edu.au</li>
+                        <li>Andy Feng: <br>bofeng2@student.unimelb.edu.au</li>
+                        <li>Geordan Bennie: <br>gbbennie@student.unimelb.edu.au</li>
+                        <li>Nathan Rearick: <br>nrearick@student.unimelb.edu.au</li>
+                    </ul>
+                </section>
             </section>
         </section>
-
     </main>
 </body>
 </html>
