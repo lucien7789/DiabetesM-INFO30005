@@ -45,6 +45,9 @@ body, html{
 #main-app {
     height: 100%;
     display: grid;
+
+    font-family: var(--FONT-QUICKSAND);
+    
     grid-template-rows: 3.5rem 1fr;
 
     grid-template-areas:
@@ -56,7 +59,7 @@ body, html{
     color: #FFFFFF;
 }
 .font-quicksand {
-    font-family: var(--FONT-QUICKSAND);
+    
 }
 
 .quote {
@@ -73,7 +76,6 @@ body, html{
 #app-header {
     grid-area: header;
     background-color: var(--ACCENT1_LIGHT);
-    font-family: 'Roboto', sans-serif; font-weight: 1,100;
     /*can't change the Roboto weight size for some reason??*/
     color: var(--TEXT_TITLE);
     text-align: center;
@@ -88,7 +90,6 @@ body, html{
     align-items: center;
 }
 #app-header h1 {
-    font-family: 'Roboto', sans-serif; font-weight: 300;
     color: var(--TEXT_TITLE);
     margin: 0;
     padding: 0.2em 0;
@@ -117,7 +118,6 @@ body, html{
 #app-main {
     padding: 10px;
 }
-
 
 main {
     background-color: var(--BACKGROUND);

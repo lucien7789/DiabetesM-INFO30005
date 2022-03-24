@@ -1,30 +1,40 @@
 #about-diabetes {
     
 
-    --COLOR-NOTEPAD: #ffc;
+
     height: 100%;
 
     grid-area: main;
     display: grid;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 2.5fr 2.5fr;
     grid-template-rows: 1fr 1fr;
     grid-gap: 1rem;
 
+    justify-items: center;
     grid-template-areas: 
         "aside main nav"
         "contact main nav";
     background-color: var(--BACKGROUND);
 }
-#about-diabetes-nav {
+#about-diabetes-aside {
+    display: grid;
+
+    place-items: center;
     grid-area: aside;
     background-color: var(--ACCENT1_LIGHT);
     padding: 10px;
 
     font-size: var(--FONT-SMALL);
+
+    color: white;
+}
+#about-diabetes-aside * {
+    margin: 1px 0;
+    text-align: center;
 }
 #about-diabetes-logo {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%;
+    max-height: 80%;
 
     border-radius: 15px;
 }
@@ -44,6 +54,12 @@
     text-align: left;
     font-size: var(--FONT-SMEDIUM);
     font-weight: normal;
+
+    display: flex;
+    align-items: center;
+}
+#about-diabetes-contact-us > h2 > span {
+    margin-right: 5px;
 }
 #about-diabetes-main-1 > ul {
     margin: 5px 0px;
@@ -53,6 +69,9 @@
     font-size: var(--FONT-SMALL);
     list-style: none;
     padding-left: 0;
+}
+#about-diabetes-contact-us > ul > li {
+    margin: 5px 0;
 }
 #about-diabetes-main-1 p {
     font-weight: 400;
@@ -78,14 +97,35 @@
     display: grid;
 
     grid-auto-rows: auto;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+    gap: 10px;
 }
-
+.profile-image:nth-child(1) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.profile-image:nth-child(2) {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+.profile-image:nth-child(3) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+.profile-image:nth-child(4) {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+.profile-image:nth-child(5) {
+    grid-column-start: 2;
+    grid-column-end: 4;
+}
 .profile-image {
     overflow: hidden;
     position: relative;
-    height: 15rem;
-    width: 15rem;
+    height: 12rem;
+    width: 12rem;
     box-shadow: 1px 1px 3px 0 black;
 
     cursor: pointer;
@@ -114,10 +154,10 @@
     font-size: var(--FONT-SMEDIUM);
 }
 .profile-image img {
-    max-height: 100%;
-    max-width: 100%;
+    height: 100%;
+    width: 100%;
 
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .about-diabetes-note {
