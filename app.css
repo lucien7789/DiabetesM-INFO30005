@@ -1,5 +1,4 @@
 :root {
-    box-sizing: border-box;
     --BACKGROUND: #FFF9EC;
     --ACCENT1_LIGHT: #326FA4;
     --ACCENT1_STANDARD: #7790B5;
@@ -7,6 +6,7 @@
     --TEXT_BODY: #000000;
     --TEXT_SUB: #818181;
     --TEXT_TITLE: #FFFFFF;
+    --TEXT_INVERSE: #FFFFFF;
     --ACCENT_POSITIVE: #019D49;
     --ACCENT_NEGATIVE: #EF4751;
     --BUTTON: #131313;
@@ -15,11 +15,13 @@
 
     --FONT-XSMALL: 0.8rem;
     --FONT-SMALL: 1rem;
-    --FONT-SMEDIUM: 1.5rem;
     --FONT-SSMEDIUM: 1.25rem;
+    --FONT-SMEDIUM: 1.5rem;
     --FONT-MEDIUM: 2rem;
     --FONT-LARGE: 3rem;
 }
+
+
 
 /*Comments 23/03/22 4:15pm
 -- LIGHT & DARK THEME. Should there be 2 css files? (One for light... then same variable
@@ -38,11 +40,14 @@ webpage anymore right?
 /**
   * Changed this to a more generic selector for reuse
  **/
+* {
+    box-sizing: border-box;
+}
 body, html{
     height: 100%;
     margin: 0;
 }
-#main-app {
+#main {
     height: 100%;
     display: grid;
 
@@ -58,8 +63,10 @@ body, html{
 .font-white {
     color: #FFFFFF;
 }
-.font-quicksand {
-    
+.flex-row-align-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .quote {
@@ -117,8 +124,63 @@ body, html{
 }
 #app-main {
     padding: 10px;
+    background-color: var(--BACKGROUND);
 }
 
-main {
-    background-color: var(--BACKGROUND);
+@media only screen and (min-width: 641px) and (max-width: 1200px) {
+    :root {
+        --BACKGROUND: #FFF9EC;
+        --ACCENT1_LIGHT: #326FA4;
+        --ACCENT1_STANDARD: #7790B5;
+        --ACCENT1_DARK: #568AD6;
+        --TEXT_BODY: #000000;
+        --TEXT_SUB: #818181;
+        --TEXT_TITLE: #FFFFFF;
+        --ACCENT_POSITIVE: #019D49;
+        --ACCENT_NEGATIVE: #EF4751;
+        --BUTTON: #131313;
+        --INPUT: #3f2323; /*opactiy 0.6*/
+        --FONT-QUICKSAND: 'Quicksand', sans-serif;
+    
+        --FONT-XSMALL: 0.8rem;
+        --FONT-SMALL: 1rem;
+        --FONT-SSMEDIUM: 1.25rem;
+        --FONT-SMEDIUM: 1.5rem;
+        --FONT-MEDIUM: 2rem;
+        --FONT-LARGE: 3rem;
+    }
+
+    #app-main {
+        padding: 20px;
+        background-color: var(--BACKGROUND);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    :root {
+        --BACKGROUND: #FFF9EC;
+        --ACCENT1_LIGHT: #326FA4;
+        --ACCENT1_STANDARD: #7790B5;
+        --ACCENT1_DARK: #568AD6;
+        --TEXT_BODY: #000000;
+        --TEXT_SUB: #818181;
+        --TEXT_TITLE: #FFFFFF;
+        --ACCENT_POSITIVE: #019D49;
+        --ACCENT_NEGATIVE: #EF4751;
+        --BUTTON: #131313;
+        --INPUT: #3f2323; /*opactiy 0.6*/
+        --FONT-QUICKSAND: 'Quicksand', sans-serif;
+    
+        --FONT-XSMALL: 1rem;
+        --FONT-SMALL: 1.2rem;
+        --FONT-SSMEDIUM: 1.5rem;
+        --FONT-SMEDIUM: 2rem;
+        --FONT-MEDIUM: 2.5rem;
+        --FONT-LARGE: 3rem;
+    }
+
+    #app-main {
+        padding: 20px;
+        background-color: var(--BACKGROUND);
+    }
 }
