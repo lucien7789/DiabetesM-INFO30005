@@ -112,10 +112,9 @@
 
 #about-diabetes-team-section {
     width: 100%;
-    height: calc(100% - 60px);
     display: grid;
 
-    align-content: space-around;
+    align-content: flex-start;
     justify-content: space-around;
     
     grid-template-rows: 1fr 1fr 1fr;
