@@ -144,14 +144,14 @@ body, html{
     
         --FONT-XSMALL: 0.8rem;
         --FONT-SMALL: 1rem;
-        --FONT-SSMEDIUM: 1.25rem;
-        --FONT-SMEDIUM: 1.5rem;
+        --FONT-SSMEDIUM: 1.2rem;
+        --FONT-SMEDIUM: 1.4rem;
         --FONT-MEDIUM: 2rem;
         --FONT-LARGE: 3rem;
     }
 
     #app-main {
-        padding: 20px;
+        padding: 10px;
         background-color: var(--BACKGROUND);
     }
 }
@@ -179,8 +179,14 @@ body, html{
         --FONT-LARGE: 3rem;
     }
 
+    #app-header {
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    #app-header #diabetesm-title {
+        display: none;
+    }
     #app-main {
-        padding: 20px;
+        padding: 10px;
         background-color: var(--BACKGROUND);
     }
 }
