@@ -6,15 +6,18 @@
 
     grid-area: main;
     display: grid;
-    grid-template-columns: 1fr 2.5fr 2.5fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1.5fr 2.5fr 2.5fr;
+    grid-template-rows: auto;
     grid-gap: 1rem;
 
     justify-items: center;
     grid-template-areas: 
         "aside main nav"
-        "contact main nav";
-    background-color: var(--BACKGROUND);
+        "contact main nav"
+        "corner main nav";
+}
+#about-diabetes section {
+    padding: 10px;
 }
 #about-diabetes-aside {
     display: grid;
@@ -22,11 +25,12 @@
     place-items: center;
     grid-area: aside;
     background-color: var(--ACCENT1_LIGHT);
-    padding: 10px;
 
     font-size: var(--FONT-SMALL);
 
     color: white;
+
+    width: 100%;
 }
 #about-diabetes-aside * {
     margin: 1px 0;
@@ -48,7 +52,7 @@
     grid-area: contact;
     background-color: var(--ACCENT1_LIGHT);
 
-    padding: 10px;
+    width: 100%;
 }
 #about-diabetes-contact-us > h2 {
     text-align: left;
@@ -61,8 +65,21 @@
 #about-diabetes-contact-us > h2 > span {
     margin-right: 5px;
 }
+#about-diabetes-contact-us span {
+    margin: 0 5px;
+}
+
+#about-diabetes-corner {
+    grid-area: corner;
+    background-color: var(--ACCENT1_LIGHT);
+
+    color: white;
+}
 #about-diabetes-main-1 > ul {
     margin: 5px 0px;
+}
+#about-diabetes-main-1 iframe {
+    max-width: 100%;
 }
 #about-diabetes-contact-us > ul {
     margin: 5px 0px;
@@ -218,24 +235,68 @@
 .accordian-content h3, .accordian-content p {
     margin: 5px;
 }
-@media screen and (max-width: 1200px) {
+
+@media only screen and (min-width: 700px) and (max-width: 1200px) {
     #about-diabetes {
         display: grid;
-        grid-template-columns: 1fr 4fr;
-        grid-template-rows: 1fr 3fr 3fr 1fr;
+        grid-template-columns: 1.5fr 2.5fr 2.5fr;
         grid-gap: 1rem;
 
         grid-template-areas: 
-            "header header"
-            "aside main"
-            "aside nav"
-            "contact" "contact";
+            "aside main nav"
+            "contact main nav"
+            "corner main nav";
+    }
+    .about-diabetes-accordian input:checked ~ .accordian-content {
+        max-height: 1000px;
+    }
+    #about-diabetes-contact-us {
+        grid-area: contact;
+        background-color: var(--ACCENT1_LIGHT);
+    
+        padding: 20px;
+    
+        width: 100%;
+    }
+    #about-diabetes-contact-us h2 {
+        font-size: var(--FONT-SMEDIUM);
+    }
+    #about-diabetes-contact-us > h2 > span {
+        margin-right: 5px;
+        font-size: var(--FONT-SMEDIUM);
     }
 }
 
-@media screen and (max-width: 640px) {
+@media only screen and (max-width: 700px) {
     #about-diabetes {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-gap: 1rem;
+
+        grid-template-areas: 
+            "aside"
+            "main"
+            "nav"
+            "contact"
+            "corner";
+    }
+    .about-diabetes-accordian input:checked ~ .accordian-content {
+        max-height: 1000px;
+    }
+    #about-diabetes-contact-us {
+        grid-area: contact;
+        background-color: var(--ACCENT1_LIGHT);
+    
+        padding: 20px;
+    
+        width: 100%;
+    }
+    #about-diabetes-contact-us h2 {
+        font-size: var(--FONT-SMEDIUM);
+    }
+    #about-diabetes-contact-us > h2 > span {
+        margin-right: 5px;
+        font-size: var(--FONT-SMEDIUM);
     }
 }
