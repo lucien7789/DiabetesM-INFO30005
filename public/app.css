@@ -47,18 +47,49 @@ body, html{
     height: 100%;
     margin: 0;
 }
-#main {
-    height: 100%;
+body {
     display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: 80px 1fr 80px;
+}
+main {
+    height: 100%;
+
+    padding: 10px;
+    background-color: var(--BACKGROUND);
 
     font-family: var(--FONT-QUICKSAND);
-    
-    grid-template-rows: 3.5rem 1fr;
+    grid-area: main;
+}
+header {
+    height: 100%;
+    grid-area: header;
+    background-color: var(--ACCENT1_LIGHT);
+    /*can't change the Roboto weight size for some reason??*/
+    color: var(--TEXT_TITLE);
+    text-align: center;
 
-    grid-template-areas:
-        "header"
-        "main";
+    font-size: var(--FONT-MEDIUM);
 
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+
+    padding: 5px;
+    align-items: center;
+}
+footer {
+    grid-area: footer;
+}
+header img {
+    width:auto;
+    max-width:100%;
+    height: auto;
+    max-height: 100%;
+    object-fit:cover;
 }
 .font-white {
     color: #FFFFFF;
@@ -79,22 +110,6 @@ body, html{
 .quote::after {
     content: "\"";
     display: inline;
-}
-#app-header {
-    grid-area: header;
-    background-color: var(--ACCENT1_LIGHT);
-    /*can't change the Roboto weight size for some reason??*/
-    color: var(--TEXT_TITLE);
-    text-align: center;
-
-    font-size: var(--FONT-MEDIUM);
-
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 100%;
-
-    padding: 5px;
-    align-items: center;
 }
 #app-header h1 {
     color: var(--TEXT_TITLE);
@@ -121,10 +136,6 @@ body, html{
 #app-header > *:nth-child(2) {
     font-weight: 500;
     font-size: var(--FONT-SMEDIUM);
-}
-#app-main {
-    padding: 10px;
-    background-color: var(--BACKGROUND);
 }
 
 @media only screen and (min-width: 641px) and (max-width: 1200px) {
