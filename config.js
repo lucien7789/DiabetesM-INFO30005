@@ -12,6 +12,10 @@ const config = {
                 "path": "api/views/aboutViewsApi.js"
             },
             {
+                "prefix": "/patient",
+                "path": "api/views/patientViewsApi.js"
+            },
+            {
                 "prefix": "/",
                 "path": "api/views/homeViewApi.js"
             }
