@@ -10,7 +10,7 @@ const cleanup = () => {
     process.exit(1);
 };
 
-process.on("SIGKILL", cleanup);
+// process.on("SIGKILL", cleanup);
 process.on("SIGINT", cleanup);
 process.on("SIGTERM", cleanup);
 
