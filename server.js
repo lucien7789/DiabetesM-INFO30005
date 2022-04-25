@@ -1,8 +1,13 @@
 const express = require("express");
+const expressSession = require("express-session");
 const mongoose = require("mongoose");
-const config = require("./config");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const MongoStore = require("connect-mongo");
+const config = require("./serverConfig");
 const port = process.env.PORT || 3000;
 const exphbs = require("express-handlebars");
+const passport = require("./config/passportConfig");``
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const cleanup = () => {
@@ -34,7 +39,7 @@ const app = express();
  */
 const uri = "mongodb+srv://admin:b4V1vX4HQQPXPQDm@cluster0.geibs.mongodb.net/Cluster0?retryWrites=true&w=majority";
 
-mongoose.connect(uri);
+const mongooseClient = mongoose.connect(uri).then(m => m.connection.getClient());
 
 /**
  * ===========================================================
@@ -48,6 +53,22 @@ app.engine("hbs", exphbs.engine({
     extname: "hbs"
 }));
 
+app.use(
+    expressSession({
+        secret: process.env.SESSION_SECRET || "INFO30005",
+        name: "sid_",
+        saveUninitialized: false,
+        resave: false,
+        cookie: {
+            sameSite: "strict",
+            httpOnly: true,
+            secure: app.get("env") === "production"
+        },
+        store: MongoStore.create({ clientPromise: mongooseClient})
+    })
+)
+app.use(passport.authenticate("session"));
+
 app.use(express.static(config.projectDir + "/public"));
 
 app.set("view engine", "hbs");
@@ -56,17 +77,32 @@ app.set("view engine", "hbs");
  * Endpoints and Routing Setup
  * ===========================================================
  */
- const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+const middleware = {};
+
+for (let mw of config.authMiddleware) {
+    middleware[mw.level] = require(config.projectDir + "/" + mw.path);
+}
 for (let endpoint of config.apiModules.dataApi) {
     const routes = require(config.projectDir + "/" + endpoint.path);
-    app.use(endpoint.prefix, routes);
+    if (endpoint.authenticationLevel !== undefined) {
+        app.use(endpoint.prefix, middleware[endpoint.authenticationLevel], routes);
+    } else {
+        app.use(endpoint.prefix, routes);
+    }
     console.log(`Server.js - Data API Endpoint for ${endpoint.path} set up at ${endpoint.prefix}`);
 }
 
 for (let endpoint of config.apiModules.viewApi) {
     const routes = require(config.projectDir + "/" + endpoint.path);
+    if (endpoint.authenticationLevel !== undefined) {
+        app.use(endpoint.prefix, middleware[endpoint.authenticationLevel], routes);
+    } else {
+        app.use(endpoint.prefix, routes);
+    }
     app.use(endpoint.prefix, routes);
     console.log(`Server.js - View API Endpoint for ${endpoint.path} set up at ${endpoint.prefix}`);
 }
