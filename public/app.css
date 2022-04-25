@@ -91,6 +91,16 @@ header img {
     max-height: 100%;
     object-fit:cover;
 }
+
+button {
+    background: var(--BUTTON);
+    color: var(--TEXT_INVERSE);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: auto;
+}
+
 .font-white {
     color: #FFFFFF;
 }
@@ -116,7 +126,7 @@ header img {
     margin: 0;
     padding: 0.2em 0;
     font-size: var(--FONT-SMEDIUM);
-    
+
 }
 #app-header > *:first-child {
     height: 100%;
