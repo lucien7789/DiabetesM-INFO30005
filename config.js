@@ -17,7 +17,7 @@ const config = {
             },
             {
                 "prefix": "/",
-                "path": "api/views/signInViewsApi.js"
+                "path": "api/views/loginViewApi.js"
             }
         ]
     },

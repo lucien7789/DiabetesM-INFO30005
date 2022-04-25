@@ -20,6 +20,7 @@
 
 .sign-in-box a {
     color: white;
+    font-family: var(--FONT-QUICKSAND);
     font-size: var(--FONT-SMALL);
 }
 
