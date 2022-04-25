@@ -9,10 +9,9 @@ routes.post("/register", (req, res) => {
     bcrypt.hash(req.body.password, SALT_FACTOR, async (err, hash) => {
         
         if (err) {
-            console.log(err);
             res.status(500).send("Internal Server Error");
         } else {
-            let exists = await User.findOne({ email: req.body.username });
+            let exists = await User.findOne({ username: req.body.username });
             if (exists) {
                 res.status(403).send("An account has already been registered with that email");
             } else {
