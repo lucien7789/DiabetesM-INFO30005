@@ -1,0 +1,19 @@
+<section id="auth-form">
+    <div class="status-message"></div>
+    <div class = "auth-form-box">
+        <form onsubmit="onSubmitPlaceholder(event)" method="post">
+            <!-- Needs work. Not sure how to send username and password. 
+            Will also need to redirect to home screen after login or password reset page -->
+            
+            <input id="username-input" type="text" name="username" placeholder="Username">
+            <input id="first-name-input" type="text" name="first-name" placeholder="First Name">
+            <input id="last-name-input" type="text" name="last-name" placeholder="Last Name">
+            <input id="password-input" type="password" name="password" placeholder="Password">
+            <br>
+            <button class="button-standard" type="submit" onclick="onSubmitPatient()" name="">Sign up as patient</button>
+            <button class="button-standard" type="submit" onclick="onSubmitClinician()" name="">Sign up as clinician</button>
+        </form>
+    </div>
+</section>
+
+<script src="/scripts/login/registerForm.js"></script>
