@@ -1,8 +1,10 @@
 :root {
     --BACKGROUND: #FFFFFF;
-    --ACCENT1_LIGHT: #326FA4;
+    --BACKGROUND_CONTAINER: rgba(64, 47, 72, 0.6);
+    --BACKGROUND_CONTAINER_HEAVY: rgba(59, 49, 58, 0.8);
+    --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #7790B5;
-    --ACCENT1_DARK: #568AD6;
+    --ACCENT1_DARK: #23242f;
     --TEXT_BODY: #000000;
     --TEXT_SUB: #818181;
     --TEXT_TITLE: #FFFFFF;
@@ -10,15 +12,13 @@
     --ACCENT_POSITIVE: #019D49;
     --ACCENT_NEGATIVE: #EF4751;
     --BUTTON: #131313;
-    --INPUT: #3f2323; /*opactiy 0.6*/
-    --FONT-QUICKSAND: 'Quicksand', sans-serif;
+    --INPUT: #2f3a48;
 
+    --FONT-QUICKSAND: 'Quicksand', sans-serif;
     --FONT-XSMALL: 0.8rem;
     --FONT-SMALL: 1rem;
-    --FONT-SSMEDIUM: 1.25rem;
-    --FONT-SMEDIUM: 1.5rem;
-    --FONT-MEDIUM: 2rem;
-    --FONT-LARGE: 3rem;
+    --FONT-MEDIUM: 1.5rem;
+    --FONT-LARGE: 2rem;
 }
 
 
@@ -53,13 +53,15 @@ body {
         "header"
         "main"
         "footer";
-    grid-template-rows: 80px 1fr 80px;
+    grid-template-rows: 80px 1fr 40px;
+    
+    background: url("/assets/website-background.jpg");
+    backdrop-filter: blur(5px);
 }
 main {
     height: 100%;
 
-    padding: 10px;
-    background-color: var(--BACKGROUND);
+    padding: 20px 30px;
 
     font-family: var(--FONT-QUICKSAND);
     grid-area: main;
@@ -67,7 +69,7 @@ main {
 header {
     height: 100%;
     grid-area: header;
-    background-color: var(--ACCENT1_LIGHT);
+    background-color: var(--BACKGROUND_CONTAINER_HEAVY);
     /*can't change the Roboto weight size for some reason??*/
     color: var(--TEXT_TITLE);
     text-align: center;
@@ -75,21 +77,38 @@ header {
     font-size: var(--FONT-MEDIUM);
 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 80px 1fr 80px;
     grid-template-rows: 100%;
 
     padding: 5px;
     align-items: center;
 }
 footer {
+    display: flex;
+    justify-content: end;
     grid-area: footer;
+    background-color: var(--BACKGROUND_CONTAINER_HEAVY);
+
+    padding: 5px;
+    color: white;
+    font-family: var(--FONT-QUICKSAND);
+    font-size: var(--FONT-SMALL);
+}
+footer > h3 {
+    margin: auto 0;
+    font-weight: 200;
 }
 header img {
-    width:auto;
-    max-width:100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
     max-height: 100%;
-    object-fit:cover;
+    object-fit: cover;
+}
+#page-title {
+    font-family: var(--FONT-QUICKSAND);
+
+    font-weight: 300;
 }
 .font-white {
     color: #FFFFFF;
@@ -140,25 +159,10 @@ header img {
 
 @media only screen and (min-width: 641px) and (max-width: 1200px) {
     :root {
-        --BACKGROUND: #FFF9EC;
-        --ACCENT1_LIGHT: #326FA4;
-        --ACCENT1_STANDARD: #7790B5;
-        --ACCENT1_DARK: #568AD6;
-        --TEXT_BODY: #000000;
-        --TEXT_SUB: #818181;
-        --TEXT_TITLE: #FFFFFF;
-        --ACCENT_POSITIVE: #019D49;
-        --ACCENT_NEGATIVE: #EF4751;
-        --BUTTON: #131313;
-        --INPUT: #3f2323; /*opactiy 0.6*/
-        --FONT-QUICKSAND: 'Quicksand', sans-serif;
-    
         --FONT-XSMALL: 0.8rem;
         --FONT-SMALL: 1rem;
-        --FONT-SSMEDIUM: 1.2rem;
-        --FONT-SMEDIUM: 1.4rem;
-        --FONT-MEDIUM: 2rem;
-        --FONT-LARGE: 3rem;
+        --FONT-MEDIUM: 1.5rem;
+        --FONT-LARGE: 2rem;
     }
 
     #app-main {
@@ -169,35 +173,29 @@ header img {
 
 @media screen and (max-width: 640px) {
     :root {
-        --BACKGROUND: #FFF9EC;
-        --ACCENT1_LIGHT: #326FA4;
-        --ACCENT1_STANDARD: #7790B5;
-        --ACCENT1_DARK: #568AD6;
-        --TEXT_BODY: #000000;
-        --TEXT_SUB: #818181;
-        --TEXT_TITLE: #FFFFFF;
-        --ACCENT_POSITIVE: #019D49;
-        --ACCENT_NEGATIVE: #EF4751;
-        --BUTTON: #131313;
-        --INPUT: #3f2323; /*opactiy 0.6*/
-        --FONT-QUICKSAND: 'Quicksand', sans-serif;
-    
         --FONT-XSMALL: 1rem;
-        --FONT-SMALL: 1.2rem;
-        --FONT-SSMEDIUM: 1.5rem;
-        --FONT-SMEDIUM: 2rem;
-        --FONT-MEDIUM: 2.5rem;
+        --FONT-SMALL: 1.1rem;
+        --FONT-MEDIUM: 1.5rem;
         --FONT-LARGE: 3rem;
     }
-
+    header {
+        display: flex;
+        justify-content: center;
+    }
     #app-header {
         grid-template-columns: 1fr 10fr 1fr;
     }
-    #app-header #diabetesm-title {
+    #app-header #page-title {
         display: none;
     }
     #app-main {
         padding: 10px;
         background-color: var(--BACKGROUND);
+    }
+    #header-logo {
+        display: none;
+    }
+    footer {
+        display: none;
     }
 }

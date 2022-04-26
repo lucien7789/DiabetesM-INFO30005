@@ -12,12 +12,20 @@
         "aside main nav"
         "contact main nav"
         "corner main nav";
+    
+    color: white;
 }
 #about-diabetes h2, #about-diabetes p{
     margin: 5px 0;
 }
-#about-diabetes section {
+#about-diabetes section:not(#about-diabetes-main-2) {
     padding: 10px;
+
+    background: var(--BACKGROUND_CONTAINER);
+    border-radius: 10px;
+}
+#about-diabetes section a:visited, #about-diabetes section a {
+    color: white;
 }
 #about-diabetes-aside {
     display: grid;
@@ -172,7 +180,7 @@
 }
 .profile-image > .profile-image-overlay > h3 {
     font-weight: normal;
-    font-size: var(--FONT-SMEDIUM);
+    font-size: var(--FONT-MEDIUM);
 
     text-align: center;
 }
@@ -203,9 +211,9 @@
     position: relative;
     display: block;
 
-    background-color: var(--ACCENT1_STANDARD);
+    background-color: var(--ACCENT1_DARK);
 
-    font-size: var(--FONT-SSMEDIUM);
+    font-size: var(--FONT-SMALL);
 
     color: white;
 
@@ -245,7 +253,7 @@
 @media only screen and (min-width: 700px) and (max-width: 1200px) {
     #about-diabetes {
         display: grid;
-        grid-template-columns: 1.5fr 2.5fr 2.5fr;
+        grid-template-columns: 1.5fr 2.5fr 2fr;
         grid-gap: 1rem;
 
         grid-template-areas:
@@ -257,11 +265,7 @@
         max-height: 1000px;
     }
     #about-diabetes-contact-us {
-        grid-area: contact;
-        background-color: var(--ACCENT1_LIGHT);
-
         padding: 20px;
-
         width: 100%;
     }
     #about-diabetes-contact-us h2 {
@@ -270,6 +274,10 @@
     #about-diabetes-contact-us > h2 > span {
         margin-right: 5px;
         font-size: var(--FONT-SMEDIUM);
+    }
+    .profile-image {
+        max-width: 10rem;
+        max-height: 10rem;
     }
 }
 
@@ -291,11 +299,7 @@
         max-height: 1000px;
     }
     #about-diabetes-contact-us {
-        grid-area: contact;
-        background-color: var(--ACCENT1_LIGHT);
-
         padding: 20px;
-
         width: 100%;
     }
     #about-diabetes-contact-us h2 {

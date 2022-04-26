@@ -23,11 +23,15 @@ const config = {
         "viewApi": [
             {
                 "prefix": "/about",
-                "path": "api/views/aboutViewsApi.js"
+                "path": "api/views/aboutViewApi.js"
             },
             {
                 "prefix": "/",
                 "path": "api/views/homeViewApi.js"
+            },
+            {
+                "prefix": "/auth",
+                "path": "api/views/authViewApi.js"
             }
         ]
     },
