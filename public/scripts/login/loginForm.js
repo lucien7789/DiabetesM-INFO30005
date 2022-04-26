@@ -12,6 +12,9 @@ async function onSubmit(e) {
         if (body?.message) {
             statusMsg.innerText = body.message || "";
             statusMsg.classList.add("status-message-active", "alert-message", "alert-message-danger");
+            setTimeout(() => {
+                statusMsg.classList.remove("status-message-active");
+            }, 5000);
         } else {
             statusMsg.classList.remove("status-message-active", "alert-message", "alert-message-danger");
         }

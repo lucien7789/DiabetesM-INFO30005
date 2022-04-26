@@ -7,11 +7,11 @@ routes.get("/login", (req, res) => {
 });
 
 routes.get("/register", (req, res) => {
-    res.render("auth/register.hbs", { title: "Register an Account"});
+    res.render("auth/register.hbs", { title: "Registration"});
 });
 
 routes.get("/register/success", (req, res) => {
-    res.render("auth/registerSuccess.hbs", { title: "Register an Account"})
+    res.render("auth/registerSuccess.hbs", { title: "Registration"})
 })
 
 module.exports = routes;
