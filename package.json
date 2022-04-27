@@ -18,8 +18,14 @@
   },
   "homepage": "https://github.com/lucien7789/INFO30005-DiabetesM#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.5",
-    "mongoose": "^6.2.11"
+    "express-session": "^1.17.2",
+    "mongoose": "^6.2.11",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   }
 }
