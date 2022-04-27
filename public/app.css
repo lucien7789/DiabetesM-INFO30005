@@ -10,7 +10,7 @@
     --ACCENT_POSITIVE: #019D49;
     --ACCENT_NEGATIVE: #EF4751;
     --BUTTON: #131313;
-    --INPUT: #3f232399; /*opactiy 0.6*/
+    --INPUT: #3f2323; /*opactiy 0.6*/
     --FONT-QUICKSAND: 'Quicksand', sans-serif;
 
     --FONT-XSMALL: 0.8rem;
@@ -99,15 +99,6 @@ button {
     border: none;
     border-radius: 5px;
     margin: auto;
-}
-
-input {
-    background: var(--INPUT);
-    border: none;
-    border-radius: 3px;
-    font-size: var(--FONT-MEDIUM);
-    width: 100%;
-    font-family: var(--FONT-QUICKSAND);
 }
 
 .font-white {

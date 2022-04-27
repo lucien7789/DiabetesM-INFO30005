@@ -3,18 +3,150 @@
     margin: auto;
 }
 
-#patient-profile{
-    max-width: 450px;
-    margin: auto;
-}
-
 .text-center {
     text-align: center;
 }
 
-.profile-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+#patient-view h1{
+    color: white;
+}
 
-    gap: 1rem;
+#patient-view {
+    height: 100%;
+
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 1rem;
+
+    justify-items: center;
+    grid-template-areas:
+        "head head"
+        "main-left main-right";
+}
+#patient-view h2, #patient-view p{
+    margin: 5px 0;
+}
+#patient-view section {
+    padding: 10px;
+}
+#patient-view-top {
+    display: grid;
+
+    place-items: center;
+    grid-area: head;
+    background-color: aquamarine;
+
+    font-size: var(--FONT-SMALL);
+
+    color: white;
+
+    width: 100%;
+}
+
+#patient-view-left {
+    display: grid;
+    place-items: center;
+    grid-area: main-left;
+    background-color: aqua;
+    width: 100%;
+
+}
+
+#patient-view-left table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#patient-view-left tr:nth-child(even) {
+    background-color: grey;
+}
+
+#patient-view-right {
+    display: grid;
+    place-items: center;
+    grid-area: main-right;
+    background-color: rgb(78, 159, 159);
+    width: 100%;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+  
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+  
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+  
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+  
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+/*
+.about-diabetes-accordian input:checked ~ .accordian-content {
+    max-height: 280px;
+}
+.accordian-content h3, .accordian-content p {
+    margin: 5px;
+}
+*/
+@media only screen and (min-width: 700px) and (max-width: 1200px) {
+    #patient-views {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 1rem;
+
+        grid-template-areas:
+            "head head"
+            "main-left main-right";
+    }
+
+}
+
+@media only screen and (max-width: 700px) {
+    #about-diabetes {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-gap: 1rem;
+
+        grid-template-areas:
+            "head"
+            "head"
+            "main-left"
+            "main-right"
+;
+    }
+
 }

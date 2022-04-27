@@ -11,8 +11,8 @@ const cleanup = () => {
 };
 
 // process.on("SIGKILL", cleanup);
-process.on("SIGINT", cleanup);
-process.on("SIGTERM", cleanup);
+// process.on("SIGINT", cleanup);
+// process.on("SIGTERM", cleanup);
 
 console.log(
     "     ______   ___   _______  _______  _______  _______  _______  _______  __   __ \n\

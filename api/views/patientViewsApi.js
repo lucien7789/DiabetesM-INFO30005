@@ -6,8 +6,8 @@ routes.get("/home", (req, res) => {
     res.render("patient/patientHome.hbs", { title: "Home - Patient"});
 })
 
-routes.get("/profile", (req, res) => {
-    res.render("patient/patientProfile.hbs", { title: "Profile - Patient"});
+routes.get("/ViewData", (req, res) => {
+    res.render("patient/patientViewData.hbs", { title: "View Data - Patient"});
 })
 
 module.exports = routes;
