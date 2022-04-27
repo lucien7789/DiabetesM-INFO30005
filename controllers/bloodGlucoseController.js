@@ -5,14 +5,12 @@ const BloodGlucoseController = {
 
     createBloodGlucose: async function(level, userID) {
         try {
-            const bloodGlucoseDoc = new BloodGlucose({ level: level, userID: userID });
-
-            await bloodGlucoseDoc.save();
+            let bloodGlucoseDoc = new BloodGlucose({ level: level, userID: userID });
+            return bloodGlucoseDoc.save();
         } catch (err) {
             console.log(`bloodGlucoseController.js - BloodGlucoseController - createBloodGlucose() - An error occurred trying to create a new document for bloodGlucose: {level: ${level}, userID: ${userID}}`);
-            return false;
+            throw err;
         }
-        return true;
     },
 
     getBloodGlucoseById: function(id) {
@@ -22,7 +20,7 @@ const BloodGlucoseController = {
         return findObjectTemplateFunction(finder, "getBloodGlucoseById()");
     },
 
-    getBloodGlucoseByUserID: function(userID) {
+    getBloodGlucoseByUserId: function(userID) {
         let finder = () => {
             return BloodGlucose.find({userID: userID});
         }
@@ -30,29 +28,18 @@ const BloodGlucoseController = {
     },
 
     deleteBloodGlucoseById: async function(id) {
-        try {
-            result = await BloodGlucose.findOneAndDelete({_id: id});
-
-            if (result) {
-                return true;
-            }
-        } catch (err) {
-            console.log(`bloodGlucoseController.js - BloodGlucoseController - deleteBloodGlucose() - An error occurred trying to delete a new document for bloodGlucose: {id: ${id}}`);
+        let finder = () => {
+            return BloodGlucose.findOneAndDelete({_id: id});
         }
-        return false;
+        return findObjectTemplateFunction(finder, "deleteBloodGlucoseById()");
+
     },
 
-    updateBloodGlucose: async function(id, newDoc) {
-        try {
-            result = await BloodGlucose.findOneAndUpdate({_id: id}, newDoc);
-            
-            if(result) {
-                return true;
-            }
-        } catch (err) {
-            console.log(`bloodGlucoseController.js - BloodGlucoseController - deleteBloodGlucose() - An error occurred trying to update a document for bloodGlucose: {id: ${id}, ${Object.entries(newDoc).map(e => ", " + e[0] + ": " + e[1])}}`);
+    updateBloodGlucoseById: async function(id, newDoc) {
+        let finder = () => {
+            return BloodGlucose.findOneAndUpdate({_id: id}, newDoc);
         }
-        return false;
+        return findObjectTemplateFunction(finder, "updateBloodGlucoseById()");
     }
 }
 

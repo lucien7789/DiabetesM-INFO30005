@@ -1,3 +1,6 @@
+/**
+ ************* WIP *************
+
 const Weight = require('../models/weight');
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
 const WeightController = {
@@ -50,3 +53,5 @@ const WeightController = {
 }
 
 module.exports = WeightController;
+
+ */

@@ -1,3 +1,5 @@
+/**
+ * ************* WIP *************
 const Exercise = require('../models/exercise');
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
 const ExerciseController = {
@@ -50,3 +52,5 @@ const ExerciseController = {
 }
 
 module.exports = ExerciseController;
+
+ */

@@ -1,3 +1,6 @@
+/**
+ * ************* WIP *************
+
 const Insulin = require('../models/insulin');
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
 const InsulinController = {
@@ -50,3 +53,5 @@ const InsulinController = {
 }
 
 module.exports = InsulinController;
+
+ */

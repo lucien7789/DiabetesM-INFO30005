@@ -3,67 +3,72 @@ const router = express.Router()
 const controller = require("../../controllers/bloodGlucoseController")
 
 router.post("/", async (req, res) => {
-    if (!await controller.createBloodGlucose(req.body.level, req.body.userID)) {
-        res.status(500);
-        res.write("Failed to create resource");
-        res.end();
-    }
-    else {
-        res.status(201);
-        res.write("Resource has been created");
-        res.end();
+    try {
+        let userID = req.session?.passport?.user;
+        const bloodGlucose = await controller.createBloodGlucose(req.body.level, userID);
+        
+        if (bloodGlucose) {
+            res.status(200).json(bloodGlucose);
+        } else {
+            res.json(500).json({ message: "Failed to create resource"});
+        }
+    } catch (err) {
+        res.json(500).err({ message: err.toString() });
     }
 });
 
 router.get("/:id", async (req, res) => {
-    const bloodGlucose = await controller.getBloodGlucoseById(req.params.id);
-    if (bloodGlucose) {
-        res.status(200);
-        res.json(bloodGlucose);
-    }
-    else {
-        res.status(404);
-        res.write("Resource not found");
-        res.end();
+    try {
+        const bloodGlucose = await controller.getBloodGlucoseById(req.params.id);
+        if (bloodGlucose) {
+            res.status(200).json(bloodGlucose);
+        }
+        else {
+            res.status(404).json({ message: "Resource could not be found" });
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.toString() });
     }
 });
 
-router.get("/user/:userID", async (req, res) => {
-    const bloodGlucoses = await controller.getBloodGlucoseByUserID(req.params.userID);
-    if (bloodGlucoses) {
-        res.status(200);
-        res.json(bloodGlucoses);
-    }
-    else {
-        res.status(404);
-        res.write("Resource not found");
-        res.end();
+router.get("/", async (req, res) => {
+    try {
+        let userID = req.session?.passport?.user;
+        const bloodGlucose = await controller.getBloodGlucoseByUserId(userID);
+        if (bloodGlucose) {
+            res.status(200).json(bloodGlucose);
+        }
+        else {
+            res.status(404).json({ message: "No resource could be found for the given user id" });
+        }
+    } catch (err) {
+        res.status(404).json({ message: err.toString() });
     }
 });
 
 router.delete("/:id", async (req, res) => {
-    if (await controller.deleteBloodGlucoseById(req.params.id)) {
-        res.status(200);
-        res.write("Resource has been deleted");
-        res.end();
-    }
-    else {
-        res.status(404);
-        res.write("Resource not found");
-        res.end();
+    try {
+        const deleted = await controller.deleteBloodGlucoseById(req.params.id);
+        if (deleted) {
+            res.status(200).json({ message: "Resource has been deleted"});
+        } else {
+            res.status(404).json({ message: "Resource could not be found"});
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.toString() });
     }
 });
 
 router.patch("/:id", async (req, res) => {
-    if (await controller.updateBloodGlucose(req.params.id, req.body)) {
-        res.status(200);
-        res.write("Resource has been updated");
-        res.end();
-    }
-    else {
-        res.status(404);
-        res.write("Resource not found");
-        res.end();
+    try {
+        const updated = await controller.updateBloodGlucoseById(req.params.id, req.body);
+        if (updated) {
+            res.status(200).json({ message: "Resource has been updated"});
+        } else {
+            res.status(404).json({ message: "Resource could not be found"});
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.toString() });
     }
 });
 
