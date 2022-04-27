@@ -1,4 +1,5 @@
 const BloodGlucose = require('../models/bloodGlucose');
+const mongoose = require("mongoose");
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
 const BloodGlucoseController = {
 
@@ -30,8 +31,11 @@ const BloodGlucoseController = {
 
     deleteBloodGlucoseById: async function(id) {
         try {
-            const { deleteCount } = await BloodGlucose.deleteOne({id: id});
-            return deleteCount == 1;
+            result = await BloodGlucose.findOneAndDelete({_id: id});
+
+            if (result) {
+                return true;
+            }
         } catch (err) {
             console.log(`bloodGlucoseController.js - BloodGlucoseController - deleteBloodGlucose() - An error occurred trying to delete a new document for bloodGlucose: {id: ${id}}`);
         }
@@ -40,8 +44,11 @@ const BloodGlucoseController = {
 
     updateBloodGlucose: async function(id, newDoc) {
         try {
-            const { updateCount } = await BloodGlucose.updateOne({id: id}, {$set: newDoc});
-            return updateCount == 1;
+            result = await BloodGlucose.findOneAndUpdate({_id: id}, newDoc);
+            
+            if(result) {
+                return true;
+            }
         } catch (err) {
             console.log(`bloodGlucoseController.js - BloodGlucoseController - deleteBloodGlucose() - An error occurred trying to update a document for bloodGlucose: {id: ${id}, ${Object.entries(newDoc).map(e => ", " + e[0] + ": " + e[1])}}`);
         }
