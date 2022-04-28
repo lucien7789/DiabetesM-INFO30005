@@ -52,6 +52,10 @@ const config = {
             {
                 "prefix": "/patient",
                 "path": "api/views/patientViewsApi.js"
+            },
+            {
+                "prefix": "/patient/data",
+                "path": "api/views/dataViewApi.js"
             }
         ]
     },
