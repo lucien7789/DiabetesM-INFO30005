@@ -1,0 +1,16 @@
+#data-entry-main {
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+}
+
+#select-data-entry-type {
+    background: var(--INPUT);
+    color: var(--TEXT_BODY);
+    font-family: var(--FONT-QUICKSAND);
+    font-size: var(--FONT-MEDIUM);
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 3px;
+    margin: 10px;
+}

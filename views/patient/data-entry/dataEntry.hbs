@@ -1,0 +1,19 @@
+<section id="data-entry-main">
+    <div class="bg-container">
+        <h2>
+            Record your health data
+        </h2>
+        <div class="bg-container">
+            <h3>
+                You have entered data for x days in a row!
+            </h3>
+        </div>
+        <select id="select-data-entry-type">
+            <option>Blood glucose level</option>
+            <option>Weight</option>
+            <option>Doses of insulin taken</option>
+            <option>Exercise</option>
+        </select>
+        {{> patient/data-entry/bloodGlucose}}
+    </div>
+</section>
