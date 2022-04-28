@@ -48,6 +48,11 @@ const config = {
             {
                 "prefix": "/auth",
                 "path": "api/views/authViewApi.js"
+            },
+            {
+                "prefix": "/patient",
+                "path": "api/views/patientViewApi.js",
+                "authenticationLevel": 0
             }
         ]
     },

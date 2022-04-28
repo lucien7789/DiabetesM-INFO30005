@@ -25,9 +25,9 @@ async function httpPost(endpoint, body) {
         body: JSON.stringify(body)
     });
 }
-async function httpPut(endpoint, body) {
+async function httpPatch(endpoint, body) {
     return await fetch(endpoint, {
-        method: "PUT",
+        method: "PATCH",
         mode: "cors",
         cache: "no-cache",
         credentials: "same-origin",

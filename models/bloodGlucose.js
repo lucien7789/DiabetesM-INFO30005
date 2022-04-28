@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 
 const BloodGlucoseSchema = new mongoose.Schema({
     //  Units are stored in nmol/L
-    level: {
+    value: {
         type: Number,
         required: true
     },
@@ -10,6 +10,10 @@ const BloodGlucoseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectID,
         ref: "User",
         required: true
+    },
+    comment: {
+        type: String,
+        required: false
     },
     time: {
         type: Date,

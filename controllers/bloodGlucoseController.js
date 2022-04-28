@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
 const BloodGlucoseController = {
 
-    createBloodGlucose: async function(level, userID) {
+    createBloodGlucose: async function(userID, value, comment) {
         try {
-            let bloodGlucoseDoc = new BloodGlucose({ level: level, userID: userID });
+            let bloodGlucoseDoc = new BloodGlucose({ userID, value, comment });
             return bloodGlucoseDoc.save();
         } catch (err) {
             console.log(`bloodGlucoseController.js - BloodGlucoseController - createBloodGlucose() - An error occurred trying to create a new document for bloodGlucose: {level: ${level}, userID: ${userID}}`);
