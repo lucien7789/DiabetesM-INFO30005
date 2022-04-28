@@ -25,6 +25,8 @@
         "top-left top-right"
         "main-left main-right";
 }
+
+
 #patient-view h2, #patient-view p{
     margin: 5px 0;
 }
@@ -33,29 +35,27 @@
     margin: 10px;
     border-radius: 10px;
     background-color: var(--BACKGROUND_CONTAINER);
-
     width: 100%;
 }
 #patient-view-top-left {
-    justify-content: space-around;
+    display: grid;
+    align-items: center;
     grid-area: top-left;
-    
-
     font-size: var(--FONT-SMALL);
+    height: 200px;
 }
 
 #patient-view-top-right {
     display: grid;
-
-    place-items: center;
+    align-items: center;
     grid-area: top-right;
-    
-
     font-size: var(--FONT-SMALL);
+    height: 200px;
+
 }
 
 #patient-view-left {
-    align-items: center;
+    display: flexbox;
     grid-area: main-left;
 }
 
@@ -84,11 +84,15 @@
 
 #patient-view-right {
     display: grid;
-    place-items: center;
+    align-items: center;
     grid-area: main-right;
-    background-color: rgb(78, 159, 159);
     width: 100%;
 }
+#patient-view-tab {
+    display: none;
+}
+
+
 
 
 /* Dropdown Button */
@@ -141,32 +145,84 @@
     margin: 5px;
 }
 */
+/* Style the tab buttons */
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 50%;
+}
+  
+/* Change background color of buttons on hover */
+.tablink:hover {
+    background-color: #777;
+}
+  
+/* Set default styles for tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+  
+/* Style each tab content individually 
+#London {background-color:red;}
+#Paris {background-color:green;}
+*/
+
 @media only screen and (min-width: 700px) and (max-width: 1200px) {
-    #patient-views {
+    #patient-view {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-gap: 1rem;
 
         grid-template-areas:
-            "head head"
+            "top-left top-right"
             "main-left main-right";
     }
 
 }
 
 @media only screen and (max-width: 700px) {
-    #about-diabetes {
+
+
+
+
+    #patient-view {
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-gap: 1rem;
 
         grid-template-areas:
-            "head"
-            "head"
-            "main-left"
-            "main-right"
-;
+            "top-left"
+            "top-right"
+            "tab"
+            "display"        
     }
+
+
+    #patient-view-right {
+        display: none;
+    }
+
+    #patient-view-left {
+        display: grid;
+        grid-area: display;
+    }
+
+    #patient-view-tab {
+        display: block;
+        align-items: center;
+        grid-area: tab;
+    }
+
+
 
 }

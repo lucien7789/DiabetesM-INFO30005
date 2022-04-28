@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../models/user");
 
 
 const USER_TYPE = 0; // Hard-coded, need to set this in env

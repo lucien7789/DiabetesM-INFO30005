@@ -59,13 +59,13 @@ function onSubmitPlaceholder(e) {
     e.preventDefault();
 }
 async function onSubmit() {
-    const datapoint = document.getElementById("patient-data-input").value;
+    const datapoint = document.getElementById("patient-data-input-bgl").value;
     console.log(datapoint);
     let options = document.getElementById("patient-data-dropdown");
     let optionNo = options.value;
 
     await httpPost(options[optionNo].dataset.endpoint, { level: parseFloat(datapoint)});
-
+//post comment
     render();
 }
 render();

@@ -26,10 +26,12 @@
 
 
 <section id="patient-view">
+    
     <section id="patient-view-top-left" class="flex-column">
         <h3>Enter health data</h3>
         <form class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
-            <input type="number" id="patient-data-input" placeholder="0"/>
+            <input type="number" id="patient-data-input-bgl" placeholder="0"/>
+            <input type="text" id="patient-data-input-comment" placeholder="comment (optional)"/>
             <button class="button-standard button-standard-short" type="submit" onclick="onSubmit()">Submit</button>
         </form>
     </section>
@@ -43,26 +45,49 @@
     </section>
 
     
-    <section id = "patient-view-left" class="flex-column">
+    <section id = "patient-view-left">
         <h3 id="patient-data-table-title"></h3>
-        <table id="patient-data-table">
-            <th>
-                <td></td>
-            </th>
-                {{#each data}}
-            <tr>
-                <td>this.time</td>
-                <td>this.value</td>
-            </tr>
+        <div id="table">
+            <table id="patient-data-table">
+                <th>
+                    <td></td>
+                </th>
+                    {{#each data}}
+                <tr>
+                    <td>this.time</td>
+                    <td>this.value</td>
+                </tr>
 
-            {{/each}}
-        </table>
+                {{/each}}
+            </table>
+        </div>
     </section>
+
     <section id = "patient-view-right">
-        <h3>Right</h3>
-        <div id="curve_chart" style="width: 900px; height: 500px"></div>
+        <!--<h3>Right</h3>-->
+        <div id="curve_chart" </div>
+    </section>
+
+    <section id = "patient-view-tab">
+
+        <button class="tablink" onclick="changeView('patient-view-left', 'patient-view-right')" id="defaultOpen">Table</button>
+        <button class="tablink" onclick="changeView('patient-view-right', 'patient-view-left')">Graph</button>
 
     </section>
+
 </section>
+
+<script>
+    function changeView(show, hide) {;
+
+    document.getElementById(hide).style.display = "none";
+    document.getElementById(show).style.display = "block";
+    document.getElementById(show).style.width = "100%";
+
+    document.getElementById(show).style.gridArea = "display";
+    document.getElementById(show).style.alignItems = "center";
+    document.getElementById(show).style.justifyItems = "center";
+}
+</script>
 
 <script src="/scripts/patient/viewmodel.js"></script>

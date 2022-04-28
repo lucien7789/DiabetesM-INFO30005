@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require("../models/user");
 
 
 const ADMIN_TYPE = 1; // Hard-coded, need to set this in env
