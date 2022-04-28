@@ -1,71 +1,51 @@
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);
-
-        var options = {
-          title: 'Company Performance',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-
-
 <section id="patient-view">
     
+    
     <section id="patient-view-top-left" class="flex-column">
-        <h3>Enter health data</h3>
-        <form class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
-            <input type="number" id="patient-data-input-bgl" placeholder="0"/>
-            <input type="text" id="patient-data-input-comment" placeholder="comment (optional)"/>
-            <button class="button-standard button-standard-short" type="submit" onclick="onSubmit()">Submit</button>
-        </form>
-    </section>
-    <section id = "patient-view-top-right">
-        <h3>View you health data</h3>
-        <select id="patient-data-dropdown">
+        <button id="home-icon" onclick="toHomePage()">
+            <span class="material-symbols-outlined">
+                home
+            </span>
+        </button>
+        
+        <h3>Choose an assigned health measure</h3>
+        <select id="patient-data-dropdown" class="form-box-input">
             {{#each measures}}
             <option value={{@index}} data-name={{this.name}} data-endpoint={{this.endpoint}}>{{this.name}}</option>
             {{/each}}
         </select>
     </section>
 
-    
-    <section id = "patient-view-left">
-        <h3 id="patient-data-table-title"></h3>
-        <div id="table">
-            <table id="patient-data-table">
-                <th>
-                    <td></td>
-                </th>
-                    {{#each data}}
-                <tr>
-                    <td>this.time</td>
-                    <td>this.value</td>
-                </tr>
+    <section id="patient-view-top-right" class="flex-column">
+        <h3>Enter health data</h3>
+        <form id="patient-data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
+            <div class="flex-column">
+                <input type="number" id="patient-data-input-value" placeholder="0"/>
+                <input type="text" id="patient-data-input-comment" placeholder="comment (optional)"/>
+            </div>
+            <button class="button-standard button-standard-short" type="submit" onclick="onSubmit()">Submit</button>
+        </form>
+    </section>
 
-                {{/each}}
-            </table>
-        </div>
+    <section id="patient-view-left" class="flex-column">
+        <h3 id="patient-data-table-title">Your data history</h3>
+        <table id="patient-data-table">
+            <th>
+                <td></td>
+            </th>
+                {{#each data}}
+            <tr>
+                <td>this.time</td>
+                <td>this.value</td>
+            </tr>
+
+            {{/each}}
+        </table>
     </section>
 
     <section id = "patient-view-right">
-        <!--<h3>Right</h3>-->
-        <div id="curve_chart" </div>
+
+        <h3 class="grid-place-center">Place chart here </h3>
     </section>
 
     <section id = "patient-view-tab">
@@ -91,3 +71,4 @@
 </script>
 
 <script src="/scripts/patient/viewmodel.js"></script>
+<script src="/scripts/patient/navigation.js"></script>

@@ -51,7 +51,8 @@ const config = {
             },
             {
                 "prefix": "/patient",
-                "path": "api/views/patientViewApi.js"
+                "path": "api/views/patientViewApi.js",
+                "authenticationLevel": 0
             }
         ]
     },

@@ -29,21 +29,16 @@
     color: white;
     font-family: var(--FONT-QUICKSAND);
 }
-.form-box input{
+.form-box input, .form-box-input {
     border: none;
     border-radius: 5px;
     background-color: var(--INPUT);
     width: 250px;
     height: 40px;
     padding-left: 10px;
-    
-}
-
-.form-box input {
     margin: 10px;
     font-size: var(--FONT-SMALL);
 }
-
 
 .status-message {
     display: none;

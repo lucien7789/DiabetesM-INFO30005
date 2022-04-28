@@ -2,7 +2,6 @@ async function render() {
 
     let options = document.getElementById("patient-data-dropdown");
     let optionNo = options.value;
-    document.getElementById("patient-data-table-title").innerText = options[optionNo].dataset.name;
     let table = document.getElementById("patient-data-table");
     
     const response = await httpGet(options[optionNo].dataset.endpoint);
@@ -38,20 +37,38 @@ async function render() {
             let tm = new Date(datapoint.time);
             tableData.innerText = tm.toLocaleDateString("en-US");
             tableRow.appendChild(tableData);
-
+            
             tableData = document.createElement("td");
-            tableData.innerText = datapoint.level;
+            tableData.classList.add("flex-space-between");
+            let text = document.createElement("p");
+            text.innerText = datapoint.value;
+            tableData.appendChild(text);
+
+            if (datapoint.comment) {
+                let icon = document.createElement("span");
+                icon.classList.add("material-symbols-outlined", "data-comment-button");
+                
+                icon.innerText = "chat_bubble";
+
+                let comment = document.createElement("div");
+                comment.classList.add("data-comment");
+                comment.innerText = datapoint.comment;
+
+                tableData.appendChild(icon);
+                tableData.appendChild(comment);
+            }
             tableRow.appendChild(tableData);
 
             newTable.appendChild(tableRow);
         }
     } else {
-        newTable = document.createElement("h2");
+        newTable = document.createElement("h3");
 
         newTable.innerText = "No data has been entered yet for this measure...";
-
+        newTable.style.color = "white";
+        newTable.style.fontWeight = "200";
     }
-    console.log(newTable);
+
     table.replaceWith(newTable);
     
 }
@@ -59,13 +76,17 @@ function onSubmitPlaceholder(e) {
     e.preventDefault();
 }
 async function onSubmit() {
-    const datapoint = document.getElementById("patient-data-input-bgl").value;
-    console.log(datapoint);
+    const datapoint = document.getElementById("patient-data-input-value").value;
+    const comment = document.getElementById("patient-data-input-comment").value;
     let options = document.getElementById("patient-data-dropdown");
     let optionNo = options.value;
 
-    await httpPost(options[optionNo].dataset.endpoint, { level: parseFloat(datapoint)});
-//post comment
+    if (comment && comment.length > 0) {
+        await httpPost(options[optionNo].dataset.endpoint, { value: parseFloat(datapoint), comment });
+    } else {
+        await httpPost(options[optionNo].dataset.endpoint, { value: parseFloat(datapoint) });
+    }
+    
     render();
 }
 render();

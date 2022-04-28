@@ -7,14 +7,14 @@ const patientAuthMiddleware = async (req, res, next) => {
     if (session?.passport?.user) {
         let user = await User.findById(session.passport.user);
         if (!user) {
-            return res.redirect("/login");
+            return res.redirect("/auth/login");
         }
         if (user.accountType !== USER_TYPE) {
-            return res.redirect("/login");
+            return res.redirect("/auth/login");
         }
         next();
     } else {
-        return res.redirect("/login");
+        return res.redirect("/auth/login");
     }
 }
 

@@ -5,7 +5,7 @@ const controller = require("../../controllers/bloodGlucoseController")
 router.post("/", async (req, res) => {
     try {
         let userID = req.session?.passport?.user;
-        const bloodGlucose = await controller.createBloodGlucose(req.body.level, userID);
+        const bloodGlucose = await controller.createBloodGlucose(userID, req.body.value, req.body.comment);
         
         if (bloodGlucose) {
             res.status(200).json(bloodGlucose);
