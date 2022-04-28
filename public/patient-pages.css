@@ -7,7 +7,7 @@
     text-align: center;
 }
 
-#patient-view h1{
+#patient-view h3{
     color: white;
 }
 
@@ -22,45 +22,64 @@
 
     justify-items: center;
     grid-template-areas:
-        "head head"
+        "top-left top-right"
         "main-left main-right";
 }
 #patient-view h2, #patient-view p{
     margin: 5px 0;
 }
 #patient-view section {
-    padding: 10px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: var(--BACKGROUND_CONTAINER);
+
+    width: 100%;
 }
-#patient-view-top {
+#patient-view-top-left {
+    justify-content: space-around;
+    grid-area: top-left;
+    
+
+    font-size: var(--FONT-SMALL);
+}
+
+#patient-view-top-right {
     display: grid;
 
     place-items: center;
-    grid-area: head;
-    background-color: aquamarine;
+    grid-area: top-right;
+    
 
     font-size: var(--FONT-SMALL);
-
-    color: white;
-
-    width: 100%;
 }
 
 #patient-view-left {
-    display: grid;
-    place-items: center;
+    align-items: center;
     grid-area: main-left;
-    background-color: aqua;
-    width: 100%;
-
 }
 
-#patient-view-left table, th, td {
+#patient-data-table, #patient-data-table th, #patient-data-table td {
     border: 1px solid black;
     border-collapse: collapse;
 }
 
-#patient-view-left tr:nth-child(even) {
-    background-color: grey;
+#patient-data-table {
+    background-color: var(--INPUT);
+    color: white;
+    width: 100%;
+}
+
+#patient-data-table tr:first-child td {
+    text-decoration: underline;
+}
+#patient-data-table tr {
+    width: 100%;
+    padding: 5px;
+}
+
+#patient-data-table td {
+    padding: 5px;
 }
 
 #patient-view-right {
@@ -70,6 +89,7 @@
     background-color: rgb(78, 159, 159);
     width: 100%;
 }
+
 
 /* Dropdown Button */
 .dropbtn {

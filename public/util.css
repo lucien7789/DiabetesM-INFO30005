@@ -1,0 +1,88 @@
+.button-standard {
+    background-color: var(--ACCENT1_DARK);
+    
+    height: 40px;
+    font-family: var(--FONT-QUICKSAND);
+    color: white;
+    margin-top: 10px;
+    font-size: var(--FONT-SMALL);
+
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    text-decoration: none;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 1px 1px 2px 1px black;
+}
+.button-standard-medium {
+    width: 250px;
+}
+.button-standard-short {
+    width: 125px;
+}
+.button-standard::after {
+    position: absolute;
+    content: "";
+    left: 100%;
+    top: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(270deg, rgba(0, 0, 0, 0), white);
+}
+.button-standard::before {
+    position: absolute;
+    content: "";
+    right: 100%;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0), white);
+}
+.button-standard:hover::after, .button-standard:hover::before {
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.button-standard:hover::after {
+    left: -100%;
+}
+.button-standard:hover::before {
+    right: -100%;
+}
+.button-standard * {
+    font-size: var(--FONT-SMALL);
+    margin: 0;
+}
+.alert-message {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-message-danger {
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    color: #a94442;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-justify-start {
+    justify-content: flex-start !important;
+}

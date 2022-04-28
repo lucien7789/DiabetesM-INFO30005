@@ -6,13 +6,12 @@ async function findObjectTemplateFunction(findFunction, name) {
     var obj = null;
     try {
         obj = await findFunction();
-        console.log("HELLO");
-        console.log(obj);
         if (!obj) {
             console.log(`findObjectTemplateFunction.js - findObjectTemplateFunction() - ${name} - Query returned no result`);
         }
     } catch (err) {
         console.log(`findObjectTemplateFunction.js - findObjectTemplateFunction() - ${name} - An error occurred while finding object: ${err}`);
+        throw new Error("An error occurred while trying to find the desired resource");
     }
     return obj;
 }

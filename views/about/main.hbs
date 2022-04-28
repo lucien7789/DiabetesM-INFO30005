@@ -6,10 +6,13 @@
     <link rel="stylesheet" href="/app.css">
     <link rel="stylesheet" href="/about-pages.css">
     <link rel="stylesheet" href="/patient-pages.css">
+    <link rel="stylesheet" href="/forms.css">
+    <link rel="stylesheet" href="/util.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <script src="/scripts/ajax.js"></script>
     <title>About Diabetes</title>
     
     <meta charset="UTF-8">
@@ -22,14 +25,16 @@
 </head>
 <body>
     <header>
-        <img class="logo" src="/assets/logo.png">
-        <h1 id="diabetesm-title">{{this.title}}</h1>
+        <img id="header-logo" src="/assets/logo.png">
+        <h1 id="page-title">{{this.title}}</h1>
     </header>
     <main>
         {{{body}}}
     </main>
     <footer>
-        <p>Footer area</p>
+        <h3>
+            Lucien Lu, Nathan Rearick, Ted Barrett, Andy Feng, Geordan Bennie. 2022 Semester 1 INFO30005 @ UniMelb
+        </h3>
     </footer>
 </body>
 </html>
