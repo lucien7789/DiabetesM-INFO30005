@@ -1,0 +1,49 @@
+#clinician-dashboard-title2{
+    text-align: center;
+    font-style: normal;
+    
+}
+#clinician-dashboard-side-bottons{
+    float: right;
+    margin-bottom: 1em;
+    margin-right: 4%;
+    
+}
+
+#clinician-dashboard-side-bottons>button{
+    margin-inline-end: 1em;
+    display: inline-block;
+    
+}
+
+.standard-table>table,th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 1px;
+       
+}
+.standard-table>table{
+    border: 3px solid;
+    background-color: var(--BACKGROUND);
+    width: 90%;
+}
+
+.standard-table > th, td{
+    
+    height:var(--FONT-LARGE); 
+    width:18%;
+    font-size: var(--FONT-SMALL);
+    color: var(--TEXT_BODY);
+    text-align: center;
+}
+.standard-table > th{
+    font-style: bold;
+}
+
+.central-item{
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+
+  

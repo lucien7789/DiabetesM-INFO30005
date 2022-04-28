@@ -48,6 +48,10 @@ const config = {
             {
                 "prefix": "/auth",
                 "path": "api/views/authViewApi.js"
+            },
+            {
+                "prefix": "/clinician",
+                "path": "api/views/clinicianViewApi.js"
             }
         ]
     },
