@@ -5,7 +5,7 @@
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #7790B5;
     --ACCENT1_DARK: #23242f;
-    --TEXT_BODY: #000000;
+    --TEXT_BODY: #FFF;
     --TEXT_SUB: #818181;
     --TEXT_TITLE: #FFFFFF;
     --TEXT_INVERSE: #FFFFFF;
@@ -48,6 +48,7 @@ body, html{
     margin: 0;
 }
 body {
+    color: var(--TEXT_BODY);
     display: grid;
     grid-template-areas: 
         "header"
@@ -111,16 +112,8 @@ header img {
     font-weight: 300;
 }
 
-button {
-    background: var(--BUTTON);
-    color: var(--TEXT_INVERSE);
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin: auto;
-}
-
 input {
+    color: var(--TEXT_BODY);
     background: var(--INPUT);
     border: none;
     border-radius: 3px;
@@ -149,6 +142,19 @@ input {
     content: "\"";
     display: inline;
 }
+
+.bg-container {
+    background: var(--BACKGROUND_CONTAINER);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bg-container-heavy {
+    background: var(--BACKGROUND_CONTAINER_HEAVY);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 #app-header h1 {
     color: var(--TEXT_TITLE);
     margin: 0;

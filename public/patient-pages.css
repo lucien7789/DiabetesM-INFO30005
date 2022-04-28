@@ -1,6 +1,9 @@
 #patient-welcome {
     max-width: 450px;
     margin: auto;
+    background: var(--BACKGROUND_CONTAINER);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #patient-profile{
@@ -17,4 +20,13 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 
     gap: 1rem;
+}
+
+.div-center-horiz {
+    width: fit-content;
+    margin: auto;
+}
+
+.profile-input-caption {
+    margin: 0 0 3px 0;
 }
