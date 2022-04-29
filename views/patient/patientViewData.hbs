@@ -18,18 +18,18 @@
 
     <section id="patient-view-top-right" class="flex-column">
         <h3>Enter health data</h3>
-        <form id="patient-data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
+        <form id="data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
             <div class="flex-column">
-                <input type="number" id="patient-data-input-value" placeholder="0"/>
-                <input type="text" id="patient-data-input-comment" placeholder="comment (optional)"/>
+                <input type="number" id="data-input-value" placeholder="0"/>
+                <input type="text" id="data-input-comment" placeholder="comment (optional)"/>
             </div>
             <button class="button-standard button-standard-short" type="submit" onclick="onSubmit()">Submit</button>
         </form>
     </section>
 
     <section id="patient-view-left" class="flex-column">
-        <h3 id="patient-data-table-title">Your data history</h3>
-        <table id="patient-data-table">
+        <h3 id="data-table-title">Your data history</h3>
+        <table id="data-table">
         </table>
     </section>
 
