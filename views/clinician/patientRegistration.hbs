@@ -1,11 +1,17 @@
 <section id="patient-registration">
+    <button class="home-icon" onclick="toClinicianDashboard()">
+        <span class="material-symbols-outlined">
+            home
+        </span>
+    </button>
+    <button class="logout-icon" onclick="logout()">
+        <span class="material-symbols-outlined">
+            logout
+        </span>
+    </button>
     <section>
         <div class="status-message"></div>
-        <button id="home-icon" onclick="toClinicianDashboard()">
-            <span class="material-symbols-outlined">
-                home
-            </span>
-        </button>
+        
         
         <div class="form-box">
             
@@ -26,4 +32,3 @@
 </section>
 
 <script src="/scripts/auth/registerForm.js"></script>
-<script src="/scripts/navigation.js"></script>

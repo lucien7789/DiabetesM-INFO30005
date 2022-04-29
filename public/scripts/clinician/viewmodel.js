@@ -38,7 +38,6 @@ async function render() {
 
             tableData = document.createElement("td");
 
-            console.log(datapoint);
             let name = datapoint["p"].firstName + " " + datapoint["p"].lastName;
             tableData.innerText = name;
             tableRow.appendChild(tableData);
@@ -54,7 +53,6 @@ async function render() {
                     text.innerText = datapoint[measure].value;
                     tableData.appendChild(text);
                     
-                    console.log(datapoint[measure].value, datapoint.patientMeasures[measure + "SafetyThresholdBottom"])
                     if (datapoint[measure].value <= datapoint.patientMeasures[measure + "SafetyThresholdBottom"]
                         || datapoint[measure].value >= datapoint.patientMeasures[measure + "SafetyThresholdTop"]) {
                             tableData.classList.add("alert-message-deep-danger");
@@ -62,9 +60,8 @@ async function render() {
                     if (datapoint[measure].comment) {
                         let icon = document.createElement("span");
                         icon.classList.add("material-symbols-outlined", "data-comment-button");
-                        
                         icon.innerText = "chat_bubble";
-        
+                        icon.setAttribute("onclick", "showComment(event)");
                         let comment = document.createElement("div");
                         comment.classList.add("data-comment");
                         comment.innerText = datapoint[measure].comment;

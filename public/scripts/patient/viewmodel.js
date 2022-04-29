@@ -80,7 +80,7 @@ async function render() {
                 icon.classList.add("material-symbols-outlined", "data-comment-button");
                 
                 icon.innerText = "chat_bubble";
-
+                icon.setAttribute("onclick", "showComment(event)");
                 let comment = document.createElement("div");
                 comment.classList.add("data-comment");
                 comment.innerText = datapoint.comment;

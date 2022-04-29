@@ -3,6 +3,13 @@
     width: 100%;
 }
 
+#clinician-dashboard #logout-icon {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    margin: 15px;
+}
 #clinician-dashboard > section {
     border-radius: 15px;
 
@@ -57,13 +64,12 @@
     background: var(--BACKGROUND_CONTAINER);
     margin: 15px;
 
+    padding: 25px;
     border-radius: 15px;
 
     overflow: hidden;
 
     position: relative;
-    
-    padding-bottom: 20px;
 }
 
 #patient-registration section > button{

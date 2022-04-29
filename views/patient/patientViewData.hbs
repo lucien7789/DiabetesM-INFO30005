@@ -1,13 +1,15 @@
 <section id="patient-view">
-    
-    
+    <button class="home-icon" onclick="toHomePage()">
+        <span class="material-symbols-outlined">
+            home
+        </span>
+    </button>
+    <button class="logout-icon" onclick="logout()">
+        <span class="material-symbols-outlined">
+            logout
+        </span>
+    </button>
     <section id="patient-view-top-left" class="flex-column">
-        <button id="home-icon" onclick="toHomePage()">
-            <span class="material-symbols-outlined">
-                home
-            </span>
-        </button>
-        
         <h3>Choose an assigned health measure</h3>
         <select id="patient-data-dropdown" class="form-box-input data-dropdown">
             {{#each measures}}
@@ -61,4 +63,4 @@
 </script>
 
 <script src="/scripts/patient/viewmodel.js"></script>
-<script src="/scripts/navigation.js"></script>
+<script src="/scripts/commentPopup.js"></script>
