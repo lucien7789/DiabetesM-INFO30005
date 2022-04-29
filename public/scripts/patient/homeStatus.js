@@ -11,7 +11,7 @@ async function updateDataEntryStatusMessage() {
 
     var dataEntryTodayFulfilled = true;
     for (let measure of measures) {
-        if (body.patientMeasures[measure] === true && new Date(body[measure].time).setHours(0, 0, 0, 0).valueOf() !== today.valueOf()) {
+        if (body.patientMeasures[measure] === true && body[measure] && new Date(body[measure].time).setHours(0, 0, 0, 0).valueOf() !== today.valueOf()) {
             dataEntryTodayFulfilled = false;
             break;
         }
