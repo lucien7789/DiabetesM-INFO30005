@@ -44,7 +44,7 @@ const BloodGlucoseController = {
 
     getLatestBloodGlucoseMeasure: async function(id) {
         let finder = () => {
-            return BloodGlucose.findOne({}, {}, { sort: { time: -1} });
+            return BloodGlucose.findOne({ userID: id }, {}, { sort: { time: -1} });
         }
         return findObjectTemplateFunction(finder, "getLtestBloodGlucoseMeasure()");
     }

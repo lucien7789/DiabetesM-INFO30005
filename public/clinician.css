@@ -2,6 +2,11 @@
     color: white;
 }
 
+#clinician-dashboard > section {
+    border-radius: 15px;
+
+    background: var(--BACKGROUND_CONTAINER);
+}
 #clinician-dashboard > button:first-child {
     position: absolute;
 

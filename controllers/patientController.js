@@ -17,11 +17,13 @@ const PatientController = {
     getLatestPatientData: async function(clinicianID) {
         let patients = await this.getPatientUsersByClinicianId(clinicianID);
 
-        console.log(patients);
         patients = patients.map(async p => {
+            console.log(p);
             let patientMeasures = await PatientMeasures.findById(p.patientMeasures);
 
             let bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(p._id);
+
+            console.log(bloodGlucose);
             return {p, patientMeasures, bloodGlucose: bloodGlucose };
         });
         
