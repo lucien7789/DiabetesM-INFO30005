@@ -62,7 +62,8 @@ app.use(
         cookie: {
             sameSite: "strict",
             httpOnly: true,
-            secure: app.get("env") === "production"
+            secure: app.get("env") === "production",
+            domain: ".info30005-diabetesm.herokuapp.com"
         },
         store: MongoStore.create({ clientPromise: mongooseClient})
     })
