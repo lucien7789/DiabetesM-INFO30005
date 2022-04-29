@@ -20,7 +20,7 @@
         <h3>Enter health data</h3>
         <form id="data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
             <div class="flex-column">
-                <input type="number" id="data-input-value" placeholder="0"/>
+                <input type="number" step = 0.1 id="data-input-value" placeholder="0"/>
                 <input type="text" id="data-input-comment" placeholder="comment (optional)"/>
             </div>
             <button class="button-standard button-standard-short" type="submit" onclick="onSubmit()">Submit</button>

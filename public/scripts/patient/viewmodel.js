@@ -20,12 +20,12 @@ async function render() {
         let tableRow = document.createElement("tr");
     
         let tableData = document.createElement("td");
-        tableData.innerText = "Timestamp";
+        tableData.innerText = "Date";
         tableRow.appendChild(tableData);
     
         
         tableData = document.createElement("td");
-        tableData.innerText = "Value";
+        tableData.innerText = "Value (mmol/L)";
         tableRow.appendChild(tableData);
         
         newTable.appendChild(tableRow);
