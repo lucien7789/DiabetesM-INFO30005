@@ -1,8 +1,8 @@
-<section id="auth-form">
+<section id="form">
     <a id="back-link" href="/auth/login">Have an account already? Log in</a>
     <div class="status-message"></div>
-    <div class = "auth-form-box">
-        <form onsubmit="onSubmitPlaceholder(event)" method="post">
+    <div class = "form-box">
+        <form class = "flex-column" onsubmit="onSubmitPlaceholder(event)" method="post">
             <!-- Needs work. Not sure how to send username and password. 
             Will also need to redirect to home screen after login or password reset page -->
             
@@ -10,11 +10,11 @@
             <input id="first-name-input" type="text" name="first-name" placeholder="First Name">
             <input id="last-name-input" type="text" name="last-name" placeholder="Last Name">
             <input id="password-input" type="password" name="password" placeholder="Password">
+            <input id="password-confirm-input" type="password" name="password-confirm" placeholder="Confirm Password">
             <br>
-            <button class="button-standard" type="submit" onclick="onSubmitPatient()" name="">Sign up as patient</button>
-            <button class="button-standard" type="submit" onclick="onSubmitClinician()" name="">Sign up as clinician</button>
+            <button class="button-standard button-standard-medium" type="submit" onclick="onSubmitClinician()" name="">Sign up as clinician</button>
         </form>
     </div>
 </section>
 
-<script src="/scripts/login/registerForm.js"></script>
+<script src="/scripts/auth/registerForm.js"></script>

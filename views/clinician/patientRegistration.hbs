@@ -1,0 +1,29 @@
+<section id="patient-registration">
+    <section>
+        <div class="status-message"></div>
+        <button id="home-icon" onclick="toClinicianDashboard()">
+            <span class="material-symbols-outlined">
+                home
+            </span>
+        </button>
+        
+        <div class="form-box">
+            
+            <form class="flex-column" onsubmit="onSubmitPlaceholder(event)" method="post">
+                <!-- Needs work. Not sure how to send username and password. 
+                Will also need to redirect to home screen after login or password reset page -->
+                
+                <input id="username-input" type="text" name="username" placeholder="Username">
+                <input id="first-name-input" type="text" name="first-name" placeholder="First Name">
+                <input id="last-name-input" type="text" name="last-name" placeholder="Last Name">
+                <input id="password-input" type="password" name="password" placeholder="Password">
+                <input id="password-confirm-input" type="password" name="password-confirm" placeholder="Confirm Password">
+                <br>
+                <button class="button-standard button-standard-medium" type="submit" onclick="onSubmitPatient()" name="">Create patient account</button>
+            </form>
+        </div>
+    </section>
+</section>
+
+<script src="/scripts/auth/registerForm.js"></script>
+<script src="/scripts/navigation.js"></script>

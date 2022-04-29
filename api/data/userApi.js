@@ -8,8 +8,17 @@ routes.post(
     "/register", 
     async (req, res) => {
         try {
-            await UserController.createUser(req.body.username, req.body.password, req.body.firstName, req.body.lastName);
-            res.status(201).redirect("/auth/register/success");
+            let params = [req.body.username, req.body.password, req.body.firstName, req.body.lastName, req.body.accountType];
+            if (req.session?.passport?.user) {
+                params.push(req.session?.passport.user);
+            }
+            await UserController.createUser(...params);
+            if (req.body.redirect === undefined || req.body.redirect === true) {
+                res.status(201).redirect("/auth/register/success");
+            } else {
+                res.status(201).json({ message: "User has been successfully registered"});
+            }
+            
         } catch (err) {
             res.status(500).json({message: err.toString()});
         }
@@ -30,7 +39,12 @@ routes.post(
                 if (err) {
                     return res.status(400).json({ message: err });
                 } else {
-                    return res.status(200).redirect("/patient");
+                    if (user.accountType === 0) {
+                        return res.status(200).redirect("/patient/home");
+                    } else {
+                        return res.status(200).redirect("/clinician/dashboard");
+                    }
+                    
                 }
             })
         })(req, res, next);
@@ -40,6 +54,7 @@ routes.post(
     "/logout",
     (req, res, next) => {
         req.session.destroy(err => {
+            res.clearCookie("sid_");
             res.redirect('/');
         });
     }

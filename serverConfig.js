@@ -21,20 +21,14 @@ const config = {
             },
             {
                 "prefix": "/data-entry/blood-glucose",
-                "path": "api/data/bloodGlucoseApi.js"
+                "path": "api/data/bloodGlucoseApi.js",
+                "authenticationLevel": 0
+            },
+            {
+                "prefix": "/patientData",
+                "path": "api/data/patientDataApi.js",
+                "authenticationLevel": 1
             }
-            // {
-            //     "prefix": "/data-entry/exercise",
-            //     "path": "api/data/exerciseApi.js"
-            // },
-            // {
-            //     "prefix": "/data-entry/weight",
-            //     "path": "api/data/weightApi.js"
-            // },
-            // {
-            //     "prefix": "/data-entry/insulin",
-            //     "path": "api/data/insulinApi.js"
-            // }
         ],
         "viewApi": [
             {
@@ -51,7 +45,13 @@ const config = {
             },
             {
                 "prefix": "/clinician",
-                "path": "api/views/clinicianViewApi.js"
+                "path": "api/views/clinicianViewApi.js",
+                "authenticationLevel": 1
+            },
+            {
+                "prefix": "/patient",
+                "path": "api/views/patientViewApi.js",
+                "authenticationLevel": 0
             }
         ]
     },

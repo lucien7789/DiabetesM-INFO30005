@@ -5,15 +5,15 @@ const controller = require("../../controllers/bloodGlucoseController")
 router.post("/", async (req, res) => {
     try {
         let userID = req.session?.passport?.user;
-        const bloodGlucose = await controller.createBloodGlucose(req.body.level, userID);
+        const bloodGlucose = await controller.createBloodGlucose(userID, req.body.value, req.body.comment);
         
         if (bloodGlucose) {
-            res.status(200).json(bloodGlucose);
+            res.status(201).json(bloodGlucose);
         } else {
-            res.json(500).json({ message: "Failed to create resource"});
+            res.status(500).json({ message: "Failed to create resource"});
         }
     } catch (err) {
-        res.json(500).err({ message: err.toString() });
+        res.status(500).json({ message: err.toString() });
     }
 });
 
@@ -45,7 +45,6 @@ router.get("/", async (req, res) => {
         res.status(404).json({ message: err.toString() });
     }
 });
-
 router.delete("/:id", async (req, res) => {
     try {
         const deleted = await controller.deleteBloodGlucoseById(req.params.id);

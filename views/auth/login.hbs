@@ -1,17 +1,17 @@
-<section id="auth-form">
-    <a id="back-link" href="/auth/register">Don't have an account? Register</a>
+<section id="form">
+    <a id="back-link" href="/auth/register">Are you a clinician and have no account? Register now</a>
     <div class="status-message"></div>
-    <div class = "auth-form-box">
-        <form onsubmit="onSubmit(event)" method="post">
+    <div class = "form-box">
+        <form class = "flex-column" onsubmit="onSubmit(event)" method="post">
             <!-- Needs work. Not sure how to send username and password. 
             Will also need to redirect to home screen after login or password reset page -->
             
             <input id="username-input" type="text" name="username" placeholder="Username">
             <input id="password-input" type="password" name="password" placeholder="Password">
-            <br><a href="#">Forgot password</a>
-            <br><button class="button-standard" type="submit" name="">Sign in as patient</button>
+            <br><div class="full-width flex-justify-start"><a href="#">Forgot password</a></div>
+            <button class="button-standard button-standard-medium" type="submit" name="">Sign in</button>
         </form>
     </div>
 </section>
 
-<script src="/scripts/login/loginForm.js"></script>
+<script src="/scripts/auth/loginForm.js"></script>

@@ -9,15 +9,7 @@ async function onSubmit(e) {
     } else if (!response.ok && response.body) {
         let body = await response.json();
         let statusMsg = document.querySelector(".status-message");
-        if (body?.message) {
-            statusMsg.innerText = body.message || "";
-            statusMsg.classList.add("status-message-active", "alert-message", "alert-message-danger");
-            setTimeout(() => {
-                statusMsg.classList.remove("status-message-active");
-            }, 5000);
-        } else {
-            statusMsg.classList.remove("status-message-active", "alert-message", "alert-message-danger");
-        }
+        showErrorStatusMessage(body.message);
     }
     
 }
