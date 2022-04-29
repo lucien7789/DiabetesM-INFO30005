@@ -63,7 +63,7 @@ app.use(
             sameSite: "strict",
             httpOnly: true,
             secure: app.get("env") === "production",
-            domain: ".info30005-diabetesm.herokuapp.com"
+            domain: app.get("env") === "production" ? ".info30005-diabetesm.herokuapp.com" : null
         },
         store: MongoStore.create({ clientPromise: mongooseClient})
     })
