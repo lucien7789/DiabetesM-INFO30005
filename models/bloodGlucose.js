@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const BloodGlucoseSchema = new mongoose.Schema({
-    //  Units are stored in nmol/L
+    //  Units are stored in mmol/L
     value: {
         type: Number,
         required: true

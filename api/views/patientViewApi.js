@@ -12,7 +12,7 @@ routes.get("/profile", (req, res) => {
 
 
 routes.get("/data", (req, res) => {
-    res.render("patient/patientViewData.hbs", { title: "View Data" , measures: [{ name: "Blood Glucose", endpoint: "/data-entry/blood-glucose", unit: "nmol/L"}]});
+    res.render("patient/patientViewData.hbs", { title: "View Data" , measures: [{ name: "Blood Glucose", endpoint: "/data-entry/blood-glucose", unit: "mmol/L"}]});
 })
 
 module.exports = routes;
