@@ -78,7 +78,6 @@
     left: 0;
     top: 0;
     margin: 15px;
-
     cursor: pointer;
 }
 #patient-view-top-right {
@@ -90,7 +89,10 @@
 
 #patient-view-left {
     grid-area: main-left;
+    height: 600px;
+    overflow: scroll;
 }
+
 
 #patient-data-dropdown {
     color: white;
@@ -107,7 +109,7 @@
     display: none;
 }
 
-/* Dropdown Button */
+/* Dropdown Button 
 .dropbtn {
     background-color: #04AA6D;
     color: white;
@@ -116,13 +118,13 @@
     border: none;
 }
   
-/* The container <div> - needed to position the dropdown content */
+/* The container <div> - needed to position the dropdown content 
 .dropdown {
     position: relative;
     display: inline-block;
 }
   
-/* Dropdown Content (Hidden by Default) */
+/* Dropdown Content (Hidden by Default) 
 .dropdown-content {
     display: none;
     position: absolute;
@@ -132,7 +134,7 @@
     z-index: 1;
 }
   
-/* Links inside the dropdown */
+/* Links inside the dropdown 
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
@@ -140,13 +142,13 @@
     display: block;
 }
   
-/* Change color of dropdown links on hover */
+/* Change color of dropdown links on hover 
 .dropdown-content a:hover {background-color: #ddd;}
   
-/* Show the dropdown menu on hover */
+/* Show the dropdown menu on hover 
 .dropdown:hover .dropdown-content {display: block;}
   
-/* Change the background color of the dropdown button when the dropdown content is shown */
+/* Change the background color of the dropdown button when the dropdown content is shown 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 /*
@@ -157,7 +159,7 @@
     margin: 5px;
 }
 */
-/* Style the tab buttons */
+/* Style the tab buttons 
 .tablink {
     background-color: #555;
     color: white;
@@ -170,12 +172,12 @@
     width: 50%;
 }
   
-/* Change background color of buttons on hover */
+/* Change background color of buttons on hover 
 .tablink:hover {
     background-color: #777;
 }
   
-/* Set default styles for tab content */
+/* Set default styles for tab content 
 .tabcontent {
     color: white;
     display: none;
@@ -199,6 +201,10 @@
             "main-left main-right";
     }
 
+    #patient-view-top-left > button:first-child {
+        position: relative;
+    }
+
 }
 
 @media only screen and (max-width: 700px) {
@@ -211,16 +217,30 @@
         grid-template-columns: 1fr;
         grid-template-rows: auto;
         grid-gap: 1rem;
-
         grid-template-areas:
             "top-left"
             "top-right"
-            "tab"
+            /*"tab"*/
             "display"        
+    }
+
+    #patient-view h3{
+        font-size: 1rem;
     }
 
     #patient-view-top-left {
         height: auto;
+        width: 100%;
+
+    }
+    #patient-view-top-right {
+        height: auto;
+        width: 100%;
+
+    }
+
+    #patient-view-top-left > button:first-child {
+        position: relative;
     }
 
     #patient-data-input-box {
@@ -229,18 +249,21 @@
     }
     #patient-view-right {
         display: none;
+        width: 100%;
     }
 
     #patient-view-left {
         display: grid;
         grid-area: display;
-    }
+        width: 100%;
 
+    }
+/*
     #patient-view-tab {
         display: block;
         align-items: center;
         grid-area: tab;
-    }
+    }*/
 }
 
 .div-center-horiz {

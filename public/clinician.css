@@ -6,6 +6,9 @@
     border-radius: 15px;
 
     background: var(--BACKGROUND_CONTAINER);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
 }
 #clinician-dashboard > button:first-child {
     position: absolute;
