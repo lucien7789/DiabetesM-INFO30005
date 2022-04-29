@@ -117,5 +117,5 @@ app.use(function(req,res){
  * ===========================================================
  */
 app.listen(port, () => {
-    console.log("Server.js - Express application has started listening for request on port 3000")
+    console.log("Server.js - Express application has started listening for request on port 8080")
 })
