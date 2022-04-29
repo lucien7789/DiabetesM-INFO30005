@@ -10,16 +10,6 @@ const config = {
                 "path": "api/data/userApi.js"
             },
             {
-                "prefix": "/patient",
-                "path": "api/data/patientOnlyApiTest.js",
-                "authenticationLevel": 0
-            },
-            {
-                "prefix": "/admin",
-                "path": "api/data/adminOnlyApiTest.js",
-                "authenticationLevel": 1
-            },
-            {
                 "prefix": "/data-entry/blood-glucose",
                 "path": "api/data/bloodGlucoseApi.js",
                 "authenticationLevel": 0
@@ -27,6 +17,11 @@ const config = {
             {
                 "prefix": "/patientData",
                 "path": "api/data/patientDataApi.js",
+                "authenticationLevel": 0
+            },
+            {
+                "prefix": "/clinicianData",
+                "path": "api/data/clinicianDataApi.js",
                 "authenticationLevel": 1
             }
         ],

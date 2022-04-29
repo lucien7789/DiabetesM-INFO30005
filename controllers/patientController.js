@@ -1,33 +1,21 @@
-const bcrypt = require("bcryptjs");
 const PatientMeasures = require("../models/patientMeasures");
 const User = require("../models/user");
-const findObjectTemplateFunction = require("../util/findObjectTemplateFunction");
 const BloodGlucoseController = require("./bloodGlucoseController");
 
-const SALT_FACTOR = 10;
 const PatientController = {
 
-    getPatientUsersByClinicianId: function(id) {
-        let finder = () => {
-            return User.find({ clinician: id });
+    getLatestPatientData: async function(patientID) {
+
+        const patient = await User.findById(patientID);
+
+        if (patient.accountType !== 0) {
+            throw new Error("This account is not a patient account");
         }
-        return findObjectTemplateFunction(finder, "getPatientUsersByClinician()");
-    },
+        let patientMeasures = await PatientMeasures.findById(patient.patientMeasures);
 
-    getLatestPatientData: async function(clinicianID) {
-        let patients = await this.getPatientUsersByClinicianId(clinicianID);
+        let bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(patient._id);
 
-        patients = patients.map(async p => {
-            console.log(p);
-            let patientMeasures = await PatientMeasures.findById(p.patientMeasures);
-
-            let bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(p._id);
-
-            console.log(bloodGlucose);
-            return {p, patientMeasures, bloodGlucose: bloodGlucose };
-        });
-        
-        return Promise.all(patients);
+        return { patient , patientMeasures, bloodGlucose: bloodGlucose };
     }
 }
 

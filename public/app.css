@@ -2,6 +2,7 @@
     --BACKGROUND: #FFFFFF;
     --BACKGROUND_CONTAINER: rgba(64, 47, 72, 0.6);
     --BACKGROUND_CONTAINER_HEAVY: rgba(59, 49, 58, 0.8);
+    --BACKGROUND_TRANSPARENT_WHITE: rgba(255, 255, 255, 0.8);
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #736f78;
     --ACCENT1_DARK: #23242f;
@@ -79,7 +80,7 @@ header {
     font-size: var(--FONT-MEDIUM);
 
     display: grid;
-    grid-template-columns: 80px 1fr 80px;
+    grid-template-columns: 1fr;
     grid-template-rows: 100%;
 
     padding: 5px;
@@ -175,8 +176,21 @@ h3 {
     font-weight: 500;
     font-size: var(--FONT-SMEDIUM);
 }
+.home-icon {
+    position: absolute;
 
-#home-icon, #logout-icon {
+    top: 0;
+    left: 0;
+    margin: 20px;
+}
+.logout-icon {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    margin: 20px;
+}
+.home-icon, .logout-icon {
     border: none;
     border-radius: 10px;
     background-color: var(--ACCENT1_DARK);
@@ -188,12 +202,41 @@ h3 {
     cursor: pointer;
 }
 
-#home-icon:active, #logout-icon:active {
+.home-icon::after {
+    content: "Home";
+    left: 100%;
+}
+
+.logout-icon::after {
+    content: "Logout";
+    right: 100%;
+}
+
+.home-icon::after, .logout-icon::after {
+    position: absolute;
+    top: 0;
+    opacity: 0%;
+
+    font-size: var(--FONT-XSMALL);
+
+    background: var(--BACKGROUND_TRANSPARENT_WHITE);
+
+    padding: 5px;
+
+    border-radius: 5px;
+
+    transition: linear 0.2s;
+}
+
+.home-icon:hover::after, .logout-icon:hover::after {
+    opacity: 100%;
+}
+.home-icon:active, .logout-icon:active {
     background-color: var(--ACCENT1_STANDARD);
     box-shadow: 0px 0px 0px 0px black, 0px 0px 2px 0.5px white inset;
 }
 
-#home-icon > span, #logout-icon > span {
+.home-icon > span, .logout-icon > span {
     color: white;
     font-size: 36px;
 }

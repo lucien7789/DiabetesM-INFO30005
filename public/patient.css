@@ -1,15 +1,6 @@
 /**
     BEGIN PATIENT HOME PAGE CSS EXTRACT
 **/
-
-#patient-home > button:first-child {
-    position: absolute;
-
-    right: 0;
-    top: 0;
-
-    margin: 20px;
-}
 #patient-welcome {
     max-width: 450px;
     margin: auto;
@@ -64,6 +55,8 @@
     border-radius: 10px;
     background-color: var(--BACKGROUND_CONTAINER);
     width: 100%;
+
+    position: relative;
 }
 #patient-view-top-left {
     grid-area: top-left;
@@ -87,16 +80,14 @@
     height: 200px;
 
 }
+#patient-view-top-right .disabled {
+    top: 0;
+    border-radius: 15px;
 
+    z-index: 2;
+}
 #patient-view-left {
     grid-area: main-left;
-}
-
-#patient-data-dropdown {
-    color: white;
-    font: var(--FONT-QUICKSAND);
-
-    cursor: pointer;
 }
 
 #patient-view-right {
@@ -201,10 +192,7 @@
 
 }
 
-@media only screen and (max-width: 700px) {
-
-
-
+@media only screen and (max-width: 640px) {
 
     #patient-view {
         display: grid;
@@ -219,7 +207,7 @@
             "display"        
     }
 
-    #patient-view-top-left {
+    #patient-view-top-left, #patient-view-top-right {
         height: auto;
     }
 

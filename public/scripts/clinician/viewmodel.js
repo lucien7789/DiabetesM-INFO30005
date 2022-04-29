@@ -2,7 +2,16 @@ const measures = [["bloodGlucose", "Blood Glucose"], ["weight", "Weight"], ["ins
 
 async function render() {
 
-    let table = document.getElementById("data-table");
+    let container = document.getElementById("clinician-patient-table-container");
+
+    let loadingDots = document.createElement("span");
+    loadingDots.classList.add("loading-dots");
+    container.appendChild(loadingDots);
+
+    let table = document.createElement("table");
+    table.setAttribute("id", "clinician-patient-table");
+    table.classList.add("data-table");
+
     let tableRow = document.createElement("tr");
     let tableData = document.createElement("td");
     tableData.innerText = "Name";
@@ -15,7 +24,7 @@ async function render() {
         table.appendChild(tableRow);
     }
        
-    const response = await httpGet("/patientData");
+    const response = await httpGet("/clinicianData");
 
     if (!response.ok) {
         return;
@@ -29,7 +38,6 @@ async function render() {
 
             tableData = document.createElement("td");
 
-            console.log(datapoint);
             let name = datapoint["p"].firstName + " " + datapoint["p"].lastName;
             tableData.innerText = name;
             tableRow.appendChild(tableData);
@@ -45,7 +53,6 @@ async function render() {
                     text.innerText = datapoint[measure].value;
                     tableData.appendChild(text);
                     
-                    console.log(datapoint[measure].value, datapoint.patientMeasures[measure + "SafetyThresholdBottom"])
                     if (datapoint[measure].value <= datapoint.patientMeasures[measure + "SafetyThresholdBottom"]
                         || datapoint[measure].value >= datapoint.patientMeasures[measure + "SafetyThresholdTop"]) {
                             tableData.classList.add("alert-message-deep-danger");
@@ -53,9 +60,8 @@ async function render() {
                     if (datapoint[measure].comment) {
                         let icon = document.createElement("span");
                         icon.classList.add("material-symbols-outlined", "data-comment-button");
-                        
                         icon.innerText = "chat_bubble";
-        
+                        icon.setAttribute("onclick", "showComment(event)");
                         let comment = document.createElement("div");
                         comment.classList.add("data-comment");
                         comment.innerText = datapoint[measure].comment;
@@ -71,6 +77,8 @@ async function render() {
         }
     }
     
+    container.removeChild(loadingDots);
+    container.appendChild(table);
 }
 
 render();

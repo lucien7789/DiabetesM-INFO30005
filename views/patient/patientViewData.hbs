@@ -1,24 +1,27 @@
 <section id="patient-view">
-    
-    
+    <button class="home-icon" onclick="toHomePage()">
+        <span class="material-symbols-outlined">
+            home
+        </span>
+    </button>
+    <button class="logout-icon" onclick="logout()">
+        <span class="material-symbols-outlined">
+            logout
+        </span>
+    </button>
     <section id="patient-view-top-left" class="flex-column">
-        <button id="home-icon" onclick="toHomePage()">
-            <span class="material-symbols-outlined">
-                home
-            </span>
-        </button>
-        
         <h3>Choose an assigned health measure</h3>
-        <select id="patient-data-dropdown" class="form-box-input">
+        <select id="patient-data-dropdown" class="form-box-input data-dropdown">
             {{#each measures}}
-            <option value={{@index}} data-name={{this.name}} data-endpoint={{this.endpoint}}>{{this.name}}</option>
+            <option value="{{@index}}" data-endpoint="{{this.endpoint}}" data-unit="{{this.unit}}">{{this.name}}</option>
             {{/each}}
         </select>
     </section>
 
     <section id="patient-view-top-right" class="flex-column">
         <h3>Enter health data</h3>
-        <form id="data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
+        <div class="disabled">You have already entered data for this measure today</div>
+        <form id="patient-data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
             <div class="flex-column">
                 <input type="number" step = 0.1 id="data-input-value" placeholder="0"/>
                 <input type="text" id="data-input-comment" placeholder="comment (optional)"/>
@@ -29,8 +32,7 @@
 
     <section id="patient-view-left" class="flex-column">
         <h3 id="data-table-title">Your data history</h3>
-        <table id="data-table">
-        </table>
+        <table id="patient-data-table" class="data-table"></table>
     </section>
 
     <section id = "patient-view-right">
@@ -61,4 +63,4 @@
 </script>
 
 <script src="/scripts/patient/viewmodel.js"></script>
-<script src="/scripts/navigation.js"></script>
+<script src="/scripts/commentPopup.js"></script>

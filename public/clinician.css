@@ -1,11 +1,20 @@
 #clinician-dashboard {
     color: white;
+    width: 100%;
 }
 
+#clinician-dashboard #logout-icon {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    margin: 15px;
+}
 #clinician-dashboard > section {
     border-radius: 15px;
 
     background: var(--BACKGROUND_CONTAINER);
+    padding: 15px;
 }
 #clinician-dashboard > button:first-child {
     position: absolute;
@@ -28,33 +37,10 @@
     
 }
 
-#clinician-dashboard-side-bottons>button{
+#clinician-dashboard-side-buttons>button{
     margin-inline-end: 1em;
     display: inline-block;
     
-}
-
-.standard-table table, .standard-table th, .standard-table td{
-    border: 1px solid black;
-    border-collapse: collapse;
-    padding: 1px;
-       
-}
-.standard-table > table{
-    background-color: var(--BACKGROUND);
-    width: 90%;
-}
-
-.standard-table > th, .standard-table > td{
-    
-    height:var(--FONT-LARGE); 
-    width:18%;
-    font-size: var(--FONT-SMALL);
-    color: var(--TEXT_BODY);
-    text-align: center;
-}
-.standard-table > th{
-    font-style: bold;
 }
 
 .central-item{
@@ -78,13 +64,12 @@
     background: var(--BACKGROUND_CONTAINER);
     margin: 15px;
 
+    padding: 25px;
     border-radius: 15px;
 
     overflow: hidden;
 
     position: relative;
-    
-    padding-bottom: 20px;
 }
 
 #patient-registration section > button{

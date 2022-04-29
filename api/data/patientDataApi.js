@@ -1,65 +1,20 @@
 const express = require("express");
-const BloodGlucoseController = require("../../controllers/bloodGlucoseController");
 const PatientController = require("../../controllers/patientController");
-const UserController = require("../../controllers/userController");
 const routes = express.Router();
 
-routes.get("/", async (req, res) => {
+routes.get("/latest", async (req, res) => {
     try {
         let userID = req.session?.passport?.user;
-        const patients = await PatientController.getLatestPatientData(userID);
-        if (patients) {
-            res.status(200).json(patients);
+        const latestData = await PatientController.getLatestPatientData(userID);
+
+        if (latestData) {
+            res.status(200).json(latestData);
         } else {
-            res.status(204).end();
+            res.status(404).json({ message: "Resource does not exist"});
         }
     } catch (err) {
         res.status(500).json({ message: err.toString() });
-    }
-});
-
-routes.get("/bloodGlucose/latest/:id", async (req, res) => {
-    try {
-        let userID = req.query.id;
-        const bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(userID);
-        if (bloodGlucose) {
-            res.status(200).json(bloodGlucose);
-        } else {
-            res.status(204).end();
-        }
-    } catch (err) {
-        res.status(500).json({ message: err.toString() });
-    }
-});
-
-routes.get("/bloodGlucose/:id", async (req, res) => {
-    try {
-        let userID = req.query.id;
-        const bloodGlucose = await UserController.getBloodGlucoseByUserId(userID);
-        if (bloodGlucose) {
-            res.status(200).json(bloodGlucose);
-        }
-        else {
-            res.status(204).end();
-        }
-    } catch (err) {
-        res.status(404).json({ message: err.toString() });
-    }
-});
-
-routes.get("/patientMeasures/:id", async(req, res) => {
-    try {
-        let userID = req.query.id;
-        const patientMeasures = await UserController.getPatientMeasuresByUserId(userID);
-
-        if (patientMeasures) {
-            res.status(200).json(patientMeasures);
-        }
-        else {
-            res.status(204).end();
-        }
-    } catch (err) {
-        res.status(404).json({ message: err.toString() });
     }
 })
+
 module.exports = routes;
