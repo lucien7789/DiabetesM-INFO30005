@@ -1,0 +1,71 @@
+#clinician-dashboard {
+    color: white;
+    width: 100%;
+}
+
+#clinician-dashboard > section {
+    border-radius: 15px;
+
+    background: var(--BACKGROUND_CONTAINER);
+    padding: 15px;
+}
+#clinician-dashboard > button:first-child {
+    position: absolute;
+
+    right: 0;
+    top: 0;
+
+    margin: 20px;
+}
+
+#clinician-dashboard-title2{
+    text-align: center;
+    font-style: normal;
+    
+}
+#clinician-dashboard-side-bottons{
+    float: right;
+    margin-bottom: 1em;
+    margin-right: 4%;
+    
+}
+
+#clinician-dashboard-side-buttons>button{
+    margin-inline-end: 1em;
+    display: inline-block;
+    
+}
+
+.central-item{
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.central-item p {
+    margin: 0;
+}
+
+/**
+    BEGIN PATIENT REGISTRATION CSS EXTRACT
+**/
+
+#patient-registration {
+    color: white;
+}
+
+#patient-registration section {
+    background: var(--BACKGROUND_CONTAINER);
+    margin: 15px;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    position: relative;
+    
+    padding-bottom: 20px;
+}
+
+#patient-registration section > button{
+    margin: 15px;
+}

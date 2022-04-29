@@ -1,4 +1,9 @@
 <section id="patient-home">
+    <button id="home-icon" onclick="logout()">
+        <span class="material-symbols-outlined">
+            logout
+        </span>
+    </button>
     <section id="patient-welcome">
         <section class="flex-column">
             <h2 class="text-center">
@@ -14,8 +19,8 @@
             </button>
         </section>
         <section class="flex-column">
-            <p>
-                Want to update your clinician on your measures or just want to view your current health data? 
+            <p id="health-data-msg">
+                
             </p>
             <button class="button-standard button-standard-medium" onclick="toViewData()">
                 Enter Data
@@ -24,4 +29,6 @@
     </section>
 </section>
 
-<script src="/scripts/patient/navigation.js"></script>
+<script src="/scripts/navigation.js"></script>
+<script src="/scripts/auth/logout.js"></script>
+<script src="/scripts/patient/homeStatus.js"></script>

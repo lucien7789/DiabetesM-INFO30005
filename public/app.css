@@ -5,7 +5,7 @@
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #736f78;
     --ACCENT1_DARK: #23242f;
-    --TEXT_BODY: #000000;
+    --TEXT_BODY: #FFF;
     --TEXT_SUB: #818181;
     --TEXT_TITLE: #FFFFFF;
     --TEXT_INVERSE: #FFFFFF;
@@ -19,6 +19,7 @@
     --FONT-SMALL: 1rem;
     --FONT-MEDIUM: 1.5rem;
     --FONT-LARGE: 2rem;
+    --FONT-XLARGE: 3rem;
 }
 
 
@@ -48,6 +49,7 @@ body, html{
     margin: 0;
 }
 body {
+    color: var(--TEXT_BODY);
     display: grid;
     grid-template-areas: 
         "header"
@@ -134,6 +136,19 @@ h3 {
     content: "\"";
     display: inline;
 }
+
+.bg-container {
+    background: var(--BACKGROUND_CONTAINER);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bg-container-heavy {
+    background: var(--BACKGROUND_CONTAINER_HEAVY);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 #app-header h1 {
     color: var(--TEXT_TITLE);
     margin: 0;
@@ -161,7 +176,7 @@ h3 {
     font-size: var(--FONT-SMEDIUM);
 }
 
-#home-icon {
+#home-icon, #logout-icon {
     border: none;
     border-radius: 10px;
     background-color: var(--ACCENT1_DARK);
@@ -169,16 +184,20 @@ h3 {
     box-shadow: 1px 1px 2px 1.25px black, 0px 0px 0px 0px white inset;
 
     transition: linear 0.05s;
+
+    cursor: pointer;
 }
 
-#home-icon:active {
+#home-icon:active, #logout-icon:active {
     background-color: var(--ACCENT1_STANDARD);
     box-shadow: 0px 0px 0px 0px black, 0px 0px 2px 0.5px white inset;
 }
-#home-icon > span {
+
+#home-icon > span, #logout-icon > span {
     color: white;
     font-size: 36px;
 }
+
 @media only screen and (min-width: 641px) and (max-width: 1200px) {
     :root {
         --FONT-XSMALL: 0.8rem;

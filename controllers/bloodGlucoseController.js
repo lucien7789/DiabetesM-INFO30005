@@ -40,6 +40,13 @@ const BloodGlucoseController = {
             return BloodGlucose.findOneAndUpdate({_id: id}, newDoc);
         }
         return findObjectTemplateFunction(finder, "updateBloodGlucoseById()");
+    },
+
+    getLatestBloodGlucoseMeasure: async function(id) {
+        let finder = () => {
+            return BloodGlucose.findOne({ userID: id }, {}, { sort: { time: -1} });
+        }
+        return findObjectTemplateFunction(finder, "getLtestBloodGlucoseMeasure()");
     }
 }
 

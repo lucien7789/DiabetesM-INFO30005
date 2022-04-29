@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
     <link rel="stylesheet" href="/app.css">
     <link rel="stylesheet" href="/about-pages.css">
-    <link rel="stylesheet" href="/patient-pages.css">
+    <link rel="stylesheet" href="/patient.css">
     <link rel="stylesheet" href="/forms.css">
     <link rel="stylesheet" href="/util.css">
+    <link rel="stylesheet" href="/clinician.css">
+    <link rel="stylesheet" href="/data-table.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap" rel="stylesheet">
@@ -16,6 +18,7 @@
     <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
     <script src="/scripts/ajax.js"></script>
+    <script src="/scripts/util.js"></script>
     <title>About Diabetes</title>
     
     <meta charset="UTF-8">
@@ -28,7 +31,7 @@
 </head>
 <body>
     <header>
-        <img id="header-logo" src="/assets/logo.png">
+        <a href="/"><img id="header-logo" src="/assets/logo.png"></a>
         <h1 id="page-title">{{this.title}}</h1>
     </header>
     <main>

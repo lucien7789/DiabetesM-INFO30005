@@ -8,7 +8,7 @@ router.post("/", async (req, res) => {
         const bloodGlucose = await controller.createBloodGlucose(userID, req.body.value, req.body.comment);
         
         if (bloodGlucose) {
-            res.status(200).json(bloodGlucose);
+            res.status(201).json(bloodGlucose);
         } else {
             res.status(500).json({ message: "Failed to create resource"});
         }
@@ -45,7 +45,6 @@ router.get("/", async (req, res) => {
         res.status(404).json({ message: err.toString() });
     }
 });
-
 router.delete("/:id", async (req, res) => {
     try {
         const deleted = await controller.deleteBloodGlucoseById(req.params.id);

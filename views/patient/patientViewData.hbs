@@ -9,9 +9,9 @@
         </button>
         
         <h3>Choose an assigned health measure</h3>
-        <select id="patient-data-dropdown" class="form-box-input">
+        <select id="patient-data-dropdown" class="form-box-input data-dropdown">
             {{#each measures}}
-            <option value={{@index}} data-name={{this.name}} data-endpoint={{this.endpoint}}>{{this.name}}</option>
+            <option value="{{@index}}" data-endpoint="{{this.endpoint}}" data-unit="{{this.unit}}">{{this.name}}</option>
             {{/each}}
         </select>
     </section>
@@ -21,27 +21,16 @@
         <div class="disabled">You have already entered data for this measure today</div>
         <form id="patient-data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
             <div class="flex-column">
-                <input type="number" id="patient-data-input-value" placeholder="0"/>
-                <input type="text" id="patient-data-input-comment" placeholder="comment (optional)"/>
+                <input type="number" id="data-input-value" placeholder="0"/>
+                <input type="text" id="data-input-comment" placeholder="comment (optional)"/>
             </div>
             <button class="button-standard button-standard-short" type="submit" onclick="onSubmit()">Submit</button>
         </form>
     </section>
 
     <section id="patient-view-left" class="flex-column">
-        <h3 id="patient-data-table-title">Your data history</h3>
-        <table id="patient-data-table">
-            <th>
-                <td></td>
-            </th>
-                {{#each data}}
-            <tr>
-                <td>this.time</td>
-                <td>this.value</td>
-            </tr>
-
-            {{/each}}
-        </table>
+        <h3 id="data-table-title">Your data history</h3>
+        <table id="patient-data-table" class="data-table"></table>
     </section>
 
     <section id = "patient-view-right">
@@ -72,4 +61,4 @@
 </script>
 
 <script src="/scripts/patient/viewmodel.js"></script>
-<script src="/scripts/patient/navigation.js"></script>
+<script src="/scripts/navigation.js"></script>

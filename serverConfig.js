@@ -10,31 +10,20 @@ const config = {
                 "path": "api/data/userApi.js"
             },
             {
-                "prefix": "/patient",
-                "path": "api/data/patientOnlyApiTest.js",
+                "prefix": "/data-entry/blood-glucose",
+                "path": "api/data/bloodGlucoseApi.js",
                 "authenticationLevel": 0
             },
             {
-                "prefix": "/admin",
-                "path": "api/data/adminOnlyApiTest.js",
-                "authenticationLevel": 1
+                "prefix": "/patientData",
+                "path": "api/data/patientDataApi.js",
+                "authenticationLevel": 0
             },
             {
-                "prefix": "/data-entry/blood-glucose",
-                "path": "api/data/bloodGlucoseApi.js"
+                "prefix": "/clinicianData",
+                "path": "api/data/clinicianDataApi.js",
+                "authenticationLevel": 1
             }
-            // {
-            //     "prefix": "/data-entry/exercise",
-            //     "path": "api/data/exerciseApi.js"
-            // },
-            // {
-            //     "prefix": "/data-entry/weight",
-            //     "path": "api/data/weightApi.js"
-            // },
-            // {
-            //     "prefix": "/data-entry/insulin",
-            //     "path": "api/data/insulinApi.js"
-            // }
         ],
         "viewApi": [
             {
@@ -48,6 +37,11 @@ const config = {
             {
                 "prefix": "/auth",
                 "path": "api/views/authViewApi.js"
+            },
+            {
+                "prefix": "/clinician",
+                "path": "api/views/clinicianViewApi.js",
+                "authenticationLevel": 1
             },
             {
                 "prefix": "/patient",
