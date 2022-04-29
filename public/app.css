@@ -108,7 +108,7 @@ header img {
     object-fit: cover;
 }
 
-h3 {
+h1, h2, h3 {
     font-weight: 400;
 }
 #page-title {
@@ -239,6 +239,27 @@ h3 {
 .home-icon > span, .logout-icon > span {
     color: white;
     font-size: 36px;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ACCENT1_DARK); 
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: var(--ACCENT1_STANDARD);
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ACCENT1_LIGHT); 
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: white;
 }
 
 @media only screen and (min-width: 641px) and (max-width: 1200px) {

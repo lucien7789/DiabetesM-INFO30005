@@ -2,7 +2,7 @@ async function render() {
     let options = document.getElementById("patient-data-dropdown");
     let optionNo = options.value;
 
-    var container = document.getElementById("patient-view-left");
+    var container = document.getElementById("patient-data-table-container");
 
     let [oldDataTable, placeholderMsg] = [document.getElementById("patient-data-table"), document.getElementById("no-data-placeholder-msg")];
 
@@ -70,7 +70,7 @@ async function render() {
             tableRow.appendChild(tableData);
             
             tableData = document.createElement("td");
-            tableData.classList.add("flex-space-between");
+            tableData.classList.add("flex-space-between", "border-none");
             let text = document.createElement("p");
             text.innerText = datapoint.value + options[optionNo].dataset.unit;
             tableData.appendChild(text);

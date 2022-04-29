@@ -1,4 +1,4 @@
-.data-table, .data-table th, .data-table td {
+.data-table, .data-table tr, .data-table td {
     border: 1px solid black;
     border-collapse: collapse;
 }
@@ -7,10 +7,13 @@
     background-color: var(--INPUT);
     width: 100%;
     table-layout: fixed;
+
+    
 }
 
-.data-table tr:first-child td {
+.data-table tr:first-child {
     text-decoration: underline;
+    box-shadow: 0 1px 3px 1.5px black inset;
 }
 .data-table tr {
     width: 100%;
@@ -55,6 +58,7 @@
 
 .data-comment-active {
     display: block !important;
+    z-index: 2;
 }
 
 .data-comment-active > h3 {

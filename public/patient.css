@@ -57,6 +57,8 @@
     width: 100%;
 
     position: relative;
+
+    overflow-x: hidden;
 }
 #patient-view-top-left {
     grid-area: top-left;
@@ -89,7 +91,11 @@
 #patient-view-left {
     grid-area: main-left;
 }
+#patient-view-left > div {
+    max-height: 40vh;
 
+    overflow-y: auto;
+}
 #patient-view-right {
 
     grid-area: main-right;
