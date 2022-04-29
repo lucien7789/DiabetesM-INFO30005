@@ -19,6 +19,7 @@
     --FONT-SMALL: 1rem;
     --FONT-MEDIUM: 1.5rem;
     --FONT-LARGE: 2rem;
+    --FONT-XLARGE: 3rem;
 }
 
 
@@ -175,7 +176,7 @@ h3 {
     font-size: var(--FONT-SMEDIUM);
 }
 
-#home-icon {
+#home-icon, #logout-icon {
     border: none;
     border-radius: 10px;
     background-color: var(--ACCENT1_DARK);
@@ -183,16 +184,20 @@ h3 {
     box-shadow: 1px 1px 2px 1.25px black, 0px 0px 0px 0px white inset;
 
     transition: linear 0.05s;
+
+    cursor: pointer;
 }
 
-#home-icon:active {
+#home-icon:active, #logout-icon:active {
     background-color: var(--ACCENT1_STANDARD);
     box-shadow: 0px 0px 0px 0px black, 0px 0px 2px 0.5px white inset;
 }
-#home-icon > span {
+
+#home-icon > span, #logout-icon > span {
     color: white;
     font-size: 36px;
 }
+
 @media only screen and (min-width: 641px) and (max-width: 1200px) {
     :root {
         --FONT-XSMALL: 0.8rem;

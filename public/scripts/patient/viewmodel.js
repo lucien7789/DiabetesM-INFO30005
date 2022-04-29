@@ -2,7 +2,7 @@ async function render() {
 
     let options = document.getElementById("patient-data-dropdown");
     let optionNo = options.value;
-    let table = document.getElementById("patient-data-table");
+    let table = document.getElementById("data-table");
     
     const response = await httpGet(options[optionNo].dataset.endpoint);
 
@@ -16,7 +16,7 @@ async function render() {
     if (data && data.length > 0) {
         newTable = document.createElement("table");
 
-        newTable.setAttribute("id", "patient-data-table");
+        newTable.setAttribute("id", "data-table");
         let tableRow = document.createElement("tr");
     
         let tableData = document.createElement("td");
