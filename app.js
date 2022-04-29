@@ -60,10 +60,9 @@ app.use(
         saveUninitialized: false,
         resave: false,
         cookie: {
-            sameSite: "strict",
+            sameSite: "none",
             httpOnly: true,
-            secure: app.get("env") === "production",
-            domain: app.get("env") === "production" ? ".info30005-diabetesm.herokuapp.com" : null
+            secure: app.get("env") === "production"
         },
         store: MongoStore.create({ clientPromise: mongooseClient})
     })
