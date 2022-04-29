@@ -4,7 +4,9 @@
 #patient-welcome {
     max-width: 450px;
     margin: auto;
-    color: white;
+    background: var(--BACKGROUND_CONTAINER);
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #patient-welcome section {
@@ -282,7 +284,13 @@
         align-items: center;
         grid-area: tab;
     }
+}
 
+.div-center-horiz {
+    width: fit-content;
+    margin: auto;
+}
 
-
+.profile-input-caption {
+    margin: 0 0 3px 0;
 }
