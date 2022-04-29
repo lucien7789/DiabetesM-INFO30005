@@ -66,7 +66,7 @@ async function render() {
 
                 cover.classList.add("disabled-active");
             }
-            tableData.innerText = tm.toLocaleDateString("en-US") + " " + tm.toLocaleTimeString("en-US");
+            tableData.innerText = tm.toLocaleDateString("en-US") + " " + tm.toLocaleTimeString("en-US", { hour: 'numeric', minute: 'numeric', hour12: false }).substring(0, 7);
             tableRow.appendChild(tableData);
             
             tableData = document.createElement("td");

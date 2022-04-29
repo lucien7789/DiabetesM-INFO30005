@@ -192,7 +192,7 @@
 
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 640px) {
 
     #patient-view {
         display: grid;
@@ -207,7 +207,7 @@
             "display"        
     }
 
-    #patient-view-top-left {
+    #patient-view-top-left, #patient-view-top-right {
         height: auto;
     }
 
