@@ -37,7 +37,7 @@ const app = express();
  * Mongoose Setup
  * ===========================================================
  */
-const uri = "mongodb+srv://admin:b4V1vX4HQQPXPQDm@cluster0.geibs.mongodb.net/Cluster0?retryWrites=true&w=majority";
+const uri = "mongodb+srv://admin:bIRICG67hDmA2oOH@cluster0.geibs.mongodb.net/Cluster0?retryWrites=true&w=majority";
 
 const mongooseClient = mongoose.connect(uri).then(m => m.connection.getClient());
 
