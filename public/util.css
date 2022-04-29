@@ -1,6 +1,6 @@
 .button-standard {
     background-color: var(--ACCENT1_DARK);
-    width: 250px;
+    
     height: 40px;
     font-family: var(--FONT-QUICKSAND);
     color: white;
@@ -19,7 +19,19 @@
     border: none;
     border-radius: 10px;
 
-    box-shadow: 1px 1px 2px 1px black;
+    box-shadow: 1px 1.25px 2px 1px black, 0px 0px 0px 0px white inset;
+
+    transition: linear 0.05s;
+}
+.button-standard-medium {
+    width: 250px;
+}
+.button-standard-short {
+    width: 125px;
+}
+.button-standard:active {
+    background-color: var(--ACCENT1_STANDARD);
+    box-shadow: 0px 0px 0px 0px black, 0px 0px 2px 0.5px white inset;
 }
 .button-standard::after {
     position: absolute;
@@ -68,5 +80,24 @@
 .flex-column {
     display: flex;
     flex-direction: column;
+    place-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-justify-start {
+    justify-content: flex-start !important;
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+.grid-place-center {
+    display: grid;
     place-items: center;
 }

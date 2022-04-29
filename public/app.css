@@ -3,7 +3,7 @@
     --BACKGROUND_CONTAINER: rgba(64, 47, 72, 0.6);
     --BACKGROUND_CONTAINER_HEAVY: rgba(59, 49, 58, 0.8);
     --ACCENT1_LIGHT: #d1bed8;
-    --ACCENT1_STANDARD: #7790B5;
+    --ACCENT1_STANDARD: #736f78;
     --ACCENT1_DARK: #23242f;
     --TEXT_BODY: #FFF;
     --TEXT_SUB: #818181;
@@ -97,7 +97,6 @@ footer {
 }
 footer > h3 {
     margin: auto 0;
-    font-weight: 200;
 }
 header img {
     width: auto;
@@ -106,20 +105,14 @@ header img {
     max-height: 100%;
     object-fit: cover;
 }
+
+h3 {
+    font-weight: 400;
+}
 #page-title {
     font-family: var(--FONT-QUICKSAND);
 
     font-weight: 300;
-}
-
-input {
-    color: var(--TEXT_BODY);
-    background: var(--INPUT);
-    border: none;
-    border-radius: 3px;
-    font-size: var(--FONT-MEDIUM);
-    width: 100%;
-    font-family: var(--FONT-QUICKSAND);
 }
 
 .font-white {
@@ -182,6 +175,24 @@ input {
     font-size: var(--FONT-SMEDIUM);
 }
 
+#home-icon {
+    border: none;
+    border-radius: 10px;
+    background-color: var(--ACCENT1_DARK);
+
+    box-shadow: 1px 1px 2px 1.25px black, 0px 0px 0px 0px white inset;
+
+    transition: linear 0.05s;
+}
+
+#home-icon:active {
+    background-color: var(--ACCENT1_STANDARD);
+    box-shadow: 0px 0px 0px 0px black, 0px 0px 2px 0.5px white inset;
+}
+#home-icon > span {
+    color: white;
+    font-size: 36px;
+}
 @media only screen and (min-width: 641px) and (max-width: 1200px) {
     :root {
         --FONT-XSMALL: 0.8rem;
@@ -206,6 +217,8 @@ input {
     header {
         display: flex;
         justify-content: center;
+
+        font-size: small;
     }
     #app-header {
         grid-template-columns: 1fr 10fr 1fr;
