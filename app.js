@@ -46,13 +46,20 @@ const mongooseClient = mongoose.connect(uri).then(m => m.connection.getClient())
  * Handle Bars Config Setup
  * ===========================================================
  */
+
+
 app.engine("hbs", exphbs.engine({
     defaultLayout: "about/main",
     layoutsDir: config.projectDir + "/views",
     partialsDir: config.projectDir + "/views",
     extname: "hbs"
 }));
-
+/**
+ * ===========================================================
+ * Express Session Config Setup
+ * ===========================================================
+ */
+app.set('trust proxy', 1);
 app.use(
     expressSession({
         secret: process.env.SESSION_SECRET || "INFO30005",
@@ -60,8 +67,9 @@ app.use(
         saveUninitialized: false,
         resave: false,
         cookie: {
-            sameSite: "strict",
+            sameSite: "none",
             httpOnly: true,
+            secure: true,
             secure: app.get("env") === "production"
         },
         store: MongoStore.create({ clientPromise: mongooseClient})

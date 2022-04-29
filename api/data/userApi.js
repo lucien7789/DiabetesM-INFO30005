@@ -33,7 +33,7 @@ routes.post(
                 return res.status(400).json({ message: err });
             }
             if (!user) {
-                return res.status(400).json({ message: "No user found" });
+                return res.status(400).json({ message: "User details are incorrect" });
             }
             req.logIn(user, {session: true}, (err) => {
                 if (err) {
