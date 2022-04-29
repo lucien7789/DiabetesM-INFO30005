@@ -2,7 +2,7 @@ async function render() {
 
     let options = document.getElementById("patient-data-dropdown");
     let optionNo = options.value;
-    let table = document.getElementById("patient-data-table");
+    let table = document.getElementById("data-table");
     
     const response = await httpGet(options[optionNo].dataset.endpoint);
 
@@ -16,7 +16,7 @@ async function render() {
     if (data && data.length > 0) {
         newTable = document.createElement("table");
 
-        newTable.setAttribute("id", "patient-data-table");
+        newTable.setAttribute("id", "data-table");
         let tableRow = document.createElement("tr");
     
         let tableData = document.createElement("td");
@@ -30,11 +30,28 @@ async function render() {
         
         newTable.appendChild(tableRow);
 
+        var dataEnteredToday = false;
+
+        let today = new Date();
+        today.setHours(0, 0, 0, 0);
+
         for (let datapoint of data) {
             tableRow = document.createElement("tr");
 
             tableData = document.createElement("td");
             let tm = new Date(datapoint.time);
+
+            let temp = new Date(datapoint.time);
+            temp.setHours(0, 0, 0, 0);
+            
+            /**
+             * If there is already a data entry for today, don't allow user to enter more data today
+             */
+            if (temp.valueOf() === today.valueOf()) {
+                let cover = document.getElementsByClassName("disabled")[0];
+
+                cover.classList.add("disabled-active");
+            }
             tableData.innerText = tm.toLocaleDateString("en-US");
             tableRow.appendChild(tableData);
             
