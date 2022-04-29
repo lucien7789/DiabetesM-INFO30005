@@ -2,30 +2,19 @@ const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema({
     username: {
-        type: String,
-        required: true
+        type: String
     },
     password: {
-        type: String,
-        required: true
+        type: String
     },
     firstName: {
-        type: String,
-        required: true
+        type: String
     },
     lastName: {
-        type: String,
-        required: true
+        type: String
     },
     accountType: {
-        type: Number,
-        required: true
-    },
-    clinician: {
-        type: mongoose.Schema.Types.ObjectID
-    },
-    patientMeasures: {
-        type: mongoose.Schema.Types.ObjectID
+        type: Number
     }
 });
 
