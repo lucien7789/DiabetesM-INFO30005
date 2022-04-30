@@ -22,7 +22,7 @@ const BloodGlucoseController = {
 
     getBloodGlucoseByUserId: function(userID) {
         let finder = () => {
-            return BloodGlucose.find({userID: userID});
+            return BloodGlucose.find({userID: userID}, {}, { sort: { time: -1} });
         }
         return findObjectTemplateFunction(finder, "getBloodGlucoseByUserID()");
     },
