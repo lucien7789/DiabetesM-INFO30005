@@ -1,6 +1,94 @@
+const dataVisualizationPointLimit = 10;
+const chartToFontRatio = 32
+const chartMinFont = 1
+const chartMaxFont = 18
+function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
+
+    function getResponsiveFont(context) {
+        let width = context.chart.width;
+        let size = clamp(Math.round(width / chartToFontRatio), 1, chartMaxFont);
+
+        return {
+            size: size
+        };
+    }
+    return {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: {
+                    font: {
+                        color: "white",
+                        size: 18
+                    }
+                },
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: data
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                },
+            },
+            scales: {
+                y: {
+                    grace: "10%",
+                    title: {
+                        display: true,
+                        text: yAxisTitle || "Value",
+                        color: "white",
+                        font: getResponsiveFont
+                    },
+                    ticks: {
+                        color: "white",
+                        font: getResponsiveFont,
+                        beginAtZero: true
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: xAxisTitle || "X Axis",
+                        color: "white",
+                        font: getResponsiveFont
+                    },
+                    ticks: {
+                        color: "white",
+                        font: getResponsiveFont,
+                    }
+                }
+            }
+        }
+    };
+}
 async function render() {
-    let options = document.getElementById("patient-data-dropdown");
-    let optionNo = options.value;
+
+    function renderChart(data) {
+    
+        data.sort((a, b) => new Date(a.time) - new Date(b.time));
+        data = data.splice(data.length - dataVisualizationPointLimit < 0 ? 0 : data.length - dataVisualizationPointLimit, data.length);
+        const chartRoot = document.getElementById("chart-root");
+    
+        const values = data.map(datapoint => datapoint.value);
+        const dates = data.map(datapoint => datapoint.time.substring(0, 10));
+    
+        const graph = document.createElement("canvas");
+        graph.setAttribute("id", "chart-main");
+    
+        chartRoot.appendChild(graph);
+    
+        
+        const myChart = new Chart(
+            graph,
+            getChartConfig(values, dates, "Date", options[optionNo].dataset.unit)
+        );
+    }
+    var options = document.getElementById("patient-data-dropdown");
+    var optionNo = options.value;
 
     var container = document.getElementById("patient-data-table-container");
 
@@ -12,7 +100,7 @@ async function render() {
     if (placeholderMsg) {
         container.removeChild(placeholderMsg);
     }
-    
+
     let loadingDots = document.createElement("span");
 
     loadingDots.classList.add("loading-dots");
@@ -25,23 +113,23 @@ async function render() {
 
     let data = await response.json();
     let newTable;
-    
+
     if (data && data.length > 0) {
         newTable = document.createElement("table");
 
         newTable.setAttribute("id", "patient-data-table");
         newTable.classList.add("data-table");
         let tableRow = document.createElement("tr");
-    
+
         let tableData = document.createElement("td");
         tableData.innerText = "Timestamp";
         tableRow.appendChild(tableData);
-    
-        
+
+
         tableData = document.createElement("td");
         tableData.innerText = "Value";
         tableRow.appendChild(tableData);
-        
+
         newTable.appendChild(tableRow);
 
         var dataEnteredToday = false;
@@ -57,7 +145,7 @@ async function render() {
 
             let temp = new Date(datapoint.time);
             temp.setHours(0, 0, 0, 0);
-            
+
             /**
              * If there is already a data entry for today, don't allow user to enter more data today
              */
@@ -66,9 +154,13 @@ async function render() {
 
                 cover.classList.add("disabled-active");
             }
-            tableData.innerText = tm.toLocaleDateString("en-US") + " " + tm.toLocaleTimeString("en-US", { hour: 'numeric', minute: 'numeric', hour12: false }).substring(0, 7);
+            tableData.innerText = tm.toLocaleDateString("en-US") + " " + tm.toLocaleTimeString("en-US", {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false
+            }).substring(0, 7);
             tableRow.appendChild(tableData);
-            
+
             tableData = document.createElement("td");
             tableData.classList.add("flex-space-between", "border-none");
             let text = document.createElement("p");
@@ -78,7 +170,7 @@ async function render() {
             if (datapoint.comment) {
                 let icon = document.createElement("span");
                 icon.classList.add("material-symbols-outlined", "data-comment-button");
-                
+
                 icon.innerText = "chat_bubble";
                 icon.setAttribute("onclick", "showComment(event)");
                 let comment = document.createElement("div");
@@ -92,6 +184,8 @@ async function render() {
 
             newTable.appendChild(tableRow);
         }
+
+        renderChart(data);
     } else {
         newTable = document.createElement("h3");
         newTable.setAttribute("id", "no-data-placeholder-msg");
@@ -102,8 +196,9 @@ async function render() {
 
     container.removeChild(loadingDots);
     container.appendChild(newTable);
-    
+
 }
+
 function onSubmitPlaceholder(e) {
     e.preventDefault();
 }
@@ -114,11 +209,16 @@ async function onSubmit() {
     let optionNo = options.value;
 
     if (comment && comment.length > 0) {
-        await httpPost(options[optionNo].dataset.endpoint, { value: parseFloat(datapoint), comment });
+        await httpPost(options[optionNo].dataset.endpoint, {
+            value: parseFloat(datapoint),
+            comment
+        });
     } else {
-        await httpPost(options[optionNo].dataset.endpoint, { value: parseFloat(datapoint) });
+        await httpPost(options[optionNo].dataset.endpoint, {
+            value: parseFloat(datapoint)
+        });
     }
-    
+
     render();
 }
 render();

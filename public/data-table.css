@@ -7,8 +7,6 @@
     background-color: var(--INPUT);
     width: 100%;
     table-layout: fixed;
-
-    
 }
 
 .data-table tr:first-child {
