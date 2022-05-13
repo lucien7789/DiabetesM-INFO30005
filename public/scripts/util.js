@@ -4,6 +4,9 @@
  * Assumes that there is a DOM element with class "status-message", which will be populated with message.
  * @param {*} message The message to display
  */
+function clamp(num, min, max) {
+    return Math.max(Math.min(num, max), min);
+}
 function showErrorStatusMessage(message) {
     let statusMsg = document.querySelector(".status-message")
     if (message) {

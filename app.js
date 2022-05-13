@@ -67,9 +67,8 @@ app.use(
         saveUninitialized: false,
         resave: false,
         cookie: {
-            sameSite: "none",
+            sameSite: "strict",
             httpOnly: true,
-            secure: true,
             secure: app.get("env") === "production"
         },
         store: MongoStore.create({ clientPromise: mongooseClient})
