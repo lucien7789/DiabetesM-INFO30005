@@ -73,6 +73,10 @@ async function render() {
         data = data.splice(data.length - dataVisualizationPointLimit < 0 ? 0 : data.length - dataVisualizationPointLimit, data.length);
         const chartRoot = document.getElementById("chart-root");
     
+        const prevGraph = document.getElementById("chart-main");
+        if (prevGraph) {
+            chartRoot.removeChild(prevGraph);
+        }
         const values = data.map(datapoint => datapoint.value);
         const dates = data.map(datapoint => datapoint.time.substring(0, 10));
     
@@ -208,16 +212,23 @@ async function onSubmit() {
     let options = document.getElementById("patient-data-dropdown");
     let optionNo = options.value;
 
-    if (comment && comment.length > 0) {
-        await httpPost(options[optionNo].dataset.endpoint, {
-            value: parseFloat(datapoint),
-            comment
-        });
+    if (datapoint.length === 0) {
+        showErrorStatusMessage("Please enter a value");
+    } else if (datapoint <= 0) {
+        showErrorStatusMessage("Please enter a positive value");
     } else {
-        await httpPost(options[optionNo].dataset.endpoint, {
-            value: parseFloat(datapoint)
-        });
+        if (comment && comment.length > 0) {
+            await httpPost(options[optionNo].dataset.endpoint, {
+                value: parseFloat(datapoint),
+                comment
+            });
+        } else {
+            await httpPost(options[optionNo].dataset.endpoint, {
+                value: parseFloat(datapoint)
+            });
+        }
     }
+    
 
     render();
 }
