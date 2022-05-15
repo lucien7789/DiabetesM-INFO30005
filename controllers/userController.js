@@ -70,7 +70,6 @@ const UserController = {
 
     updateUser: async function(id, newDoc) {
         try {
-            console.log(newDoc);
             const { updateCount } = await User.updateOne({_id: id}, {$set: newDoc});
             return updateCount == 1;
         } catch (err) {

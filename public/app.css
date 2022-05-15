@@ -1,7 +1,7 @@
 :root {
     --ACCENT_POSITIVE: #019D49;
     --ACCENT_NEGATIVE: #EF4751;
-
+    --ACCENT_UTILITY: #2196F3;
     --FONT-QUICKSAND: 'Quicksand', sans-serif;
     --FONT-XSMALL: 0.8rem;
     --FONT-SMALL: 1rem;
@@ -44,6 +44,7 @@ body {
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #dad4e2;
     --ACCENT1_DARK: #cfc9e8;
+    --ACCENT_REVERSE: rgb(101, 100, 110);
     --FONT-NORMAL: #000000;
     --INPUT: rgba(196, 189, 215, 0.8);
 
@@ -67,6 +68,7 @@ body.dark-mode {
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #736f78;
     --ACCENT1_DARK: #23242f;
+    --ACCENT_REVERSE: #ffffff;
     --FONT-NORMAL: #FFFFFF;
     --INPUT: #2f3a48;
 
@@ -187,9 +189,6 @@ h1, h2, h3 {
     font-weight: 500;
     font-size: var(--FONT-SMEDIUM);
 }
-.home-icon {
-    margin-right: auto !important;
-}
 .logout-icon {
     margin-left: auto !important;
 }
@@ -222,7 +221,7 @@ h1, h2, h3 {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: var(--INPUT);
+    background-color: var(--ACCENT_REVERSE);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -243,19 +242,17 @@ h1, h2, h3 {
     transition: .4s;
 
     vertical-align: 1px;
-  }
+}
 .color-switch-input {
     display: none;
 }
-.color-switch-input:checked + span {
-    background-color: #2196F3;
-}
   
 .color-switch-input:checked:focus + .color-switch span {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px var(--ACCENT_UTILITY);
 }
   
-.color-switch-input:checked:checked + span > span {
+.color-switch-input:checked + span > span {
+    background-color: #2196F3;
     -webkit-transform: translateX(30px);
     -ms-transform: translateX(30px);
     transform: translateX(30px);
@@ -343,23 +340,48 @@ h1, h2, h3 {
         --FONT-LARGE: 3rem;
     }
     header {
-        display: flex;
-        justify-content: center;
-
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 100%;
+        grid-template-areas:
+            "left left title right right";
         font-size: small;
     }
-    #app-header {
-        grid-template-columns: 1fr 10fr 1fr;
+    header > *:nth-child(1) {
+        grid-area: left;
     }
-    #app-header #page-title {
+    #page-title {
+        grid-area: title;
+    }
+    header > *:nth-child(3) {
+        grid-area: right;
+    }
+    .home-icon::after, .logout-icon::after {
         display: none;
     }
-    #app-main {
-        padding: 10px;
-        background-color: var(--BACKGROUND);
+    .color-switch {
+        width: 35px;
     }
-    #header-logo {
-        display: none;
+    .color-switch > span {
+        width: 35px;
+        height: 35px;
+        border-radius: 15px;
+    }
+    .color-switch > span > span {
+        top: auto;
+        left: auto;
+        right: auto;
+        bottom: auto;
+    }
+    .color-switch > span {
+        display: grid;
+        place-items: center;
+    }
+    .color-switch-input:checked + span > span {
+        background-color: var(--ACCENT_UTILITY);
+        -webkit-transform: none;
+        -ms-transform: none;
+        transform: none;
     }
     footer {
         display: none;
