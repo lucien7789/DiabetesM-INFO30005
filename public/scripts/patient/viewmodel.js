@@ -33,6 +33,18 @@ function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
                 legend: {
                     display: false
                 },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let value = context?.raw || "";
+                            
+                            if (value) {
+                                value = value.toString().concat(yAxisTitle);
+                            }
+                            return value;
+                        }
+                    }
+                }
             },
             scales: {
                 y: {
