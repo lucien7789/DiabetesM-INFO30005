@@ -13,10 +13,10 @@
     display: grid;
     place-items: center;
 
-    color: white;
+    color: var(--FONT-NORMAL);
 }
 #form a {
-    color: white;
+    color: var(--FONT-NORMAL);
     font-family: var(--FONT-QUICKSAND);
     font-size: var(--FONT-SMALL);
 }
@@ -31,7 +31,7 @@
     margin-left: 10px;
 }
 .form-box input, .form-box::placeholder {
-    color: white;
+    color: var(--FONT-NORMAL);
     font-family: var(--FONT-QUICKSAND);
 }
 .form-box input, .form-box-input {

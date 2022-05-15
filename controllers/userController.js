@@ -60,7 +60,7 @@ const UserController = {
 
     deleteUserById: async function(id) {
         try {
-            const { deleteCount } = await User.deleteOne({id: id});
+            const { deleteCount } = await User.deleteOne({_id: id});
             return deleteCount == 1;
         } catch (err) {
             console.log(`sampleController.js - UserController - deleteUser() - An error occurred trying to delete a new document for user: {id: ${id}}`);
@@ -70,7 +70,8 @@ const UserController = {
 
     updateUser: async function(id, newDoc) {
         try {
-            const { updateCount } = await User.updateOne({id: id}, {$set: newDoc});
+            console.log(newDoc);
+            const { updateCount } = await User.updateOne({_id: id}, {$set: newDoc});
             return updateCount == 1;
         } catch (err) {
             console.log(`sampleController.js - UserController - deleteUser() - An error occurred trying to update a document for user: {id: ${id}, ${Object.entries(newDoc).map(e => ", " + e[0] + ": " + e[1])}}`);

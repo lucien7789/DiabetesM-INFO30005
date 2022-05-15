@@ -4,12 +4,29 @@ const chartMinFont = 1
 const chartMaxFont = 18
 function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
 
+    var fontColor = null;
+    function getResponsiveColor(context) {
+        // Cache value
+        if (fontColor) {
+            return fontColor;
+        }
+        const body = document.getElementsByTagName("body")[0];
+
+        // Check whether dark mode is on or not
+        fontColor = "black";
+        if (body.classList.contains("dark-mode")) {
+            fontColor = "white";
+        }
+        
+        return fontColor;
+    }
     function getResponsiveFont(context) {
+
         let width = context.chart.width;
         let size = clamp(Math.round(width / chartToFontRatio), 1, chartMaxFont);
 
         return {
-            size: size
+            size: size,
         };
     }
     return {
@@ -18,10 +35,8 @@ function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
             labels: labels,
             datasets: [{
                 label: {
-                    font: {
-                        color: "white",
-                        size: 18
-                    }
+                    color: getResponsiveColor(),
+                    font: getResponsiveFont
                 },
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
@@ -52,11 +67,11 @@ function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
                     title: {
                         display: true,
                         text: yAxisTitle || "Value",
-                        color: "white",
+                        color: getResponsiveColor(),
                         font: getResponsiveFont
                     },
                     ticks: {
-                        color: "white",
+                        color: getResponsiveColor(),
                         font: getResponsiveFont,
                         beginAtZero: true
                     }
@@ -65,11 +80,11 @@ function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
                     title: {
                         display: true,
                         text: xAxisTitle || "X Axis",
-                        color: "white",
+                        color: getResponsiveColor(),
                         font: getResponsiveFont
                     },
                     ticks: {
-                        color: "white",
+                        color: getResponsiveColor(),
                         font: getResponsiveFont,
                     }
                 }

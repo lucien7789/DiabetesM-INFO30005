@@ -1,5 +1,5 @@
 #clinician-dashboard {
-    color: white;
+    color: var(--FONT-NORMAL);
     width: 100%;
 }
 
@@ -65,7 +65,7 @@
 **/
 
 #patient-registration {
-    color: white;
+    color: var(--FONT-NORMAL);
 }
 
 #patient-registration section {

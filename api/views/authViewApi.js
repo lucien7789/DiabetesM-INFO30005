@@ -8,7 +8,7 @@ routes.get("/login", async (req, res) => {
     if (userID) {
         let user = await UserController.getUserById(userID);
         if (!user) {
-            res.render("auth/login.hbs", { title: "Sign In"});
+            res.render("auth/login.hbs", { title: "Sign In", authenticated: false});
         }
         if (user.accountType === 0) {
             res.redirect("/patient/home");
@@ -18,17 +18,17 @@ routes.get("/login", async (req, res) => {
             res.end();
         }
     } else {
-        res.render("auth/login.hbs", { title: "Sign In"});
+        res.render("auth/login.hbs", { title: "Sign In", authenticated: false});
     }
     
 });
 
 routes.get("/register", (req, res) => {
-    res.render("auth/register.hbs", { title: "Registration"});
+    res.render("auth/register.hbs", { title: "Registration", authenticated: false});
 });
 
 routes.get("/register/success", (req, res) => {
-    res.render("auth/registerSuccess.hbs", { title: "Registration"})
+    res.render("auth/registerSuccess.hbs", { title: "Registration", authenticated: false})
 })
 
 module.exports = routes;
