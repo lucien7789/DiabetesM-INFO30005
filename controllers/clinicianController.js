@@ -25,6 +25,19 @@ const ClinicianController = {
         });
         
         return Promise.all(patients);
+    },
+
+    updatePatientMessage: async function(clinicianID, patientID, message) {
+        let patients = await this.getPatientUsersByClinicianId(clinicianID);
+
+        let p = patients.find(p => p._id == patientID);
+        if (p) {
+            let { updateCount } = User.updateOne({ _id: p._id }, {}, { $set: { message: message} });
+
+            return updateCount === 1;
+        } else {
+            throw new Error("The patient id entered does not belong to you");
+        }
     }
 }
 

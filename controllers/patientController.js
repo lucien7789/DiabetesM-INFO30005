@@ -8,6 +8,9 @@ const PatientController = {
 
         const patient = await User.findById(patientID);
 
+        if (!patient) {
+            throw new Error("No patient account found");
+        }
         if (patient.accountType !== 0) {
             throw new Error("This account is not a patient account");
         }
@@ -16,6 +19,19 @@ const PatientController = {
         let bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(patient._id);
 
         return { patient , patientMeasures, bloodGlucose: bloodGlucose };
+    },
+
+    getPatientMessage: async function(patientID) {
+        const patient = await User.findById(patientID);
+
+        if (!patient) {
+            throw new Error("No patient account found");
+        }
+        if (patient.accountType !== 0) {
+            throw new Error("This account is not a patient account");
+        }
+
+        return patient.message;
     }
 }
 

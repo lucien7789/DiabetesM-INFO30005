@@ -1,12 +1,13 @@
 const express = require("express")
 const router = express.Router()
-const controller = require("../../controllers/bloodGlucoseController")
+const controller = require("../../controllers/bloodGlucoseController");
+const EngagementController = require("../../controllers/engagementController");
 
 router.post("/", async (req, res) => {
     try {
         let userID = req.session?.passport?.user;
         const bloodGlucose = await controller.createBloodGlucose(userID, req.body.value, req.body.comment);
-        
+        await EngagementController.createEngagement(userID);
         if (bloodGlucose) {
             res.status(201).json(bloodGlucose);
         } else {

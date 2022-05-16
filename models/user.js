@@ -29,6 +29,13 @@ const UserSchema = new mongoose.Schema({
     },
     colortheme: {
         type: String
+    },
+    message: {
+        type: String
+    },
+    registrationDate: {
+        type: Date,
+        default: Date.now
     }
 });
 

@@ -10,6 +10,7 @@
 }
 
 #patient-welcome section {
+    position: relative;
     background: var(--BACKGROUND_CONTAINER);
     border-radius: 10px;
     padding: 20px;
@@ -244,4 +245,10 @@
 
 .profile-input-caption {
     margin: 0 0 3px 0;
+}
+
+.progress-badge-frame {
+    position: absolute;
+    top: -25px;
+    left: -25px;
 }
