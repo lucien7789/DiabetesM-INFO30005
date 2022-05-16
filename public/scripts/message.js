@@ -8,7 +8,7 @@ async function getMessage() {
 
         messageBox.setAttribute("style", "{ display: block; }");
         
-        let header = document.createElement("h3");
+        let header = document.createElement("h2");
         header.innerText = "Your clinician has a message for you:";
 
         let body = document.createElement("p");

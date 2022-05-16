@@ -10,6 +10,7 @@
 }
 
 #patient-welcome section {
+    position: relative;
     background: var(--BACKGROUND_CONTAINER);
     border-radius: 10px;
     padding: 20px;
@@ -247,7 +248,7 @@
 }
 
 .progress-badge-frame {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
+    position: absolute;
+    top: -25px;
+    left: -25px;
 }

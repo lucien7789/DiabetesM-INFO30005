@@ -32,6 +32,10 @@ const UserSchema = new mongoose.Schema({
     },
     message: {
         type: String
+    },
+    registrationDate: {
+        type: Date,
+        default: Date.now
     }
 });
 
