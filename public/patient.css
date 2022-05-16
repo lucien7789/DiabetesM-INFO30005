@@ -245,3 +245,9 @@
 .profile-input-caption {
     margin: 0 0 3px 0;
 }
+
+.progress-badge-frame {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
