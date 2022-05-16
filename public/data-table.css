@@ -1,5 +1,5 @@
 .data-table, .data-table tr, .data-table td {
-    border: 1px solid black;
+    border: 1px solid var(--ACCENT1_DARK);
     border-collapse: collapse;
 }
 
@@ -21,14 +21,14 @@
 .data-table td {
     position: relative;
     padding: 5px;
-    color: white;
+    color: var(--FONT-NORMAL);
 }
 
 .data-table p {
     margin: 0;
 }
 .data-dropdown {
-    color: white;
+    color: var(--FONT-NORMAL);
     font: var(--FONT-QUICKSAND);
 
     cursor: pointer;

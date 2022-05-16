@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
@@ -12,27 +13,67 @@
     <link rel="stylesheet" href="/data-table.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;1,100;1,300;1,400&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="/scripts/ajax.js"></script>
     <script src="/scripts/util.js"></script>
     <title>About Diabetes</title>
-    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>DiabetesM</title>
 
-    
+
 
 
 </head>
+
 <body>
     <header>
+        {{#if authenticated}}
+            <button class="home-icon" onclick="toHomePage()">
+                <span class="material-symbols-outlined">
+                    home
+                </span>
+            </button>
+        {{/if}}
+        {{#unless authenticated}}
+            <div>&nbsp;</div>
+        {{/unless}}
         <h1 id="page-title">{{this.title}}</h1>
+        
+        <div class="flex-row flex-place-center">
+            <!-- Color mode toggle -->
+            <label class="color-switch">
+                <input onchange="toggleDarkMode()" class="color-switch-input" type="checkbox">
+                <span>
+                    <span class="material-symbols-outlined">
+                        dark_mode
+                    </span>
+                </span>
+            </label>
+            {{#if authenticated}}
+                <button class="logout-icon" onclick="logout()">
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+                </button>
+            {{/if}}
+            {{#unless authenticated}}
+                <div>&nbsp;</div>
+            {{/unless}}
+        </div>
+        
     </header>
+
     <main>
         {{{body}}}
     </main>
@@ -42,7 +83,9 @@
         </h3>
     </footer>
 </body>
+
 </html>
 
+<script src="/scripts/dark-mode.js"></script>
 <script src="/scripts/navigation.js"></script>
 <script src="/scripts/auth/logout.js"></script>

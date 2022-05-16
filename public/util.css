@@ -3,7 +3,7 @@
     
     height: 40px;
     font-family: var(--FONT-QUICKSAND);
-    color: white;
+    color: var(--FONT-NORMAL);
     margin-top: 10px;
     font-size: var(--FONT-SMALL);
 
@@ -100,6 +100,9 @@
     justify-content: center;
 }
 
+.flex-place-center {
+    place-content: center !important;
+}
 .flex-justify-start {
     justify-content: flex-start !important;
 }
@@ -153,7 +156,7 @@
   	animation: load 1.8s infinite ease-in-out;
 }
 .loading-dots {
-  	color: white;
+  	color: var(--FONT-NORMAL);
   	font-size: 10px;
   	margin: 40px auto;
   	position: relative;
