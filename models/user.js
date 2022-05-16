@@ -26,6 +26,9 @@ const UserSchema = new mongoose.Schema({
     },
     patientMeasures: {
         type: mongoose.Schema.Types.ObjectID
+    },
+    colortheme: {
+        type: String
     }
 });
 

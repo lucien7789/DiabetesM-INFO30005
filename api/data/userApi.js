@@ -58,5 +58,38 @@ routes.post(
             res.redirect('/');
         });
     }
+);
+routes.get(
+    "/colortheme",
+    async (req, res, next) => {
+        let id = req.session?.passport?.user;
+        let mode = req.query.mode;
+        try {
+            const user = await UserController.getUserById(id);
+            return res.status(200).json({ mode: user.colortheme });
+        } catch (err) {
+            return res.status(500).json({ message: err.toString() });
+        }
+        
+    }
+)
+routes.post(
+    "/colortheme/:mode",
+    async (req, res, next) => {
+        let id = req.session?.passport?.user;
+        let mode = req.params.mode;
+        try {
+            let result = await UserController.updateUser(id, { colortheme: mode });
+            if (result) {
+                return res.status(200).json({ message: "User color theme has been switched"});
+            } else {
+                return res.status(500).json({ message: "Failed to update user color theme"});
+            }
+            
+        } catch (err) {
+            return res.status(500).json({ message: err.toString() });
+        }
+        
+    }
 )
 module.exports = routes;

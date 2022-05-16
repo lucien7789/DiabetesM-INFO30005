@@ -24,7 +24,7 @@
 }
 
 #patient-view h3{
-    color: white;
+    color: var(--FONT-NORMAL);
     margin: 10px;
 }
 
@@ -42,7 +42,7 @@
         "top-left top-right"
         "main-left main-right";
 
-    color: white;
+    color: var(--FONT-NORMAL);
 }
 
 
@@ -107,7 +107,7 @@
 /* Dropdown Button */
 .dropbtn {
     background-color: #04AA6D;
-    color: white;
+    color: var(--FONT-NORMAL);
     padding: 16px;
     font-size: 16px;
     border: none;
@@ -157,7 +157,7 @@
 /* Style the tab buttons */
 .tablink {
     background-color: #555;
-    color: white;
+    color: var(--FONT-NORMAL);
     float: left;
     border: none;
     outline: none;
@@ -174,7 +174,7 @@
   
 /* Set default styles for tab content */
 .tabcontent {
-    color: white;
+    color: var(--FONT-NORMAL);
     display: none;
     padding: 50px;
     text-align: center;
