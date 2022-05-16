@@ -17,4 +17,14 @@ routes.get("/latest", async (req, res) => {
     }
 })
 
+routes.get("/message", async (req, res) => {
+    try {
+        let userID = req.session?.passport?.user;
+        const message = await PatientController.getPatientMessage(userID);
+
+        res.status(200).json({ message: message || ""});
+    } catch (err) {
+        res.status(500).json({ message: err.toString() });
+    }
+})
 module.exports = routes;

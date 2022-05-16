@@ -29,6 +29,9 @@ const UserSchema = new mongoose.Schema({
     },
     colortheme: {
         type: String
+    },
+    message: {
+        type: String
     }
 });
 

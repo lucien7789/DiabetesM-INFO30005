@@ -18,9 +18,25 @@ routes.get("/", async (req, res) => {
     }
 });
 
+routes.post("/message/:id/:message", async (req, res) => {
+    try {
+        let cId = req.session?.passport?.user;
+        let pId = req.params.id;
+        let message = req.params.message;
+        let result = await ClinicianController.updatePatientMessage(pId, cId);
+
+        if (result) {
+            res.status(200).json({ message: "Success" });
+        } else {
+            res.status(500).json({ message: "Failed to update message" });
+        }
+    } catch (err) {
+        res.status(500).json({ message: err.toString() });
+    }
+})
 routes.get("/bloodGlucose/latest/:id", async (req, res) => {
     try {
-        let userID = req.query.id;
+        let userID = req.params.id;
         const bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(userID);
         if (bloodGlucose) {
             res.status(200).json(bloodGlucose);
