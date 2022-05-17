@@ -40,6 +40,7 @@ body {
     --BACKGROUND: #FFFFFF;
     --BACKGROUND_CONTAINER: rgba(255, 255, 255, 0.6);
     --BACKGROUND_CONTAINER_HEAVY: rgba(197, 190, 211, 0.8);
+    --BACKGROUND_CONTAINER_HEAVIER: rgba(255, 255, 255, 0.5);
     --BACKGROUND_TRANSPARENT_WHITE: rgba(255, 255, 255, 0.8);
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #dad4e2;
@@ -63,7 +64,8 @@ body {
 body.dark-mode {
     --BACKGROUND: #FFFFFF;
     --BACKGROUND_CONTAINER: rgba(64, 47, 72, 0.6);
-    --BACKGROUND_CONTAINER_HEAVY: rgba(59, 49, 58, 0.8);
+    --BACKGROUND_CONTAINER_HEAVY: rgba(59, 49, 58, 0.6);
+    --BACKGROUND_CONTAINER_HEAVIER: rgba(52, 50, 54, 0.7);
     --BACKGROUND_TRANSPARENT_WHITE: rgba(255, 255, 255, 0.8);
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #736f78;
@@ -221,12 +223,14 @@ h1, h2, h3 {
     left: 0;
     right: 0;
     bottom: 0;
+    width: 70px;
     background-color: var(--ACCENT_REVERSE);
     -webkit-transition: .4s;
     transition: .4s;
 }
   
 .color-switch > span > span {
+    margin: 0;
     color: black;
     display: grid;
     place-items: center;

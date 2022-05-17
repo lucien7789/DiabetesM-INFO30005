@@ -88,6 +88,8 @@
     border-radius: 15px;
 
     z-index: 2;
+    
+    margin: 0;
 }
 #patient-view-left {
     grid-area: main-left;

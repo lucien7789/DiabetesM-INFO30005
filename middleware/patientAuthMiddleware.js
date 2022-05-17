@@ -9,7 +9,7 @@ const patientAuthMiddleware = async (req, res, next) => {
         if (!user) {
             return res.redirect("/auth/login");
         }
-        if (user.accountType !== USER_TYPE) {
+        if (user.accountType < USER_TYPE) {
             return res.redirect("/auth/login");
         }
         next();

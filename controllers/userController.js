@@ -29,24 +29,27 @@ const UserController = {
              * 
              *  Specifically, check user is a clinician
              **/
-            let patientMeasures;
+
+            let user = await new User(attr).save();
 
             if (accountType === 0) {
                 if (!referral) {
+                    User.deleteOne({ _id: user._id });
                     throw new Error("No permission to create this account on your own");
                 }
                 let origin = await User.findById(referral);
                 if (origin?.accountType !== 1) {
+                    User.deleteOne({ _id: user._id });
                     throw new Error("No permission to create an account for another user");
                 }
-                patientMeasures = await new PatientMeasures( { bloodGlucose: true, bloodGlucoseSafetyThresholdBottom: 6, bloodGlucoseSafetyThresholdTop: 9.2}).save();
-                Object.assign(attr, { clinician: referral, patientMeasures });
-            }
-            new User(attr).save((err) => {
-                if (err) {
-                    throw new Error("Server failed to create a new user");
+                await new PatientMeasures( { userID: user._id, bloodGlucose: true, bloodGlucoseSafetyThresholdBottom: 6, bloodGlucoseSafetyThresholdTop: 9.2}).save();
+                
+                const { acknowledged } = await User.updateOne({ _id: user._id }, { $set: { clinician: referral } });
+                if (!acknowledged) {
+                    User.deleteOne({ _id: user._id });
+                    throw new Error("Failed to link patient to clinician");
                 }
-            });
+            }
         }
         return true;
     },
@@ -80,9 +83,7 @@ const UserController = {
 
     getPatientMeasuresByUserId: function(id) {
         let finder = async () => {
-            let user = await User.findById(id);
-
-            return PatientMeasures.findById(user.patientMeasures);
+            return PatientMeasures.findOne({ userID: id });
         }
 
         return findObjectTemplateFunction(finder, "getPatientMeasuresByUserId()");

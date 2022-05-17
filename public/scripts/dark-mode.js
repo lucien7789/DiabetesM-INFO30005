@@ -8,6 +8,10 @@ function toggleDarkMode() {
         document.getElementsByTagName("body")[0].classList.remove("dark-mode");
         httpPost("/user/colortheme/light");
     }
+
+    if (render !== undefined) {
+        render();
+    }
 }
 
 async function checkColorMode() {

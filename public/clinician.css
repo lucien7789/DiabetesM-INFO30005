@@ -83,3 +83,52 @@
 #patient-registration section > button{
     margin: 15px;
 }
+
+/**
+    BEGIN PATIENT PAGE CSS EXTRACT
+**/
+#patient-page {
+    display: grid;
+
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "lefttop middletop right"
+        "leftbot middlebot right"
+}
+#patient-page > section:nth-child(1) {
+    grid-area: lefttop;
+}
+#patient-page > section:nth-child(2) {
+    grid-area: leftbot;
+}
+#patient-page > section:nth-child(3) {
+    grid-area: middletop;
+}
+#patient-page > section:nth-child(4) {
+    grid-area: middlebot;
+}
+#patient-page > section:nth-child(5) {
+    grid-area: right;
+}
+#patient-page > section {
+    border-radius: 15px;
+
+    background: var(--BACKGROUND_CONTAINER);
+    padding: 15px;
+    margin: 15px;
+    position: relative;
+    overflow: hidden;
+}
+#patient-page #notes-section {
+    max-height: 30vh;
+    overflow-y: auto;
+}
+#patient-page #notes-section > .note {
+    width: 100%;
+    background: var(--BACKGROUND_CONTAINER_HEAVIER);
+    box-shadow: 1px 1px 2px 0px var(--ACCENT_REVERSE);
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+}

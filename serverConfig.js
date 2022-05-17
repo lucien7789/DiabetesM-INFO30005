@@ -15,6 +15,21 @@ const config = {
                 "authenticationLevel": 0
             },
             {
+                "prefix": "/data-entry/exercise",
+                "path": "api/data/exerciseApi.js",
+                "authenticationLevel": 0
+            },
+            {
+                "prefix": "/data-entry/insulin",
+                "path": "api/data/insulinApi.js",
+                "authenticationLevel": 0
+            },
+            {
+                "prefix": "/data-entry/weight",
+                "path": "api/data/weightApi.js",
+                "authenticationLevel": 0
+            },
+            {
                 "prefix": "/patientData",
                 "path": "api/data/patientDataApi.js",
                 "authenticationLevel": 0
@@ -60,6 +75,32 @@ const config = {
             "path": "middleware/adminAuthMiddleware.js"
         }
     ],
+    measures: {
+        bloodGlucose: {
+            code: "bloodGlucose",
+            name: "Blood Glucose", 
+            endpoint: "/data-entry/blood-glucose", 
+            unit: "mmol/L"
+        },
+        exercise: {
+            code: "exercise",
+            name: "Exercise", 
+            endpoint: "/data-entry/exercise", 
+            unit: "steps"
+        },
+        insulin: {
+            code: "insulin",
+            name: "Insulin", 
+            endpoint: "/data-entry/insulin", 
+            unit: "doses"
+        },
+        weight: {
+            code: "weight",
+            name: "Weight", 
+            endpoint: "/data-entry/weight", 
+            unit: "kg"
+        }
+    },
     "projectDir": __dirname
     
 }
