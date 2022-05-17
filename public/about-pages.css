@@ -24,9 +24,6 @@
     background: var(--BACKGROUND_CONTAINER);
     border-radius: 10px;
 }
-#about-diabetes section a:visited, #about-diabetes section a {
-    color: white;
-}
 #about-diabetes-aside {
     display: grid;
 

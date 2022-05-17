@@ -254,3 +254,35 @@
     top: -25px;
     left: -25px;
 }
+
+#patient-leaderboard {
+    display: flex;
+    justify-content: center;
+}
+#patient-leaderboard > section {
+    max-width: min(100%, 600px);
+
+    margin: 15px;
+    padding: 15px;
+
+    border-radius: 15px;
+    background: var(--BACKGROUND_CONTAINER);
+}
+#leaderboard .leaderboard-ranking {
+    display: flex;
+    align-items: center;
+}
+#leaderboard > div:first-of-type {
+    margin-left: 2rem;
+}
+.leaderboard-ranking .leaderboard-label {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+
+    margin: 10px;
+    padding: 10px;
+
+    border-radius: 10px;
+    background: var(--BACKGROUND_CONTAINER_HEAVY);
+}
