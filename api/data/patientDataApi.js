@@ -38,13 +38,20 @@ routes.get("/engagement", async (req, res) => {
         if (!user?.registrationDate) {
             return res.status(200).json({ engagement: 0 });
         }
-        let days = Math.floor((
-             new Date(new Date().toDateString()).getTime() - new Date(user.registrationDate.toDateString()).getTime())/(1000*60*60*24)) || 1;
-        const eCount = await EngagementController.getEngagement(id);
-        console.log(user.registrationDate.toDateString(), new Date().toDateString());
-        return res.status(200).json({ engagement: (eCount / days) || ""});
+        const engagement = await EngagementController.getEngagement(id);
+        return res.status(200).json({ engagement: engagement || 0});
     } catch (err) {
         return res.status(500).json({ message: err.toString() });
+    }
+})
+
+routes.get("/engagement/top", async (req, res) => {
+    try {
+        let top = await EngagementController.getTopEngagements();
+
+        res.status(200).json(top);
+    } catch (err) {
+        res.status(500).json({message: err.toString()});
     }
 })
 module.exports = routes;

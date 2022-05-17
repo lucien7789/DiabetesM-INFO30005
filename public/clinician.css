@@ -1,4 +1,6 @@
 #clinician-dashboard {
+    display: grid;
+    place-items: center;
     color: var(--FONT-NORMAL);
     width: 100%;
 }
@@ -16,6 +18,7 @@
     background: var(--BACKGROUND_CONTAINER);
     padding: 15px;
 
+    max-width: 1600px;
     max-height: 100%;
 }
 #clinician-dashboard > button:first-child {

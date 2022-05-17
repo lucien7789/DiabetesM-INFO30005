@@ -1,4 +1,5 @@
 const express = require("express");
+const UserController = require("../../controllers/userController");
 
 const routes = express.Router();
 
@@ -13,8 +14,19 @@ routes.get("/profile", (req, res) => {
 })
 
 
-routes.get("/data", (req, res) => {
-    res.render("patient/patientViewData.hbs", { title: "View Data" , authenticated: true, measures});
+routes.get("/data", async (req, res) => {
+    let patientMeasures = await UserController.getPatientMeasuresByUserId(req.session?.passport?.user);
+    let measuresProjection = {};
+    for (let m of Object.keys(measures)) {
+        if (patientMeasures[m]) {
+            measuresProjection[m] = measures[m];
+        }
+    }
+    res.render("patient/patientViewData.hbs", { title: "View Data" , authenticated: true, measures: measuresProjection});
 })
+
+routes.get("/leaderboard", (req, res) => {
+    res.render("patient/patientLeaderboard.hbs", { title: "Leaderboard", authenticated: true });
+}) 
 
 module.exports = routes;

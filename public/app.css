@@ -36,7 +36,7 @@ body, html{
     height: 100%;
     margin: 0;
 }
-body {
+body.light-mode {
     --BACKGROUND: #FFFFFF;
     --BACKGROUND_CONTAINER: rgba(255, 255, 255, 0.6);
     --BACKGROUND_CONTAINER_HEAVY: rgba(197, 190, 211, 0.8);
@@ -49,19 +49,15 @@ body {
     --FONT-NORMAL: #000000;
     --INPUT: rgba(196, 189, 215, 0.8);
 
-    color: var(--FONT-NORMAL);
-    display: grid;
-    grid-template-areas: 
-        "header"
-        "main"
-        "footer";
-    grid-template-rows: 80px 1fr 40px;
-    
     background: url("/assets/website-background-light.jpg");
-    backdrop-filter: blur(5px);
 }
-
-body.dark-mode {
+body a {
+    color: white;
+}
+body a:visited {
+    color: rgb(151, 169, 187);
+}
+body{
     --BACKGROUND: #FFFFFF;
     --BACKGROUND_CONTAINER: rgba(64, 47, 72, 0.6);
     --BACKGROUND_CONTAINER_HEAVY: rgba(59, 49, 58, 0.6);
@@ -74,7 +70,24 @@ body.dark-mode {
     --FONT-NORMAL: #FFFFFF;
     --INPUT: #2f3a48;
 
+    color: var(--FONT-NORMAL);
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: 80px 1fr 40px;
+    
     background: url("/assets/website-background-dark.jpg");
+
+    backdrop-filter: blur(5px);
+    
+}
+body.light-mode a {
+    color:rgba(0, 0, 0, 0.7);
+}
+body.light-mode a:visited {
+    color:rgba(57, 54, 77, 0.6);
 }
 main {
     height: 100%;

@@ -86,3 +86,5 @@ async function render() {
     container.removeChild(loadingDots);
     container.appendChild(table);
 }
+
+render();
