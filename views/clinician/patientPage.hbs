@@ -1,0 +1,63 @@
+<section id="patient-page" data-id="{{id}}">
+    <section class="form-box flex-column">
+        <h2>Send the patient a message!</h2>
+        <input class="input-long" id="clinician-message" placeholder="Hello there!!">
+        <button onclick="updateMessage()" class="button-standard button-standard-medium">Save</button>
+    </section>
+    <section>
+        <div class="flex-row form-box">
+            <input id="new-note" placeholder="New note">
+            <button class="button-standard button-standard-short" onclick="createNote()">Add</button>
+        </div>
+        <section id="notes-section" class="flex-column">
+
+        </section>
+    </section>
+    <section id="measure-options" class="form-box flex-column">
+        <section class="flex-column">
+            <h3>Choose an assigned health measure</h3>
+            <select onchange="renderPatientMeasureOptions(); render()" id="patient-data-dropdown"
+                class="form-box-input data-dropdown">
+                {{#each measures}}
+                <option value="{{@index}}" data-code="{{this.code}}" data-enabled="{{this.endpoint}}"
+                    data-endpoint="{{this.endpoint}}" data-unit="{{this.unit}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </section>
+        <div class="flex-row">
+            <h3>Enabled for this patient</h3>
+            <label class="color-switch">
+                <input id="measure-enabled-switch" class="color-switch-input" type="checkbox">
+                <span>
+                    <span class="material-symbols-outlined">
+                        circle
+                    </span>
+                </span>
+            </label>
+        </div>
+        <div class="flex-row">
+            <h3>Upper safety threshold</h3>
+            <input id="upper-safety-threshold">
+        </div>
+        <div class="flex-row">
+            <h3>Lower safety threshold</h3>
+            <input id="lower-safety-threshold">
+        </div>
+        <button onclick="updateMeasureOptions()" class="button-standard button-standard-medium">Save</button>
+    </section>
+    <section>
+        <h3 id="chart-title" class="grid-place-center">Data Visualization</h3>
+        <div id="chart-root"></div>
+    </section>
+    <section>
+        <h3 id="data-table-title">Measure data history</h3>
+        <div id="patient-data-table-container" class="grid-place-center full-width">
+            <table id="patient-data-table" class="data-table"></table>
+        </div>
+    </section>
+    
+</section>
+
+<script src="/scripts/commentPopup.js"></script>
+<script src="/scripts/patient/viewModel.js"></script>
+<script src="/scripts/clinician/patientPage.js"></script>

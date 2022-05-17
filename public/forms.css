@@ -46,6 +46,9 @@
     font-size: var(--FONT-SMALL);
 }
 
+.input-long {
+    width: 350px !important;
+}
 .status-message {
     display: none;
     position: absolute;

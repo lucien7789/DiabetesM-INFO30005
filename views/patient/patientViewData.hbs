@@ -1,7 +1,7 @@
 <section id="patient-view">
     <section id="patient-view-top-left" class="flex-column">
         <h3>Choose an assigned health measure</h3>
-        <select id="patient-data-dropdown" class="form-box-input data-dropdown">
+        <select onchange="render()" id="patient-data-dropdown" class="form-box-input data-dropdown">
             {{#each measures}}
             <option value="{{@index}}" data-endpoint="{{this.endpoint}}" data-unit="{{this.unit}}">{{this.name}}</option>
             {{/each}}
@@ -11,7 +11,7 @@
     <section id="patient-view-top-right" class="flex-column">
         <div class="status-message"></div>
         <h3>Enter health data</h3>
-        <div class="disabled">You have already entered data for this measure today</div>
+        <h3 class="disabled">You have already entered data for this measure today</h3>
         <form id="patient-data-input-box" class="form-box flex-row flex-justify-start"  onsubmit="onSubmitPlaceholder(event)">
             <div class="flex-column">
                 <input type="number" step=0.1 id="data-input-value" placeholder="0"/>

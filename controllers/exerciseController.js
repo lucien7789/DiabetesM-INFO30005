@@ -1,19 +1,16 @@
-/**
- * ************* WIP *************
 const Exercise = require('../models/exercise');
+const mongoose = require("mongoose");
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
 const ExerciseController = {
 
-    createExercise: async function(steps, userID) {
+    createExercise: async function(userID, value, comment) {
         try {
-            const exerciseDoc = new Exercise({ steps: steps, userID: userID });
-
-            await exerciseDoc.save();
+            let exerciseDoc = new Exercise({ userID, value, comment });
+            return exerciseDoc.save();
         } catch (err) {
-            console.log(`exerciseController.js - ExerciseController - createExercise() - An error occurred trying to create a new document for exercise: {steps: ${steps}, userID: ${userID}}`);
-            return false;
+            console.log(`exerciseController.js - ExerciseController - createExercise() - An error occurred trying to create a new document for exercise: {level: ${level}, userID: ${userID}}`);
+            throw err;
         }
-        return true;
     },
 
     getExerciseById: function(id) {
@@ -23,34 +20,34 @@ const ExerciseController = {
         return findObjectTemplateFunction(finder, "getExerciseById()");
     },
 
-    getExerciseByUserID: function(userID) {
+    getExerciseByUserId: function(userID) {
         let finder = () => {
-            return Exercise.find({userID: userID});
+            return Exercise.find({userID: userID}, {}, { sort: { time: -1} });
         }
         return findObjectTemplateFunction(finder, "getExerciseByUserID()");
     },
 
     deleteExerciseById: async function(id) {
-        try {
-            const { deleteCount } = await Exercise.deleteOne({id: id});
-            return deleteCount == 1;
-        } catch (err) {
-            console.log(`exerciseController.js - ExerciseController - deleteExercise() - An error occurred trying to delete a new document for exercise: {id: ${id}}`);
+        let finder = () => {
+            return Exercise.findOneAndDelete({_id: id});
         }
-        return false;
+        return findObjectTemplateFunction(finder, "deleteExerciseById()");
+
     },
 
-    updateExercise: async function(id, newDoc) {
-        try {
-            const { updateCount } = await Exercise.updateOne({id: id}, {$set: newDoc});
-            return updateCount == 1;
-        } catch (err) {
-            console.log(`exerciseController.js - ExerciseController - deleteExercise() - An error occurred trying to update a document for exercise: {id: ${id}, ${Object.entries(newDoc).map(e => ", " + e[0] + ": " + e[1])}}`);
+    updateExerciseById: async function(id, newDoc) {
+        let finder = () => {
+            return Exercise.findOneAndUpdate({_id: id}, newDoc);
         }
-        return false;
+        return findObjectTemplateFunction(finder, "updateExerciseById()");
+    },
+
+    getLatestExerciseMeasure: async function(id) {
+        let finder = () => {
+            return Exercise.findOne({ userID: id }, {}, { sort: { time: -1} });
+        }
+        return findObjectTemplateFunction(finder, "getLtestExerciseMeasure()");
     }
 }
 
 module.exports = ExerciseController;
-
- */

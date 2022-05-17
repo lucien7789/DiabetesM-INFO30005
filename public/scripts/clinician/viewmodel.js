@@ -38,24 +38,29 @@ async function render() {
 
             tableData = document.createElement("td");
 
-            let name = datapoint["p"].firstName + " " + datapoint["p"].lastName;
-            tableData.innerText = name;
+            let name = document.createElement("a");
+            name.innerText = datapoint.p.firstName + " " + datapoint.p.lastName;
+            name.setAttribute("href", `/clinician/patient/${datapoint.p._id}`);
+            tableData.appendChild(name);
             tableRow.appendChild(tableData);
             for (let m of measures) {
                 let measure = m[0];
                 tableData = document.createElement("td");
+                tableData.setAttribute("style", "padding: 0;");
+                let cell = document.createElement("div");
                 if (!datapoint.patientMeasures[measure] || datapoint[measure] === undefined || datapoint[measure] === null) {
-                    tableData.innerText = "";
+                    cell.innerText = "";
                 } else {
-                    tableData.classList.add("flex-space-between");
                     
+                    cell.classList.add("flex-space-between");
+                    cell.setAttribute("style", "height: 100%;");
                     let text = document.createElement("p");
                     text.innerText = datapoint[measure].value;
-                    tableData.appendChild(text);
+                    cell.appendChild(text);
                     
                     if (datapoint[measure].value <= datapoint.patientMeasures[measure + "SafetyThresholdBottom"]
                         || datapoint[measure].value >= datapoint.patientMeasures[measure + "SafetyThresholdTop"]) {
-                            tableData.classList.add("alert-message-deep-danger");
+                            cell.classList.add("alert-message-deep-danger");
                         }
                     if (datapoint[measure].comment) {
                         let icon = document.createElement("span");
@@ -66,10 +71,11 @@ async function render() {
                         comment.classList.add("data-comment");
                         comment.innerText = datapoint[measure].comment;
         
-                        tableData.appendChild(icon);
-                        tableData.appendChild(comment);
+                        cell.appendChild(icon);
+                        cell.appendChild(comment);
                     }
                 }
+                tableData.appendChild(cell);
                 tableRow.appendChild(tableData);
             }
             
@@ -80,5 +86,3 @@ async function render() {
     container.removeChild(loadingDots);
     container.appendChild(table);
 }
-
-render();

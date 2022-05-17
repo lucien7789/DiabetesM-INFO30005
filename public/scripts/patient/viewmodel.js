@@ -92,7 +92,7 @@ function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
         }
     };
 }
-async function render() {
+async function render(dataEndpoint) {
 
     function renderChart(data) {
     
@@ -145,6 +145,8 @@ async function render() {
     let data = await response.json();
     let newTable;
 
+    var dataEnteredToday = false;
+
     if (data && data.length > 0) {
         newTable = document.createElement("table");
 
@@ -163,8 +165,6 @@ async function render() {
 
         newTable.appendChild(tableRow);
 
-        var dataEnteredToday = false;
-
         let today = new Date();
         today.setHours(0, 0, 0, 0);
 
@@ -181,9 +181,7 @@ async function render() {
              * If there is already a data entry for today, don't allow user to enter more data today
              */
             if (temp.valueOf() === today.valueOf()) {
-                let cover = document.getElementsByClassName("disabled")[0];
-
-                cover.classList.add("disabled-active");
+                dataEnteredToday = true;
             }
             tableData.innerText = tm.toLocaleDateString("en-US") + " " + tm.toLocaleTimeString("en-US", {
                 hour: 'numeric',
@@ -215,7 +213,6 @@ async function render() {
 
             newTable.appendChild(tableRow);
         }
-
         renderChart(data);
     } else {
         newTable = document.createElement("h3");
@@ -224,12 +221,29 @@ async function render() {
         newTable.style.color = "white";
         newTable.style.fontWeight = "200";
     }
-
+    if (dataEnteredToday) {
+        disableEntry();
+    } else {
+        enableEntry();
+    }
     container.removeChild(loadingDots);
     container.appendChild(newTable);
 
 }
+function enableEntry() {
+    let cover = document.getElementsByClassName("disabled")[0];
+    if (cover) {
+        cover.classList.remove("disabled-active");
+    }
+    
+}
+function disableEntry() {
+    let cover = document.getElementsByClassName("disabled")[0];
 
+    if (cover) {
+        cover.classList.add("disabled-active");
+    }
+}
 function onSubmitPlaceholder(e) {
     e.preventDefault();
 }
@@ -244,6 +258,7 @@ async function onSubmit() {
     } else if (datapoint <= 0) {
         showErrorStatusMessage("Please enter a positive value");
     } else {
+        disableEntry();
         if (comment && comment.length > 0) {
             await httpPost(options[optionNo].dataset.endpoint, {
                 value: parseFloat(datapoint),

@@ -39,3 +39,18 @@ function showSuccessStatusMessage(message) {
         statusMsg.classList.remove("status-message-active", "alert-message", "alert-message-sucess");
     }
 }
+
+function addLoadingDots(container) {
+    let loadingDots = document.createElement("span");
+
+    loadingDots.classList.add("loading-dots");
+    container.appendChild(loadingDots);
+}
+
+function removeLoadingDots(container) {
+    let loadingDots = container.getElementsByClassName("loading-dots")[0];
+    if (loadingDots) {
+        container.removeChild(loadingDots);
+    }
+    
+}

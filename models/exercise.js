@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const ExerciseSchema = new mongoose.Schema({
-    stepCount:{
+    value:{
         type: Number,
         required: true
     },
@@ -9,6 +9,10 @@ const ExerciseSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectID,
         ref: "User",
         required: true
+    },
+    comment: {
+        type: String,
+        required: false
     },
     time: {
         type: Date,

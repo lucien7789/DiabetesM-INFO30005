@@ -1,17 +1,12 @@
 const mongoose = require("mongoose");
 
-const WeightSchema = new mongoose.Schema({
-    //  Units are stored in kg
-    value: {
-        type: Number,
-        required: true
-    },
+const NoteSchema = new mongoose.Schema({
     userID: {
         type: mongoose.Schema.Types.ObjectID,
         ref: "User",
         required: true
     },
-    comment: {
+    text: {
         type: String,
         required: false
     },
@@ -21,6 +16,6 @@ const WeightSchema = new mongoose.Schema({
     }
 });
 
-const WeightModel = mongoose.model("Weight", WeightSchema);
+const NoteModel = mongoose.model("Note", NoteSchema);
 
-module.exports = WeightModel;
+module.exports = NoteModel;

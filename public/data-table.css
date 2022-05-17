@@ -26,6 +26,7 @@
 
 .data-table p {
     margin: 0;
+    padding: 5px;
 }
 .data-dropdown {
     color: var(--FONT-NORMAL);

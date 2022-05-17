@@ -14,7 +14,7 @@ const PatientController = {
         if (patient.accountType !== 0) {
             throw new Error("This account is not a patient account");
         }
-        let patientMeasures = await PatientMeasures.findById(patient.patientMeasures);
+        let patientMeasures = await PatientMeasures.findOne({userID: patientID});
 
         let bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(patient._id);
 
