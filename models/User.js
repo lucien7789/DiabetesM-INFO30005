@@ -26,6 +26,16 @@ const UserSchema = new mongoose.Schema({
     },
     patientMeasures: {
         type: mongoose.Schema.Types.ObjectID
+    },
+    colortheme: {
+        type: String
+    },
+    message: {
+        type: String
+    },
+    registrationDate: {
+        type: Date,
+        default: Date.now
     }
 });
 
