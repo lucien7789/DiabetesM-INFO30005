@@ -13,3 +13,13 @@ function toClinicianDashboard() {
 function toPatientRegistration() {
     window.location.href = "/clinician/patientRegistration";
 }
+
+
+//navbar related
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+  
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }

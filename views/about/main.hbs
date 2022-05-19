@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/util.css">
     <link rel="stylesheet" href="/clinician.css">
     <link rel="stylesheet" href="/data-table.css">
+
+    <link rel="stylesheet" href="/navbar.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -36,10 +39,22 @@
 
 </head>
 
-<body>
+    <body>
+        <div id="myNav" class="overlay">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="overlay-content">
+            <a href="/">Home</a>
+            <a href="/about/diabetes">About Diabetes</a>
+            <a href="/about/us">About Us</a>
+            <a href="/patient/home">patient home</a>
+            <a href="/clinician/dashboard"> clinician dashboard</a>
+            <a href="/patient/profile">patient profile</a>
+        </div>
+    </div>
+
     <header>
         {{#if authenticated}}
-            <button class="home-icon" onclick="toHomePage()">
+            <button class="home-icon" onclick="openNav()">
                 <span class="material-symbols-outlined">
                     home
                 </span>
