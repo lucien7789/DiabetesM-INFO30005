@@ -3,7 +3,7 @@
     
     height: 40px;
     font-family: var(--FONT-QUICKSAND);
-    color: var(--FONT-NORMAL);
+    color: var(--TEXT_NORMAL);
     margin-top: 10px;
     font-size: var(--FONT-SMALL);
 
@@ -156,7 +156,7 @@
   	animation: load 1.8s infinite ease-in-out;
 }
 .loading-dots {
-  	color: var(--FONT-NORMAL);
+  	color: var(--TEXT_NORMAL);
   	font-size: 10px;
   	margin: 40px auto;
   	position: relative;

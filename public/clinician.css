@@ -1,7 +1,7 @@
 #clinician-dashboard {
     display: grid;
     place-items: center;
-    color: var(--FONT-NORMAL);
+    color: var(--TEXT_NORMAL);
     width: 100%;
 }
 
@@ -68,7 +68,7 @@
 **/
 
 #patient-registration {
-    color: var(--FONT-NORMAL);
+    color: var(--TEXT_NORMAL);
 }
 
 #patient-registration section {

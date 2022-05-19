@@ -50,8 +50,8 @@ const mongooseClient = mongoose.connect(uri).then(m => m.connection.getClient())
 
 app.engine("hbs", exphbs.engine({
     defaultLayout: "about/main",
-    layoutsDir: config.projectDir + "/views",
-    partialsDir: config.projectDir + "/views",
+    layoutsDir: config.projectDir + "/views/layouts",
+    partialsDir: config.projectDir + "/views/partials",
     extname: "hbs"
 }));
 /**

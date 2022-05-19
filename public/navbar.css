@@ -1,39 +1,51 @@
+#my-nav {
+  --NAVBAR_RELATIVE_SIZE: 10;
+  right: 100%;
+  width: min(100%, var(--FONT-LARGE) * var(--NAVBAR_RELATIVE_SIZE));
+}
+.my-nav-active {
+  right: max(0%, 100% - (var(--FONT-LARGE) * (var(--NAVBAR_RELATIVE_SIZE)))) !important;
+}
 .overlay {
     height: 100%;
-    width: 0;
     position: absolute;
     z-index: 1;
     top: 0;
-    left: 0;
     background-color: var(--INPUT);
-    overflow-x: hidden;
+    backdrop-filter: blur(5px);
+    overflow-x: visible;
     transition: 0.5s;
-  }
-  
-  .overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-  }
-  
-  .overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: var(--ACCENT1_DARK);
-    display: block;
-    transition: 0.3s;
-  }
-  
-  .overlay a:hover, .overlay a:focus {
-    color: var(--BACKGROUND_CONTAINER_HEAVIER);
-  }
-  
-  .overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-  }
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+}
+
+.overlay a, .overlay a:visited {
+  padding: 8px;
+  text-decoration: none;
+  font-size: var(--FONT-LARGE);
+  color: var(--TEXT_FAINT);
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: var(--TEXT_NORMAL);
+}
+
+.menubtn {
+  position: absolute;
+  top: 20px;
+  right: -3rem;
+  font-size: var(--FONT-ICON) !important;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.my-nav-active .menubtn {
+  right: 1rem;
+}

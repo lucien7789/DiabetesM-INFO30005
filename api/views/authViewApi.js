@@ -8,7 +8,7 @@ routes.get("/login", async (req, res) => {
     if (userID) {
         let user = await UserController.getUserById(userID);
         if (!user) {
-            res.render("auth/login.hbs", { title: "Sign In", authenticated: false});
+            res.render("auth/login.hbs", { title: "Sign In", authenticated: false, unauthenticated: true});
         }
         if (user.accountType === 0) {
             res.redirect("/patient/home");
@@ -18,17 +18,17 @@ routes.get("/login", async (req, res) => {
             res.end();
         }
     } else {
-        res.render("auth/login.hbs", { title: "Sign In", authenticated: false});
+        res.render("layouts/auth/login.hbs", { title: "Sign In", authenticated: false, unauthenticated: true});
     }
     
 });
 
 routes.get("/register", (req, res) => {
-    res.render("auth/register.hbs", { title: "Registration", authenticated: false});
+    res.render("layouts/auth/register.hbs", { title: "Registration", authenticated: false, unauthenticated: true});
 });
 
 routes.get("/register/success", (req, res) => {
-    res.render("auth/registerSuccess.hbs", { title: "Registration", authenticated: false})
+    res.render("layouts/auth/registerSuccess.hbs", { title: "Registration", authenticated: false, unauthenticated: true})
 })
 
 module.exports = routes;

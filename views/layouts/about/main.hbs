@@ -54,44 +54,13 @@
         </div>
         -->
     <header>
-        <button class="home-icon" onclick="openNav()">
-                <span class="material-symbols-outlined">
-                    home
-                </span>
-        </button>
-        {{#if authenticated}}
-            
-        {{/if}}
-        {{#unless authenticated}}
-            
-        {{/unless}}
+
         <h1 id="page-title">{{this.title}}</h1>
         
-        <div class="flex-row flex-place-center">
-            <!-- Color mode toggle -->
-            <label class="color-switch">
-                <input onchange="toggleDarkMode()" class="color-switch-input" type="checkbox">
-                <span>
-                    <span class="material-symbols-outlined">
-                        dark_mode
-                    </span>
-                </span>
-            </label>
-            {{#if authenticated}}
-                <button class="logout-icon" onclick="logout()">
-                    <span class="material-symbols-outlined">
-                        logout
-                    </span>
-                </button>
-            {{/if}}
-            {{#unless authenticated}}
-                <div>&nbsp;</div>
-            {{/unless}}
-        </div>
-        
     </header>
-    <script src="/scripts/dark-mode.js"></script>
     <main>
+        {{> navbar}}
+        <script src="/scripts/dark-mode.js"></script>
         {{{body}}}
     </main>
     <footer>

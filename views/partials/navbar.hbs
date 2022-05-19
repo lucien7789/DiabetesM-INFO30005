@@ -1,0 +1,48 @@
+<div id="my-nav" class="overlay">
+    <span class="menubtn material-symbols-outlined" onclick="toggleNav()">
+        menu
+    </span>
+    <div class="overlay-content">
+        {{#if unauthenticated}}
+            <a href="/">Home</a>
+            <a href="/about/diabetes">About Diabetes</a>
+            <a href="/about/us">About Us</a>
+            <a href="/auth/login">Sign In</a>
+        {{/if}}
+        {{#unless unauthenticated}}
+            {{#if patient}}
+                <a href="/patient/home">Home</a>
+                <a href="/patient/data">Data</a>
+                <a href="/patient/leaderboard">Leaderboard</a>
+                <a href="/patient/about/diabetes">About Diabetes</a>
+                <a href="/patient/about/us">About Us</a>
+            {{/if}}
+            {{#unless patient}}
+                {{#if clinician}}
+                    <a href="/clinician/dashboard">Dashboard</a>
+                    <a href="/clinician/patientRegistration">Register A Patient</a>
+                    <a href="/clinician/about/diabetes">About Diabetes</a>
+                    <a href="/clinician/about/us">About Us</a>
+                {{/if}}
+            {{/unless}}
+        {{/unless}}
+        <div class="flex-row flex-place-center">
+            <!-- Color mode toggle -->
+            <label class="color-switch">
+                <input onchange="toggleDarkMode()" class="color-switch-input" type="checkbox">
+                <span>
+                    <span class="material-symbols-outlined">
+                        dark_mode
+                    </span>
+                </span>
+            </label>
+        </div>
+        {{#if authenticated}}
+            <button class="logout-icon" onclick="logout()">
+                <span class="material-symbols-outlined">
+                    logout
+                </span>
+            </button>
+        {{/if}}
+    </div>
+</div>

@@ -14,12 +14,20 @@ function toPatientRegistration() {
     window.location.href = "/clinician/patientRegistration";
 }
 
-
+var navMenuToggled = false;
+function toggleNav() {
+    if (navMenuToggled) {
+        closeNav();
+    } else {
+        openNav();
+    }
+    navMenuToggled = !navMenuToggled;
+}
 //navbar related
 function openNav() {
-    document.getElementById("myNav").style.width = "33%";
-  }
+    document.getElementById("my-nav").classList.add("my-nav-active");
+}
   
-  function closeNav() {
-    document.getElementById("myNav").style.width = "0%";
-  }
+function closeNav() {
+    document.getElementById("my-nav").classList.remove("my-nav-active");
+}
