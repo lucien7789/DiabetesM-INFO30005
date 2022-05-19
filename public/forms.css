@@ -49,17 +49,6 @@
 .input-long {
     width: 350px !important;
 }
-.status-message {
-    display: none;
-    position: absolute;
-    width: 100%;
-    text-align: center;
-}
-.status-message-active {
-    display: block;
-    animation: 5s slide-in forwards;
-}
-
 #back-link {
     position: absolute;
 

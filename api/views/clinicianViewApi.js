@@ -35,4 +35,8 @@ routes.get("/about/us", (req, res) => {
 routes.get("/about/diabetes", (req, res) => {
     res.render("layouts/about/aboutDiabetes.hbs", { title: "About Us", context: 2, authenticated: true, clinician: true});
 })
+
+routes.get("/settings", (req, res) => {
+    res.render("layouts/settings.hbs", { title: "Account Settings", context: 0, authenticated: true, clinician: true});
+})
 module.exports = routes;

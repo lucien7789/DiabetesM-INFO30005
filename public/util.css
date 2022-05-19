@@ -65,10 +65,21 @@
     margin: 0;
 }
 .alert-message {
-    padding: 15px;
-    margin: 0 0 20px 0;
+    padding: var(--FONT-SMALL) 0;
+    width: 100%;
     border: 1px solid transparent;
     border-radius: 4px;
+}
+.status-message {
+    display: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.status-message-active {
+    display: block;
+    animation: 5s slide-in forwards;
 }
 
 .alert-message-danger {
@@ -183,6 +194,11 @@
 
 .loading-dots:after {
   	left: 4em;
+}
+
+.standard-icon {
+    font-size: var(--FONT-ICON) !important;
+    cursor: pointer;
 }
 @-webkit-keyframes load {
   	0%, 80%, 100% {

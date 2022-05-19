@@ -1,5 +1,5 @@
 <div id="my-nav" class="overlay">
-    <span class="menubtn material-symbols-outlined" onclick="toggleNav()">
+    <span class="menubtn standard-icon material-symbols-outlined" onclick="toggleNav()">
         menu
     </span>
     <div class="overlay-content">
@@ -12,10 +12,16 @@
         {{#unless unauthenticated}}
             {{#if patient}}
                 <a href="/patient/home">Home</a>
-                <a href="/patient/data">Data</a>
+                <a href="/patient/data">Enter Data</a>
                 <a href="/patient/leaderboard">Leaderboard</a>
                 <a href="/patient/about/diabetes">About Diabetes</a>
                 <a href="/patient/about/us">About Us</a>
+                <a href="/patient/settings">
+                    <span class="standard-icon material-symbols-outlined">
+                        settings
+                    </span>
+                    Settings
+                </a>
             {{/if}}
             {{#unless patient}}
                 {{#if clinician}}
@@ -23,6 +29,13 @@
                     <a href="/clinician/patientRegistration">Register A Patient</a>
                     <a href="/clinician/about/diabetes">About Diabetes</a>
                     <a href="/clinician/about/us">About Us</a>
+
+                    <a href="/clinician/settings">
+                        <span class="standard-icon material-symbols-outlined">
+                            settings
+                        </span>
+                        Settings
+                    </a>
                 {{/if}}
             {{/unless}}
         {{/unless}}

@@ -59,7 +59,24 @@ routes.post(
         });
     }
 );
-
+routes.post(
+    "/password",
+    async (req, res) => {
+        let id = req.session?.passport?.user;
+        if (id === undefined) {
+            return res.status(401).json({ message: "Unauthenticated" });
+        }
+        if (!req.body.password || req.body.password.length === 0) {
+            return res.status(500).json({ message: "Password field is empty!"});
+        }
+        let result = await UserController.updateUserPassword(id, req.body.password);
+        if (result) {
+            return res.status(200).json({ message: "Password has been updated"});
+        } else {
+            return res.status(500).json({ message: "Failed to update password"});
+        }
+    }
+)
 routes.get(
     "/colortheme",
     async (req, res, next) => {

@@ -82,8 +82,6 @@ body{
     grid-template-rows: 80px 1fr 40px;
     
     background: url("/assets/website-background-dark.jpg");
-
-    backdrop-filter: blur(5px);
     
 }
 body.light-mode a {
@@ -99,6 +97,7 @@ main {
 
     font-family: var(--FONT-QUICKSAND);
     grid-area: main;
+    
 }
 header {
     height: 100%;

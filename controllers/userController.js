@@ -44,8 +44,8 @@ const UserController = {
                 }
                 await new PatientMeasures( { userID: user._id, bloodGlucose: true, bloodGlucoseSafetyThresholdBottom: 6, bloodGlucoseSafetyThresholdTop: 9.2}).save();
                 
-                const { acknowledged } = await User.updateOne({ _id: user._id }, { $set: { clinician: referral } });
-                if (!acknowledged) {
+                const { modifiedCount } = await User.updateOne({ _id: user._id }, { $set: { clinician: referral } });
+                if (modifiedCount === 0) {
                     User.deleteOne({ _id: user._id });
                     throw new Error("Failed to link patient to clinician");
                 }
@@ -70,11 +70,26 @@ const UserController = {
         }
         return false;
     },
-
+    updateUserPassword: async function(id, password) {
+        const hash = await new Promise((resolve, reject) => {
+            bcrypt.hash(password, SALT_FACTOR, function(err, hash) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(hash);
+            });
+        });
+        const { modifiedCount } = await User.updateOne({_id: id }, { $set: { password: hash }});
+        return modifiedCount === 1;
+    },
     updateUser: async function(id, newDoc) {
         try {
-            const { updateCount } = await User.updateOne({_id: id}, {$set: newDoc});
-            return updateCount == 1;
+            // Make sure you can't update password with this function
+            if (newDoc.password) {
+                delete newDoc.password;
+            }
+            const { modifiedCount } = await User.updateOne({_id: id}, {$set: newDoc});
+            return modifiedCount === 1;
         } catch (err) {
             console.log(`sampleController.js - UserController - deleteUser() - An error occurred trying to update a document for user: {id: ${id}, ${Object.entries(newDoc).map(e => ", " + e[0] + ": " + e[1])}}`);
         }
