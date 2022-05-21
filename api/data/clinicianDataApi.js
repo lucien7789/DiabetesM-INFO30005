@@ -134,4 +134,15 @@ routes.post("/note/:id", async (req, res) => {
     }
 
 })
+
+routes.get("/comments", async (req, res) => {
+    try {
+        let cId = req.session?.passport?.user;
+        const entries = await ClinicianController.getAllRecentPatientComments(cId);
+
+        res.status(200).json(entries);
+    } catch (err) {
+        res.status(500).json({message: err.toString()});
+    }
+})
 module.exports = routes;

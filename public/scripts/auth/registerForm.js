@@ -7,6 +7,16 @@ async function onSubmitPatient() {
 async function onSubmitClinician() {
     onSubmit(1);
 }
+function isValidEmail(email) {
+
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  
+    if (email.match(validRegex)) {
+      return true;
+    }
+    return false;
+  
+  }
 async function onSubmit(accountType, options) {
     const [username, password, confirmPassword, firstName, lastName] = [
         document.querySelector("#username-input").value, 
@@ -17,6 +27,13 @@ async function onSubmit(accountType, options) {
     ];
     if (username === undefined || username.length === 0) {
         showErrorStatusMessage("Please enter a username");
+        return;
+    }
+    /**
+     * Check username conforms to email structure
+     */
+    if (!isValidEmail(username)) {
+        showErrorStatusMessage("Please enter a valid email input");
         return;
     }
     if (firstName === undefined || firstName.length === 0) {

@@ -91,6 +91,7 @@
 /**
     BEGIN PATIENT PAGE CSS EXTRACT
 **/
+
 #patient-page {
     display: grid;
 
@@ -135,4 +136,41 @@
     border-radius: 10px;
     margin: 10px 0;
     padding: 10px;
+}
+
+/**
+    BEGIN COMMENTS PAGE CSS EXTRACT
+**/
+#comments-page {
+    display: flex;
+    justify-content: center;
+}
+#comments-page section {
+    border-radius: 15px;
+
+    background: var(--BACKGROUND_CONTAINER);
+    padding: 15px;
+    margin: 15px;
+
+    width: 90%;
+    max-width: 600px;
+}
+#comments-page #comments-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+#comments-page #comments-section > .comment {
+    width: 100%;
+    max-width: 400px;
+    background: var(--BACKGROUND_CONTAINER_HEAVIER);
+    box-shadow: 1px 1px 2px 0px var(--ACCENT_REVERSE);
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+    cursor: pointer;
 }

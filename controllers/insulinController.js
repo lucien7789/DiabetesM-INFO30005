@@ -15,6 +15,10 @@ const InsulinController = {
         }
     },
 
+    getAllInsulinByTime() {
+        return Insulin.find({}, {}, {sort: { time: -1 }}).lean();
+    },
+
     getInsulinById: function(id) {
         let finder = () => {
             return Insulin.findById(id);
