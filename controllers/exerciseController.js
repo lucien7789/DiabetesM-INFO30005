@@ -15,6 +15,10 @@ const ExerciseController = {
         }
     },
 
+    getAllExerciseByTime() {
+        return Exercise.find({}, {}, {sort: { time: -1 }}).lean();
+    },
+
     getExerciseById: function(id) {
         let finder = () => {
             return Exercise.findById(id);

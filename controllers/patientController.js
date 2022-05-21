@@ -17,25 +17,11 @@ const PatientController = {
             throw new Error("This account is not a patient account");
         }
         let patientMeasures = await PatientMeasures.findOne({userID: patientID});
-        let bloodGlucose, exercise, insulin, weight;
-        await Promise.all([
-            async () => {
-                bloodGlucose = await BloodGlucoseController.getLatestBloodGlucoseMeasure(patient._id);
-                return;
-            },
-            async () => {
-                exercise = await ExerciseController.getLatestExerciseMeasure(patient._id);
-                return;
-            },
-            async () => {
-                insulin = await InsulinController.getLatestInsulinMeasure(patient._id);
-                return;
-            },
-            async () => {
-                weight = await WeightController.getLatestWeightMeasure(patient._id);
-                return;
-            }
-            
+        let [bloodGlucose, exercise, insulin, weight] = await Promise.all([
+            BloodGlucoseController.getLatestBloodGlucoseMeasure(patient._id), 
+            ExerciseController.getLatestExerciseMeasure(patient._id), 
+            InsulinController.getLatestInsulinMeasure(patient._id), 
+            WeightController.getLatestWeightMeasure(patient._id)
         ]);
 
         return { patient , patientMeasures, bloodGlucose, exercise, insulin, weight };

@@ -26,6 +26,7 @@
             {{#unless patient}}
                 {{#if clinician}}
                     <a href="/clinician/dashboard">Dashboard</a>
+                    <a href="/clinician/comments">View Comments</a>
                     <a href="/clinician/patientRegistration">Register A Patient</a>
                     <a href="/clinician/about/diabetes">About Diabetes</a>
                     <a href="/clinician/about/us">About Us</a>
@@ -42,7 +43,7 @@
         <div class="flex-row flex-place-center">
             <!-- Color mode toggle -->
             <label class="color-switch">
-                <input onchange="toggleDarkMode()" class="color-switch-input" type="checkbox">
+                <input onchange="toggleDarkMode()" class="color-switch-input" type="checkbox" checked>
                 <span>
                     <span class="material-symbols-outlined">
                         dark_mode

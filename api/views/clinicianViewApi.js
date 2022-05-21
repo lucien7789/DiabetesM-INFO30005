@@ -28,6 +28,10 @@ routes.get("/patient/:id", async (req, res) => {
 
 });
 
+routes.get("/comments", (req, res) => {
+    res.render("layouts/clinician/comments", { title: "Comments", context: 2, authenticated: true, clinician: true});
+})
+
 routes.get("/about/us", (req, res) => {
     res.render("layouts/about/aboutUs.hbs", { title: "About Us", context: 2, authenticated: true, clinician: true});
 })

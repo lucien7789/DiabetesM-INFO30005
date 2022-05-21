@@ -15,6 +15,10 @@ const WeightController = {
         }
     },
 
+    getAllWeightByTime() {
+        return Weight.find({}, {}, {sort: { time: -1 }}).lean();
+    },
+
     getWeightById: function(id) {
         let finder = () => {
             return Weight.findById(id);

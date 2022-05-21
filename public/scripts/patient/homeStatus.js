@@ -1,4 +1,4 @@
-const measures = ["bloodGlucose"];
+const measures = ["bloodGlucose", "insulin", "weight", "exercise"];
 async function updateDataEntryStatusMessage() {
 
     let msg = document.getElementById("health-data-msg");

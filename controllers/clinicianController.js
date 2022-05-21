@@ -8,6 +8,8 @@ const ExerciseController = require("./exerciseController");
 const InsulinController = require("./insulinController");
 const WeightController = require("./weightController");
 
+const maxRecentEntriesWithCommentsLimit = 10;
+
 const ClinicianController = {
 
     getPatientUsersByClinicianId: function(id) {
@@ -35,7 +37,31 @@ const ClinicianController = {
         
         return Promise.all(patients);
     },
+    getAllRecentPatientComments: async function(clinicianID) {
+        let patients = await this.getPatientUsersByClinicianId(clinicianID);
+        let pIds = {};
+        patients.map(p => {
+            pIds[p._id.toString()] = p;
+        });
 
+        let [bloodGlucose, exercise, insulin, weight] = await Promise.all([
+            BloodGlucoseController.getAllBloodGlucoseByTime(), 
+            ExerciseController.getAllExerciseByTime(), 
+            InsulinController.getAllInsulinByTime(), 
+            WeightController.getAllWeightByTime()
+        ]);
+
+        let entries = [...bloodGlucose, ...exercise, ...insulin, ...weight];
+
+        // Filter out entries without comments and pIds that are not linked to the requesting clinician
+        // Then map each entry so that it includes names
+        entries = entries
+            .filter(e => e.comment !== undefined && pIds[e.userID.toString()] !== undefined)
+            .map(e => ({...e, firstName: pIds[e.userID.toString()].firstName, lastName: pIds[e.userID.toString()].lastName}));
+        entries.sort((a, b) => new Date(b.time) - new Date(a.time));
+
+        return entries.slice(0, maxRecentEntriesWithCommentsLimit);
+    },
     updatePatientMessage: async function(clinicianID, patientID, message) {
         if (message === undefined) {
             message = "";
