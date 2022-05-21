@@ -1,0 +1,35 @@
+.split{
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    
+}
+
+
+
+.leftside{
+    left: 0;
+    background-color: crimson;
+}
+
+.rightside{
+    right:0;
+    background-color: cornflowerblue;
+}
+
+.centered {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%,-50%);
+  }
+
+#center h1{
+    color: black);
+ 
+}
