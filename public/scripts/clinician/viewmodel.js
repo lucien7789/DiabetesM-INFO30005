@@ -4,6 +4,9 @@ async function render() {
 
     let container = document.getElementById("clinician-patient-table-container");
 
+    // Clear the table
+    container.innerHTML = "";
+
     let loadingDots = document.createElement("span");
     loadingDots.classList.add("loading-dots");
     container.appendChild(loadingDots);
@@ -35,7 +38,6 @@ async function render() {
     if (data && data.length > 0) {
         for (let datapoint of data) {
             tableRow = document.createElement("tr");
-
             tableData = document.createElement("td");
 
             let name = document.createElement("a");
@@ -46,34 +48,46 @@ async function render() {
             for (let m of measures) {
                 let measure = m[0];
                 tableData = document.createElement("td");
-                tableData.setAttribute("style", "padding: 0;");
+                tableData.setAttribute("style", "padding: 0; height: 100%; width: 100%");
                 let cell = document.createElement("div");
-                if (!datapoint.patientMeasures[measure] || datapoint[measure] === undefined || datapoint[measure] === null) {
+                if (!datapoint.patientMeasures[measure]) {
                     cell.innerText = "";
                 } else {
-                    
-                    cell.classList.add("flex-space-between");
-                    cell.setAttribute("style", "height: 100%;");
-                    let text = document.createElement("p");
-                    text.innerText = datapoint[measure].value;
-                    cell.appendChild(text);
-                    
-                    if (datapoint[measure].value <= datapoint.patientMeasures[measure + "SafetyThresholdBottom"]
-                        || datapoint[measure].value >= datapoint.patientMeasures[measure + "SafetyThresholdTop"]) {
-                            cell.classList.add("alert-message-deep-danger");
+                    /**
+                     * Check if measure hasn't been entered today, if so, mark it
+                     */
+                    if (datapoint[measure] === undefined || datapoint[measure] === null) {
+                        tableData.classList.add("alert-message-warning-faint");
+                    } else {
+                        // Otherwise, process the data and add comments if is necessary
+
+                        // Check if above or below threshold
+                        if (datapoint[measure].value <= datapoint.patientMeasures[measure + "SafetyThresholdBottom"]
+                            || datapoint[measure].value >= datapoint.patientMeasures[measure + "SafetyThresholdTop"]) {
+                                tableData.classList.add("alert-message-deep-danger-faint");
                         }
-                    if (datapoint[measure].comment) {
-                        let icon = document.createElement("span");
-                        icon.classList.add("material-symbols-outlined", "data-comment-button");
-                        icon.innerText = "chat_bubble";
-                        icon.setAttribute("onclick", "showComment(event)");
-                        let comment = document.createElement("div");
-                        comment.classList.add("data-comment");
-                        comment.innerText = datapoint[measure].comment;
-        
-                        cell.appendChild(icon);
-                        cell.appendChild(comment);
+
+                        cell.classList.add("flex-space-between");
+                        cell.setAttribute("style", "height: 100%;");
+                        let text = document.createElement("p");
+                        text.innerText = datapoint[measure].value;
+                        cell.appendChild(text);
+                        
+                        
+                        if (datapoint[measure].comment) {
+                            let icon = document.createElement("span");
+                            icon.classList.add("material-symbols-outlined", "data-comment-button");
+                            icon.innerText = "chat_bubble";
+                            icon.setAttribute("onclick", "showComment(event)");
+                            let comment = document.createElement("div");
+                            comment.classList.add("data-comment");
+                            comment.innerText = datapoint[measure].comment;
+            
+                            cell.appendChild(icon);
+                            cell.appendChild(comment);
+                        }
                     }
+
                 }
                 tableData.appendChild(cell);
                 tableRow.appendChild(tableData);

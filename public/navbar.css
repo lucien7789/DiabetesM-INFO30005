@@ -10,7 +10,7 @@
     display: flex;
     height: 100%;
     position: fixed;
-    z-index: 2;
+    z-index: 3;
     top: 0;
     background-color: var(--INPUT);
     backdrop-filter: blur(5px);
@@ -30,7 +30,7 @@
   padding: 5px;
   text-decoration: none;
   font-size: var(--FONT-LARGE);
-  color: var(--TEXT_FAINT);
+  color: var(--TEXT_FAINT) !important;
   display: flex;
   transition: 0.3s;
   border-radius: 5px;
@@ -43,7 +43,7 @@
 }
 
 .overlay a:hover, .overlay a:focus {
-  color: var(--ACCENT1_DARK) !important;
+  color: var(--ACCENT1_STANDARD) !important;
   background: var(--ACCENT_REVERSE);
 }
 .overlay a:active {

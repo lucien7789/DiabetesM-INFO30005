@@ -13,9 +13,9 @@ function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
         const body = document.getElementsByTagName("body")[0];
 
         // Check whether dark mode is on or not
-        fontColor = "black";
-        if (body.classList.contains("dark-mode")) {
-            fontColor = "white";
+        fontColor = "white";
+        if (body.classList.contains("light-mode")) {
+            fontColor = "black";
         }
         
         return fontColor;
@@ -255,6 +255,8 @@ async function onSubmit() {
 
     if (datapoint.length === 0) {
         showErrorStatusMessage("Please enter a value");
+    } else if (isNaN(datapoint)) {
+        showErrorStatusMessage("Please enter numerical value");
     } else if (datapoint <= 0) {
         showErrorStatusMessage("Please enter a positive value");
     } else {

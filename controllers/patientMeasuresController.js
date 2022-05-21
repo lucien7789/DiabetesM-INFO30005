@@ -27,9 +27,27 @@ const PatientMeasuresController = {
     },
 
     updatePatientMeasuresByUserId: async (id, newDoc) => {
-        const { acknowledged } = await PatientMeasures.updateOne({ userID: id }, {$set:newDoc});
+        if (newDoc === undefined) {
+            throw new Error("Update document is undefined");
+        }
+        for (let m of measures) {
+            if (newDoc[m] !== undefined) {
+                let bot = newDoc[m.concat("SafetyThresholdBottom")];
+                let top = newDoc[m.concat("SafetyThresholdTop")];
+                if (bot === undefined || isNaN(bot) || parseFloat(bot) < 0) {
+                    throw new Error(`${m.concat("SafetyThresholdBottom")} is invalid`);
+                }
+                if (top === undefined || isNaN(top) || parseFloat(top) < 0) {
+                    throw new Error(`${m.concat("SafetyThresholdTop")} is invalid`);
+                }
+                if (top < bot) {
+                    throw new Error(`${m.concat("SafetyThresholdBottom")} is larger than ${m.concat("SafetyThresholdTop")}`);
+                }
+            }
+        }
+        const { modifiedCount } = await PatientMeasures.updateOne({ userID: id }, {$set:newDoc});
 
-        return acknowledged;
+        return modifiedCount === 1;
     }
 }
 

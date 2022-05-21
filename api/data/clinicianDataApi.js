@@ -33,11 +33,11 @@ routes.get("/message/:id", async (req, res) => {
         res.status(500).json({message: err.toString()});
     }
 })
-routes.post("/message/:id/:message", async (req, res) => {
+routes.post("/message/:id", async (req, res) => {
     try {
         let cId = req.session?.passport?.user;
         let pId = req.params.id;
-        let message = req.params.message;
+        let message = req.body.message;
         let result = await ClinicianController.updatePatientMessage(cId, pId, message);
 
         if (result) {

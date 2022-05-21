@@ -7,6 +7,25 @@ const SALT_FACTOR = 10;
 const UserController = {
 
     createUser: async function(username, password, firstName, lastName, accountType, referral) {
+
+        /**
+         * First check inputs
+         */
+        if (username === undefined || username.length === 0) {
+            throw new Error("Please enter a username");
+        }
+        if (firstName === undefined || firstName.length === 0) {
+            throw new Error("Please enter a first name");
+        }
+        if (lastName === undefined || lastName.length === 0) {
+            throw new Error("Please enter a last name");
+        }
+        if (password === undefined || password.length === 0) {
+            throw new Error("Please enter a password");
+        }
+        if (accountType === undefined) {
+            throw new Error("Please specify an account type");
+        }
         const hash = await new Promise((resolve, reject) => {
             bcrypt.hash(password, SALT_FACTOR, function(err, hash) {
                 if (err) {

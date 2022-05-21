@@ -17,7 +17,6 @@ routes.get("/profile", (req, res) => {
 routes.get("/data", async (req, res) => {
     let patientMeasures = await UserController.getPatientMeasuresByUserId(req.session?.passport?.user);
     let measuresProjection = {};
-    console.log(patientMeasures);
     for (let m of Object.keys(measures)) {
         if (patientMeasures[m]) {
             measuresProjection[m] = measures[m];

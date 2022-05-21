@@ -40,16 +40,17 @@ body, html{
 body.light-mode {
     --BACKGROUND: #FFFFFF;
     --BACKGROUND_CONTAINER: rgba(255, 255, 255, 0.6);
-    --BACKGROUND_CONTAINER_HEAVY: rgba(197, 190, 211, 0.8);
+    --BACKGROUND_CONTAINER_HEAVY: rgba(193, 188, 206, 0.8);
     --BACKGROUND_CONTAINER_HEAVIER: rgba(255, 255, 255, 0.5);
     --BACKGROUND_TRANSPARENT_WHITE: rgba(255, 255, 255, 0.8);
     --ACCENT1_LIGHT: #d1bed8;
     --ACCENT1_STANDARD: #dad4e2;
-    --ACCENT1_DARK: #cfc9e8;
+    --ACCENT1_DARK: #9b99a5;
     --ACCENT_REVERSE: rgb(101, 100, 110);
+
     --FONT-FAINT: #3b3b3b;
     --TEXT_NORMAL: #000000;
-    --INPUT: rgba(196, 189, 215, 0.8);
+    --INPUT: rgba(202, 202, 211, 0.8);
 
     background: url("/assets/website-background-light.jpg");
 }
@@ -66,7 +67,7 @@ body{
     --BACKGROUND_CONTAINER_HEAVIER: rgba(52, 50, 54, 0.7);
     --BACKGROUND_TRANSPARENT_WHITE: rgba(255, 255, 255, 0.8);
     --ACCENT1_LIGHT: #d1bed8;
-    --ACCENT1_STANDARD: #736f78;
+    --ACCENT1_STANDARD: #454248;
     --ACCENT1_DARK: #23242f;
     --ACCENT_REVERSE: #ffffff;
     --FONT-FAINT: #c5c5c5;
@@ -85,10 +86,10 @@ body{
     
 }
 body.light-mode a {
-    color:rgba(0, 0, 0, 0.7);
+    color:rgb(33, 33, 33);
 }
 body.light-mode a:visited {
-    color:rgba(57, 54, 77, 0.6);
+    color:rgb(104, 101, 128);
 }
 main {
     height: 100%;
@@ -276,16 +277,6 @@ h1, h2, h3 {
     -webkit-transform: translateX(30px);
     -ms-transform: translateX(30px);
     transform: translateX(30px);
-}
-  
-.home-icon::after {
-    content: "Home";
-    left: 50px;
-}
-
-.logout-icon::after {
-    content: "Logout";
-    right: 50px;
 }
 
 .home-icon::after, .logout-icon::after {

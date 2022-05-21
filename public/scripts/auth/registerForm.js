@@ -15,6 +15,22 @@ async function onSubmit(accountType, options) {
         document.querySelector("#first-name-input").value, 
         document.querySelector("#last-name-input").value
     ];
+    if (username === undefined || username.length === 0) {
+        showErrorStatusMessage("Please enter a username");
+        return;
+    }
+    if (firstName === undefined || firstName.length === 0) {
+        showErrorStatusMessage("Please enter a first name");
+        return;
+    }
+    if (lastName === undefined || lastName.length === 0) {
+        showErrorStatusMessage("Please enter a last name");
+        return;
+    }
+    if (password === undefined || password.length === 0) {
+        showErrorStatusMessage("Please enter a password");
+        return;
+    }
     if (password !== confirmPassword) {
         showErrorStatusMessage("Passwords do not match, please validate again");
         return;

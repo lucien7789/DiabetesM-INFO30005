@@ -51,6 +51,7 @@
 
 #clinician-patient-table-container {
     max-height: 50vh;
+    width: 80vw;
     overflow-y: auto;
 }
 

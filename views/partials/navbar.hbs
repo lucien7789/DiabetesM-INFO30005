@@ -51,11 +51,14 @@
             </label>
         </div>
         {{#if authenticated}}
-            <button class="logout-icon" onclick="logout()">
-                <span class="material-symbols-outlined">
-                    logout
-                </span>
-            </button>
+            <div class="flex-column">
+                <button class="button-standard flex-row" onclick="logout()" style="font-size: var(--FONT-MEDIUM)">
+                    <span class="standard-icon material-symbols-outlined">
+                        logout
+                    </span>
+                    Logout 
+                </button>
+            </div>
         {{/if}}
     </div>
 </div>

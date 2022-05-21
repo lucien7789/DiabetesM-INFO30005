@@ -37,6 +37,9 @@ const ClinicianController = {
     },
 
     updatePatientMessage: async function(clinicianID, patientID, message) {
+        if (message === undefined) {
+            message = "";
+        }
         let patients = await this.getPatientUsersByClinicianId(clinicianID);
 
         let p = patients.find(p => p._id == patientID);

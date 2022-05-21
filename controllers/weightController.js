@@ -1,10 +1,12 @@
 const Weight = require('../models/weight');
 const mongoose = require("mongoose");
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
+const inputValidator = require('../util/inputValidator');
 const WeightController = {
 
     createWeight: async function(userID, value, comment) {
         try {
+            inputValidator(value, { isNumber: true, greaterThanZero: true});
             let weightDoc = new Weight({ userID, value, comment });
             return weightDoc.save();
         } catch (err) {
@@ -43,10 +45,8 @@ const WeightController = {
     },
 
     getLatestWeightMeasure: async function(id) {
-        let finder = () => {
-            return Weight.findOne({ userID: id }, {}, { sort: { time: -1} });
-        }
-        return findObjectTemplateFunction(finder, "getLtestWeightMeasure()");
+        let today = new Date(new Date().toDateString());
+        return Weight.findOne({ userID: id, time: { $gte: today }});
     }
 }
 

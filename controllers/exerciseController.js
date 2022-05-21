@@ -1,10 +1,12 @@
 const Exercise = require('../models/exercise');
 const mongoose = require("mongoose");
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
+const inputValidator = require('../util/inputValidator');
 const ExerciseController = {
 
     createExercise: async function(userID, value, comment) {
         try {
+            inputValidator(value, { isNumber: true, greaterThanZero: true});
             let exerciseDoc = new Exercise({ userID, value, comment });
             return exerciseDoc.save();
         } catch (err) {
@@ -43,10 +45,8 @@ const ExerciseController = {
     },
 
     getLatestExerciseMeasure: async function(id) {
-        let finder = () => {
-            return Exercise.findOne({ userID: id }, {}, { sort: { time: -1} });
-        }
-        return findObjectTemplateFunction(finder, "getLtestExerciseMeasure()");
+        let today = new Date(new Date().toDateString());
+        return Exercise.findOne({ userID: id, time: { $gte: today }});
     }
 }
 

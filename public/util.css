@@ -82,6 +82,18 @@
     animation: 5s slide-in forwards;
 }
 
+.alert-message-warning {
+    background-color: #e3cf5f;
+    border-color: #ebe4cc;
+    color: #746c34;
+}
+
+.alert-message-warning-faint {
+    background-color: rgb(227, 207, 95, 0.7);
+    border-color: #ebe4cc;
+    color: #746c34;
+}
+
 .alert-message-danger {
     background-color: #f2dede;
     border-color: #ebccd1;
@@ -90,6 +102,11 @@
 
 .alert-message-deep-danger {
     background-color: #e16361;
+    border-color: #ebccd1;
+    color: #4e1c1c;
+}
+.alert-message-deep-danger-faint {
+    background-color: rgb(225, 99, 97, 0.7);
     border-color: #ebccd1;
     color: #4e1c1c;
 }

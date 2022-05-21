@@ -1,10 +1,12 @@
 const Insulin = require('../models/insulin');
 const mongoose = require("mongoose");
 const findObjectTemplateFunction = require('../util/findObjectTemplateFunction');
+const inputValidator = require('../util/inputValidator');
 const InsulinController = {
 
     createInsulin: async function(userID, value, comment) {
         try {
+            inputValidator(value, { isNumber: true, greaterThanZero: true});
             let insulinDoc = new Insulin({ userID, value, comment });
             return insulinDoc.save();
         } catch (err) {
@@ -43,10 +45,8 @@ const InsulinController = {
     },
 
     getLatestInsulinMeasure: async function(id) {
-        let finder = () => {
-            return Insulin.findOne({ userID: id }, {}, { sort: { time: -1} });
-        }
-        return findObjectTemplateFunction(finder, "getLtestInsulinMeasure()");
+        let today = new Date(new Date().toDateString());
+        return Insulin.findOne({ userID: id, time: { $gte: today }});
     }
 }
 

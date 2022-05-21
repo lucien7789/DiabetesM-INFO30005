@@ -31,15 +31,33 @@ async function updateMeasureOptions() {
     var options = document.getElementById("patient-data-dropdown");
     var optionNo = options.value;
 
+    const [enabled, newUpperThreshold, newLowerThreshold] = [
+        document.getElementById("measure-enabled-switch").checked === true, 
+        document.getElementById("upper-safety-threshold").value, 
+        document.getElementById("lower-safety-threshold").value
+    ]
+
+    console.log(parseFloat(newUpperThreshold) < 0);
+    // Validate inputs
+    if (newUpperThreshold === undefined || newUpperThreshold.length === 0 || isNaN(newUpperThreshold) || parseFloat(newUpperThreshold) < 0) {
+        showErrorStatusMessage("The entered upper safety threshold value is invalid");
+        return;
+    }
+    if (newLowerThreshold === undefined || newLowerThreshold.length === 0 || isNaN(newLowerThreshold) || parseFloat(newLowerThreshold) < 0) {
+        showErrorStatusMessage("The entered lower safety threshold value is invalid");
+        return;
+    }
+    if (newLowerThreshold > newUpperThreshold) {
+        showErrorStatusMessage("The entered lower threshold value is larger than upper threshold value");
+        return;
+    }
     loadingDots.classList.add("loading-dots");
     container.appendChild(loadingDots);
 
-    var enabledSwitch = document.getElementById("measure-enabled-switch");
-
     await httpPost(`/clinicianData/patientMeasures/${document.getElementById("patient-page").dataset.id}`, {
-        [options[optionNo].dataset.code]:  enabledSwitch.checked === true,
-        [options[optionNo].dataset.code + "SafetyThresholdTop"]: document.getElementById("upper-safety-threshold").value,
-        [options[optionNo].dataset.code + "SafetyThresholdBottom"]: document.getElementById("lower-safety-threshold").value
+        [options[optionNo].dataset.code]:  enabled,
+        [options[optionNo].dataset.code + "SafetyThresholdTop"]: newUpperThreshold,
+        [options[optionNo].dataset.code + "SafetyThresholdBottom"]: newLowerThreshold
      });
 
     renderPatientMeasureOptions();
@@ -64,7 +82,7 @@ async function renderMessage() {
 async function updateMessage() {
     let message = document.getElementById("clinician-message").value;
 
-    await httpPost(`/clinicianData/message/${document.getElementById("patient-page").dataset.id}/${message}`);
+    await httpPost(`/clinicianData/message/${document.getElementById("patient-page").dataset.id}`, { message: message });
 
     renderMessage();
 }
@@ -113,7 +131,7 @@ async function createNote() {
 
         getNotes();
     } else {
-        showErrorStatusMessage("Please enter some message before adding");
+        showErrorStatusMessage("Please enter some text before adding a note");
     }
     
 }
