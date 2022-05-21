@@ -101,6 +101,7 @@ main {
     
 }
 header {
+    
     height: 100%;
     grid-area: header;
     background-color: var(--BACKGROUND_CONTAINER_HEAVY);
