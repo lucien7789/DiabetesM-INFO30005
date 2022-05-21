@@ -13,6 +13,9 @@ function toClinicianDashboard() {
 function toPatientRegistration() {
     window.location.href = "/clinician/patientRegistration";
 }
+function toCommentsPage() {
+    window.location.href = "/clinician/comments";
+}
 
 var navMenuToggled = false;
 function toggleNav() {
