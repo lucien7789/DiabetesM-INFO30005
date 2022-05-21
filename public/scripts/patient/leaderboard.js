@@ -27,7 +27,7 @@ async function getLeaderboard() {
         label.setAttribute("class", "leaderboard-label");
         uname = document.createElement("h3");
         
-        uname.innerText = patient.username;
+        uname.innerText = patient.firstName;
 
         score = document.createElement("h3");
         score.innerText = patient.engagement;

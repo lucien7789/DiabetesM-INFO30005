@@ -41,7 +41,7 @@ const EngagementController = {
         users.map(u => {
             days = (Math.floor((
                 Date.now() - new Date(u.registrationDate.toDateString()).getTime())/(1000*60*60*24)) || 1) + 1;
-            grouping[u._id] = { username: u.username, engagement: grouping[u._id] / days}
+            grouping[u._id] = { username: u.username, firstName: u.firstName, engagement: grouping[u._id] / days}
         })
         let sorted = Object.values(grouping);
 
