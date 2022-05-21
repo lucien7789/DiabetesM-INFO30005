@@ -32,8 +32,6 @@ async function getLeaderboard() {
         score = document.createElement("h3");
         score.innerText = String(Math.round(100 * Number(patient.engagement))) + "\%";
 
-        console.log(typeof(patient.engagement));
-
         label.appendChild(uname);
         label.appendChild(score);
         ranking.appendChild(rank);
