@@ -8,7 +8,7 @@ routes.get("/login", async (req, res) => {
     if (userID) {
         let user = await UserController.getUserById(userID);
         if (!user) {
-            res.render("auth/login.hbs", { title: "Sign In", authenticated: false, unauthenticated: true});
+            return res.render("auth/login.hbs", { title: "Sign In", authenticated: false, unauthenticated: true});
         }
         if (user.accountType === 0) {
             res.redirect("/patient/home");
