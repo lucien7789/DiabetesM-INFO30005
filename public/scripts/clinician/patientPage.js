@@ -33,8 +33,8 @@ async function updateMeasureOptions() {
 
     const [enabled, newUpperThreshold, newLowerThreshold] = [
         document.getElementById("measure-enabled-switch").checked === true, 
-        document.getElementById("upper-safety-threshold").value, 
-        document.getElementById("lower-safety-threshold").value
+        Number(document.getElementById("upper-safety-threshold").value),
+        Number(document.getElementById("lower-safety-threshold").value)
     ]
 
     console.log(parseFloat(newUpperThreshold) < 0);
