@@ -36,8 +36,7 @@ async function updateMeasureOptions() {
         Number(document.getElementById("upper-safety-threshold").value),
         Number(document.getElementById("lower-safety-threshold").value)
     ]
-
-    console.log(parseFloat(newUpperThreshold) < 0);
+    
     // Validate inputs
     if (newUpperThreshold === undefined || newUpperThreshold.length === 0 || isNaN(newUpperThreshold) || parseFloat(newUpperThreshold) < 0) {
         showErrorStatusMessage("The entered upper safety threshold value is invalid");
