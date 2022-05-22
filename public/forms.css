@@ -27,9 +27,6 @@
     
     position: relative;
 }
-.form-box * {
-    margin-left: 10px;
-}
 .form-box input, .form-box::placeholder {
     color: var(--TEXT_NORMAL);
     font-family: var(--FONT-QUICKSAND);

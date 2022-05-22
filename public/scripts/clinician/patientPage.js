@@ -1,6 +1,10 @@
 async function renderPatientMeasureOptions() {
-    let container = document.getElementById("measure-options");
-    addLoadingDots(container);
+    let section = document.getElementById("measure-options");
+    let container = document.getElementById("measure-options-container");
+    
+    container.style.display = "none";
+    
+    addLoadingDots(section);
 
     var options = document.getElementById("patient-data-dropdown");
     var optionNo = options.value;
@@ -21,13 +25,11 @@ async function renderPatientMeasureOptions() {
     }
     document.getElementById("upper-safety-threshold").value = body[options[optionNo].dataset.code + "SafetyThresholdTop"];
     document.getElementById("lower-safety-threshold").value = body[options[optionNo].dataset.code + "SafetyThresholdBottom"];
-    removeLoadingDots(container);
+    removeLoadingDots(section);
+    container.style = null;
 }
 
 async function updateMeasureOptions() {
-    let container = document.getElementById("measure-options");
-    let loadingDots = document.createElement("span");
-
     var options = document.getElementById("patient-data-dropdown");
     var optionNo = options.value;
 
@@ -50,8 +52,6 @@ async function updateMeasureOptions() {
         showErrorStatusMessage("The entered lower threshold value is larger than upper threshold value");
         return;
     }
-    loadingDots.classList.add("loading-dots");
-    container.appendChild(loadingDots);
 
     await httpPost(`/clinicianData/patientMeasures/${document.getElementById("patient-page").dataset.id}`, {
         [options[optionNo].dataset.code]:  enabled,
@@ -60,8 +60,6 @@ async function updateMeasureOptions() {
      });
 
     renderPatientMeasureOptions();
-
-    container.removeChild(loadingDots);
 }
 async function renderMessage() {
     let message = document.getElementById("clinician-message");

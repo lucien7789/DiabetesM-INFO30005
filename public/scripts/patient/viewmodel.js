@@ -95,28 +95,33 @@ function getChartConfig(data, labels, xAxisTitle, yAxisTitle) {
 async function render(dataEndpoint) {
 
     function renderChart(data) {
-    
-        data.sort((a, b) => new Date(a.time) - new Date(b.time));
-        data = data.splice(data.length - dataVisualizationPointLimit < 0 ? 0 : data.length - dataVisualizationPointLimit, data.length);
         const chartRoot = document.getElementById("chart-root");
-    
         const prevGraph = document.getElementById("chart-main");
         if (prevGraph) {
             chartRoot.removeChild(prevGraph);
         }
-        const values = data.map(datapoint => datapoint.value);
-        const dates = data.map(datapoint => datapoint.time.substring(0, 10));
-    
-        const graph = document.createElement("canvas");
-        graph.setAttribute("id", "chart-main");
-    
-        chartRoot.appendChild(graph);
-    
+        let graph;
+        if (!data) {
+            graph = document.createElement("p");
+            graph.setAttribute("id", "chart-main");
+            graph.innerText = "No data has been entered yet for this measure...";
+        } else {
+            data.sort((a, b) => new Date(a.time) - new Date(b.time));
+            data = data.splice(data.length - dataVisualizationPointLimit < 0 ? 0 : data.length - dataVisualizationPointLimit, data.length);
+            
+            const values = data.map(datapoint => datapoint.value);
+            const dates = data.map(datapoint => datapoint.time.substring(0, 10));
         
-        const myChart = new Chart(
-            graph,
-            getChartConfig(values, dates, "Date", options[optionNo].dataset.unit)
-        );
+            graph = document.createElement("canvas");
+            graph.setAttribute("id", "chart-main");
+        
+            const myChart = new Chart(
+                graph,
+                getChartConfig(values, dates, "Date", options[optionNo].dataset.unit)
+            );
+        }
+
+        chartRoot.appendChild(graph);
     }
     var options = document.getElementById("patient-data-dropdown");
     var optionNo = options.value;
@@ -220,6 +225,8 @@ async function render(dataEndpoint) {
         newTable.innerText = "No data has been entered yet for this measure...";
         newTable.style.color = "white";
         newTable.style.fontWeight = "200";
+
+        renderChart(null);
     }
     if (dataEnteredToday) {
         disableEntry();

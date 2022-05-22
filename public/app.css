@@ -355,20 +355,8 @@ h1, h2, h3 {
     }
     header {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 100%;
-        grid-template-areas:
-            "left left title right right";
-        font-size: small;
-    }
-    header > *:nth-child(1) {
-        grid-area: left;
-    }
-    #page-title {
-        grid-area: title;
-    }
-    header > *:nth-child(3) {
-        grid-area: right;
+        place-items: center;
+        font-size: var(--FONT-SMALL);
     }
     .home-icon::after, .logout-icon::after {
         display: none;

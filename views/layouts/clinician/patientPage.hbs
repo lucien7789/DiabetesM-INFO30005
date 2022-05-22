@@ -13,37 +13,39 @@
 
         </section>
     </section>
-    <section id="measure-options" class="form-box flex-column">
-        <section class="flex-column">
-            <h3>Choose an assigned health measure</h3>
-            <select onchange="renderPatientMeasureOptions(); render()" id="patient-data-dropdown"
-                class="form-box-input data-dropdown">
-                {{#each measures}}
-                <option value="{{@index}}" data-code="{{this.code}}" data-enabled="{{this.endpoint}}"
-                    data-endpoint="{{this.endpoint}}" data-unit="{{this.unit}}">{{this.name}}</option>
-                {{/each}}
-            </select>
-        </section>
-        <div class="flex-row">
-            <h3>Enabled for this patient</h3>
-            <label class="color-switch">
-                <input id="measure-enabled-switch" class="color-switch-input" type="checkbox">
-                <span>
-                    <span class="material-symbols-outlined">
-                        circle
+    <section id="measure-options">
+        <div id="measure-options-container" class="form-box flex-column">
+            <section class="flex-column">
+                <h3>Choose an assigned health measure</h3>
+                <select onchange="renderPatientMeasureOptions(); render()" id="patient-data-dropdown"
+                    class="form-box-input data-dropdown">
+                    {{#each measures}}
+                    <option value="{{@index}}" data-code="{{this.code}}" data-enabled="{{this.endpoint}}"
+                        data-endpoint="{{this.endpoint}}" data-unit="{{this.unit}}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+            </section>
+            <div class="flex-row">
+                <h3>Enabled for this patient</h3>
+                <label class="color-switch">
+                    <input id="measure-enabled-switch" class="color-switch-input" type="checkbox">
+                    <span>
+                        <span class="material-symbols-outlined">
+                            circle
+                        </span>
                     </span>
-                </span>
-            </label>
+                </label>
+            </div>
+            <div class="flex-row">
+                <h3>Upper safety threshold</h3>
+                <input id="upper-safety-threshold">
+            </div>
+            <div class="flex-row">
+                <h3>Lower safety threshold</h3>
+                <input id="lower-safety-threshold">
+            </div>
+            <button onclick="updateMeasureOptions()" class="button-standard button-standard-medium">Save</button>
         </div>
-        <div class="flex-row">
-            <h3>Upper safety threshold</h3>
-            <input id="upper-safety-threshold">
-        </div>
-        <div class="flex-row">
-            <h3>Lower safety threshold</h3>
-            <input id="lower-safety-threshold">
-        </div>
-        <button onclick="updateMeasureOptions()" class="button-standard button-standard-medium">Save</button>
     </section>
     <section>
         <h3 id="chart-title" class="grid-place-center">Data Visualization</h3>

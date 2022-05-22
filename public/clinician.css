@@ -121,7 +121,7 @@
 
     background: var(--BACKGROUND_CONTAINER);
     padding: 15px;
-    margin: 15px;
+    margin: 8px;
     position: relative;
     overflow: hidden;
 }
@@ -137,7 +137,15 @@
     margin: 10px 0;
     padding: 10px;
 }
+#measure-options {
+    position: relative;
 
+    display: grid;
+    place-items: center;
+}
+#measure-options .color-switch {
+    margin: 0.5rem;
+}
 /**
     BEGIN COMMENTS PAGE CSS EXTRACT
 **/
