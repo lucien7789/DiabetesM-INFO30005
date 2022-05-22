@@ -114,10 +114,6 @@ for (let endpoint of config.apiModules.viewApi) {
     console.log(`Server.js - View API Endpoint for ${endpoint.path} set up at ${endpoint.prefix}`);
 }
 
-app.use(function(req,res){
-    res.status(404).render("error/404.hbs")
-});
-
 /**
  * ===========================================================
  * Finish
