@@ -9,11 +9,11 @@ async function getLeaderboard() {
     
     var lb = document.getElementById("leaderboard");
     var ranking;
-    var uname
-    var score
-    var rank
-    var label
-    var number = 1
+    var uname;
+    var score;
+    var rank;
+    var label;
+    var number = 1;
     for (let patient of topPatients) {
         ranking = document.createElement("div");
 
@@ -21,7 +21,7 @@ async function getLeaderboard() {
 
         rank = document.createElement("h2");
         rank.setAttribute("style", "display: inline; margin: 5px;");
-        rank.innerText = number + ". ";
+        rank.innerText = number++ + ". ";
 
         label = document.createElement("div");
         label.setAttribute("class", "leaderboard-label");
